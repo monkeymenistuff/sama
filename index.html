@@ -213,9 +213,9 @@ footer{
   <p>The Official Senyu Huang Collection</p>
 </header>
 
+```html
 <section class="gallery">
 
-```html
 <!-- Birthday Monkey -->
 
 <div class="frame">
@@ -245,9 +245,7 @@ footer{
       <option selected>10</option>
     </select>
 
-    <button onclick="rateArt('birthday')">
-      Rate
-    </button>
+    <button onclick="rateArt('birthday')">Rate</button>
 
   </div>
 
@@ -256,9 +254,7 @@ footer{
     placeholder="Anonymous comment..."
   ></textarea>
 
-  <button onclick="commentArt('birthday')">
-    Comment
-  </button>
+  <button onclick="commentArt('birthday')">Comment</button>
 
   <div id="comments-birthday"></div>
 
@@ -299,9 +295,7 @@ footer{
       <option selected>10</option>
     </select>
 
-    <button onclick="rateArt('megamind')">
-      Rate
-    </button>
+    <button onclick="rateArt('megamind')">Rate</button>
 
   </div>
 
@@ -310,9 +304,7 @@ footer{
     placeholder="Anonymous comment..."
   ></textarea>
 
-  <button onclick="commentArt('megamind')">
-    Comment
-  </button>
+  <button onclick="commentArt('megamind')">Comment</button>
 
   <div id="comments-megamind"></div>
 
@@ -353,9 +345,7 @@ footer{
       <option selected>10</option>
     </select>
 
-    <button onclick="rateArt('knee')">
-      Rate
-    </button>
+    <button onclick="rateArt('knee')">Rate</button>
 
   </div>
 
@@ -364,9 +354,7 @@ footer{
     placeholder="Anonymous comment..."
   ></textarea>
 
-  <button onclick="commentArt('knee')">
-    Comment
-  </button>
+  <button onclick="commentArt('knee')">Comment</button>
 
   <div id="comments-knee"></div>
 
@@ -407,9 +395,7 @@ footer{
       <option selected>10</option>
     </select>
 
-    <button onclick="rateArt('breakout')">
-      Rate
-    </button>
+    <button onclick="rateArt('breakout')">Rate</button>
 
   </div>
 
@@ -418,9 +404,7 @@ footer{
     placeholder="Anonymous comment..."
   ></textarea>
 
-  <button onclick="commentArt('breakout')">
-    Comment
-  </button>
+  <button onclick="commentArt('breakout')">Comment</button>
 
   <div id="comments-breakout"></div>
 
@@ -448,8 +432,90 @@ footer{
       ⭐ 0 ratings
     </div>
 
-    <select id="rate-cu
-```
+    <select id="rate-curious">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option selected>10</option>
+    </select>
+
+    <button onclick="rateArt('curious')">Rate</button>
+
+  </div>
+
+  <textarea
+    id="text-curious"
+    placeholder="Anonymous comment..."
+  ></textarea>
+
+  <button onclick="commentArt('curious')">Comment</button>
+
+  <div id="comments-curious"></div>
+
+  <div
+    id="comment-controls-curious"
+    class="comment-controls"
+  ></div>
+
+</div>
+
+
+<!-- Baby Monkey -->
+
+<div class="frame">
+
+  <img src="baby.webp">
+
+  <div class="plaque">
+
+    <h3>Awwww... Baby Monkey!</h3>
+
+    <div id="avg-baby" class="avg">0.0 / 10</div>
+
+    <div id="count-baby" class="rating-count">
+      ⭐ 0 ratings
+    </div>
+
+    <select id="rate-baby">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option selected>10</option>
+    </select>
+
+    <button onclick="rateArt('baby')">Rate</button>
+
+  </div>
+
+  <textarea
+    id="text-baby"
+    placeholder="Anonymous comment..."
+  ></textarea>
+
+  <button onclick="commentArt('baby')">Comment</button>
+
+  <div id="comments-baby"></div>
+
+  <div
+    id="comment-controls-baby"
+    class="comment-controls"
+  ></div>
+
+</div>
+
+</section>
 
 
 <footer>
@@ -457,6 +523,7 @@ footer{
 </footer>
 
 </div>
+
 
 <script type="module">
 
@@ -501,24 +568,18 @@ const db = getFirestore(app);
 const PASSWORD = "bigdaddyhuangjiba123";
 
 const gate = document.getElementById("gate");
-
 const museum = document.getElementById("museum");
-
 const passInput = document.getElementById("pass");
-
 const wrong = document.getElementById("wrong");
-
 const enterBtn = document.getElementById("enterBtn");
 
 
-enterBtn.addEventListener("click", () => {
+function enterMuseum() {
 
   if (passInput.value === PASSWORD) {
 
     gate.style.display = "none";
-
     museum.style.display = "block";
-
     wrong.textContent = "";
 
   } else {
@@ -527,12 +588,17 @@ enterBtn.addEventListener("click", () => {
 
   }
 
-});
+}
+
+
+enterBtn.addEventListener("click", enterMuseum);
 
 
 passInput.addEventListener("keydown", (e) => {
 
-  if (e.key === "Enter") enterBtn.click();
+  if (e.key === "Enter") {
+    enterMuseum();
+  }
 
 });
 
@@ -540,7 +606,6 @@ passInput.addEventListener("keydown", (e) => {
 // ================= DEVICE ID =================
 
 let device = localStorage.getItem("samaDevice");
-
 
 if (!device) {
 
@@ -552,27 +617,21 @@ if (!device) {
 
 
 const ratings = collection(db,"ratings");
-
 const comments = collection(db,"comments");
 
 
 const arts = [
-
   "birthday",
   "megamind",
   "knee",
   "breakout",
   "curious",
   "baby"
-
 ];
 
 
-// ================= COMMENT STATE =================
-
-// Keeps track of whether each artwork's comments are expanded
-
 const expandedComments = {};
+const commentLists = {};
 
 
 // ================= RATE ART =================
@@ -583,26 +642,22 @@ window.rateArt = async (art) => {
     document.getElementById("rate-" + art).value
   );
 
+  try {
 
-  // Same browser = same rating document
+    await setDoc(
+      doc(db, "ratings", art + "_" + device),
+      {
+        artwork: art,
+        device: device,
+        rating: rating
+      }
+    );
 
-  // Rating updates instead of creating another rating
+  } catch (error) {
 
-  await setDoc(
+    console.error("Rating error:", error);
 
-    doc(db, "ratings", art + "_" + device),
-
-    {
-
-      artwork: art,
-
-      device: device,
-
-      rating: rating
-
-    }
-
-  );
+  }
 
 };
 
@@ -611,26 +666,31 @@ window.rateArt = async (art) => {
 
 window.commentArt = async (art) => {
 
-  const textarea = document.getElementById("text-" + art);
+  const textarea =
+    document.getElementById("text-" + art);
 
   const text = textarea.value.trim();
-
 
   if (!text) return;
 
 
-  await addDoc(comments, {
+  try {
 
-    artwork: art,
+    await addDoc(comments, {
 
-    text: text,
+      artwork: art,
+      text: text,
+      created: Date.now()
 
-    created: Date.now()
+    });
 
-  });
+    textarea.value = "";
 
+  } catch (error) {
 
-  textarea.value = "";
+    console.error("Comment error:", error);
+
+  }
 
 };
 
@@ -639,9 +699,13 @@ window.commentArt = async (art) => {
 
 window.toggleComments = (art) => {
 
-  expandedComments[art] = !expandedComments[art];
+  expandedComments[art] =
+    !expandedComments[art];
 
-  renderComments(art);
+  renderComments(
+    art,
+    commentLists[art] || []
+  );
 
 };
 
@@ -650,43 +714,56 @@ window.toggleComments = (art) => {
 
 function renderComments(art, list) {
 
-  const box = document.getElementById("comments-" + art);
+  const box =
+    document.getElementById("comments-" + art);
 
-  const controls = document.getElementById("comment-controls-" + art);
+  const controls =
+    document.getElementById(
+      "comment-controls-" + art
+    );
+
+
+  if (!box || !controls) return;
 
 
   box.innerHTML = "";
 
 
-  const showAll = expandedComments[art];
+  const showAll =
+    expandedComments[art] || false;
 
-  const visibleComments = showAll
 
-    ? list
-
-    : list.slice(0, 3);
+  const visibleComments =
+    showAll
+      ? list
+      : list.slice(0,3);
 
 
   visibleComments.forEach(data => {
 
-    const comment = document.createElement("div");
+    const comment =
+      document.createElement("div");
 
     comment.className = "comment";
 
 
-    const name = document.createElement("b");
+    const name =
+      document.createElement("b");
 
     name.textContent = "Anonymous";
 
 
-    const text = document.createElement("span");
+    const text =
+      document.createElement("span");
 
     text.textContent = data.text;
 
 
     comment.appendChild(name);
 
-    comment.appendChild(document.createElement("br"));
+    comment.appendChild(
+      document.createElement("br")
+    );
 
     comment.appendChild(text);
 
@@ -696,21 +773,33 @@ function renderComments(art, list) {
   });
 
 
-  // Show the expand/retract button only if there are
-
-  // more than 3 comments
-
   if (list.length > 3) {
 
-    controls.innerHTML = `
+    controls.innerHTML = "";
 
-      <button onclick="toggleComments('${art}')">
+    const button =
+      document.createElement("button");
 
-        ${showAll ? "▲ Hide comments" : "▼ Show all " + list.length + " comments"}
 
-      </button>
+    button.textContent =
+      showAll
+        ? "▲ Hide comments"
+        : "▼ Show all " +
+          list.length +
+          " comments";
 
-    `;
+
+    button.onclick = () => {
+
+      expandedComments[art] =
+        !showAll;
+
+      renderComments(art, list);
+
+    };
+
+
+    controls.appendChild(button);
 
   } else {
 
@@ -718,7 +807,7 @@ function renderComments(art, list) {
 
   }
 
-}
+};
 
 
 // ================= LIVE SYNC =================
@@ -726,16 +815,13 @@ function renderComments(art, list) {
 arts.forEach(art => {
 
 
-  // ================= RATINGS =================
+  // RATINGS
 
   onSnapshot(
 
     query(
-
       ratings,
-
       where("artwork","==",art)
-
     ),
 
     snap => {
@@ -745,7 +831,9 @@ arts.forEach(art => {
 
       snap.forEach(docSnap => {
 
-        total += Number(docSnap.data().rating);
+        total += Number(
+          docSnap.data().rating
+        );
 
       });
 
@@ -753,41 +841,63 @@ arts.forEach(art => {
       const count = snap.size;
 
 
-      const average = count === 0
-
-        ? 0
-
-        : total / count;
-
-
-      document.getElementById("avg-" + art).textContent =
-
-        average.toFixed(1) + " / 10";
+      const average =
+        count === 0
+          ? 0
+          : total / count;
 
 
-      document.getElementById("count-" + art).textContent =
+      const avgElement =
+        document.getElementById(
+          "avg-" + art
+        );
 
-        count === 1
+      const countElement =
+        document.getElementById(
+          "count-" + art
+        );
 
-          ? "⭐ 1 rating"
 
-          : "⭐ " + count + " ratings";
+      if (avgElement) {
+
+        avgElement.textContent =
+          average.toFixed(1) + " / 10";
+
+      }
+
+
+      if (countElement) {
+
+        countElement.textContent =
+          count === 1
+            ? "⭐ 1 rating"
+            : "⭐ " +
+              count +
+              " ratings";
+
+      }
+
+    },
+
+    error => {
+
+      console.error(
+        "Rating sync error:",
+        error
+      );
 
     }
 
   );
 
 
-  // ================= COMMENTS =================
+  // COMMENTS
 
   onSnapshot(
 
     query(
-
       comments,
-
       where("artwork","==",art)
-
     ),
 
     snap => {
@@ -797,17 +907,35 @@ arts.forEach(art => {
 
       snap.forEach(docSnap => {
 
-        list.push(docSnap.data());
+        list.push(
+          docSnap.data()
+        );
 
       });
 
 
-      // Newest comments first
+      list.sort(
+        (a,b) =>
+          b.created - a.created
+      );
 
-      list.sort((a,b) => b.created - a.created);
+
+      commentLists[art] = list;
 
 
-      renderComments(art, list);
+      renderComments(
+        art,
+        list
+      );
+
+    },
+
+    error => {
+
+      console.error(
+        "Comment sync error:",
+        error
+      );
 
     }
 
@@ -816,5 +944,8 @@ arts.forEach(art => {
 });
 
 </script>
+
 </body>
 </html>
+
+
