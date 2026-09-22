@@ -7,150 +7,162 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Georgia,serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Georgia,serif;
 }
 
 body{
-background:#120b16;
-color:#f7eed8;
+  background:#120b16;
+  color:#f7eed8;
 }
 
 #gate{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:radial-gradient(circle,#4f2b6f,#120b16);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle,#4f2b6f,#120b16);
 }
 
 .gate{
-width:420px;
-background:#24152b;
-padding:35px;
-border-radius:22px;
-border:2px solid #d6b36d;
-text-align:center;
+  width:420px;
+  background:#24152b;
+  padding:35px;
+  border-radius:22px;
+  border:2px solid #d6b36d;
+  text-align:center;
 }
 
 .gate h1{
-font-size:48px;
-color:#f3d48a;
-margin-bottom:8px;
+  font-size:48px;
+  color:#f3d48a;
+  margin-bottom:8px;
+}
+
+.gate h2{
+  color:#f7e2ad;
+  margin-bottom:6px;
+}
+
+.gate p{
+  color:#d8c6a3;
 }
 
 .gate input{
-width:100%;
-padding:12px;
-margin:15px 0;
-background:#382046;
-border:none;
-border-radius:10px;
-color:white;
+  width:100%;
+  padding:12px;
+  margin:15px 0;
+  background:#382046;
+  border:none;
+  border-radius:10px;
+  color:white;
 }
 
 button{
-width:100%;
-padding:12px;
-background:#d6b36d;
-border:none;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
+  width:100%;
+  padding:12px;
+  background:#d6b36d;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+button:hover{
+  background:#e6c47b;
 }
 
 #museum{
-display:none;
+  display:none;
 }
 
 header{
-background:linear-gradient(#34194b,#170d23);
-padding:50px;
-text-align:center;
-border-bottom:2px solid #9b7a36;
+  background:linear-gradient(#34194b,#170d23);
+  padding:50px;
+  text-align:center;
+  border-bottom:2px solid #9b7a36;
 }
 
 header h1{
-font-size:58px;
-color:#f2d38f;
+  font-size:58px;
+  color:#f2d38f;
 }
 
 header p{
-color:#d5c29a;
-margin-top:8px;
+  color:#d5c29a;
+  margin-top:8px;
 }
 
 .gallery{
-max-width:1300px;
-margin:40px auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:35px;
-padding:20px;
+  max-width:1300px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:35px;
+  padding:20px;
 }
 
 .frame{
-background:#50341b;
-padding:12px;
-border:8px solid #c89a43;
-outline:3px solid #f2dc9d;
-box-shadow:0 15px 30px rgba(0,0,0,.45);
+  background:#50341b;
+  padding:12px;
+  border:8px solid #c89a43;
+  outline:3px solid #f2dc9d;
+  box-shadow:0 15px 30px rgba(0,0,0,.45);
 }
 
 .frame img{
-width:100%;
-aspect-ratio:4/5;
-object-fit:cover;
-border:3px solid #28190c;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border:3px solid #28190c;
 }
 
 .plaque{
-text-align:center;
-margin-top:10px;
+  text-align:center;
+  margin-top:10px;
 }
 
 .plaque h3{
-color:#f6dfab;
+  color:#f6dfab;
 }
 
 .avg{
-font-size:22px;
-font-weight:bold;
-color:#8fff9b;
-margin:8px 0;
+  font-size:22px;
+  font-weight:bold;
+  color:#8fff9b;
+  margin:8px 0;
 }
 
-select,
-textarea{
-width:100%;
-padding:10px;
-margin-top:8px;
-background:#382046;
-color:white;
-border:none;
-border-radius:8px;
+select,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  background:#382046;
+  color:white;
+  border:none;
+  border-radius:8px;
 }
 
 textarea{
-height:70px;
-resize:none;
+  height:70px;
+  resize:none;
 }
 
 .comment{
-background:#2e1b38;
-padding:10px;
-border-radius:8px;
-margin-top:8px;
-font-size:14px;
+  background:#2e1b38;
+  padding:10px;
+  border-radius:8px;
+  margin-top:8px;
+  font-size:14px;
 }
 
 footer{
-text-align:center;
-padding:30px;
-color:#a38d65;
+  text-align:center;
+  padding:30px;
+  color:#a38d65;
 }
 </style>
 </head>
@@ -158,249 +170,199 @@ color:#a38d65;
 <body>
 
 <div id="gate">
-<div class="gate">
-<h1>👑</h1>
-<h2>SAMA MUSEUM</h2>
-<p>Private Senyu Huang Exhibition</p>
+  <div class="gate">
+    <h1>👑</h1>
+    <h2>SAMA MUSEUM</h2>
+    <p>Private Senyu Huang Exhibition</p>
 
-<input id="pass" type="password" placeholder="Password">
+    <input id="pass" type="password" placeholder="Password">
 
-<button id="enterBtn">Enter Museum</button>
+    <button id="enterBtn">Enter Museum</button>
 
-<p id="wrong" style="color:#ff9d9d;"></p>
-
-</div>
+    <p id="wrong" style="color:#ff9d9d;margin-top:10px;"></p>
+  </div>
 </div>
 
 <div id="museum">
 
 <header>
-<h1>👑 SAMA MUSEUM</h1>
-<p>The Official Senyu Huang Collection</p>
+  <h1>👑 SAMA MUSEUM</h1>
+  <p>The Official Senyu Huang Collection</p>
 </header>
 
 <section class="gallery">
 
-<!-- BIRTHDAY -->
-
+<!-- Birthday Monkey -->
 <div class="frame">
+  <img src="birthday.webp">
 
-<img src="birthday.webp">
+  <div class="plaque">
+    <h3>Birthday Monkey</h3>
 
-<div class="plaque">
+    <div id="avg-birthday" class="avg">0.0 / 10</div>
 
-<h3>Birthday Monkey</h3>
+    <select id="rate-birthday">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-birthday" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('birthday')">Rate</button>
+  </div>
 
-<select id="rate-birthday">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-birthday"></div>
 
-<button onclick="rateArt('birthday')">Rate</button>
+  <textarea id="text-birthday" placeholder="Anonymous comment..."></textarea>
 
+  <button onclick="commentArt('birthday')">Comment</button>
 </div>
 
-<div id="comments-birthday"></div>
-
-<textarea id="text-birthday"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('birthday')">
-Comment
-</button>
-
-</div>
-
-<!-- MEGAMIND -->
-
+<!-- Megamind -->
 <div class="frame">
+  <img src="megamind.webp">
 
-<img src="megamind.webp">
+  <div class="plaque">
+    <h3>Megamind</h3>
 
-<div class="plaque">
+    <div id="avg-megamind" class="avg">0.0 / 10</div>
 
-<h3>Megamind</h3>
+    <select id="rate-megamind">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-megamind" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('megamind')">Rate</button>
+  </div>
 
-<select id="rate-megamind">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-megamind"></div>
 
-<button onclick="rateArt('megamind')">Rate</button>
+  <textarea id="text-megamind" placeholder="Anonymous comment..."></textarea>
 
+  <button onclick="commentArt('megamind')">Comment</button>
 </div>
 
-<div id="comments-megamind"></div>
-
-<textarea id="text-megamind"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('megamind')">
-Comment
-</button>
-
-</div>
-
-<!-- KNEE -->
-
+<!-- Knee Eater -->
 <div class="frame">
+  <img src="knee.webp">
 
-<img src="knee.webp">
+  <div class="plaque">
+    <h3>Knee Eater</h3>
 
-<div class="plaque">
+    <div id="avg-knee" class="avg">0.0 / 10</div>
 
-<h3>Knee Eater</h3>
+    <select id="rate-knee">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-knee" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('knee')">Rate</button>
+  </div>
 
-<select id="rate-knee">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-knee"></div>
 
-<button onclick="rateArt('knee')">Rate</button>
+  <textarea id="text-knee" placeholder="Anonymous comment..."></textarea>
 
+  <button onclick="commentArt('knee')">Comment</button>
 </div>
-
-<div id="comments-knee"></div>
-
-<textarea id="text-knee"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('knee')">
-Comment
-</button>
-
-</div>
-<!-- BREAKOUT -->
-
+<!-- Monkey Trying to Break Out -->
 <div class="frame">
+  <img src="breakout.webp">
 
-<img src="breakout.webp">
+  <div class="plaque">
+    <h3>Monkey Trying to Break Out</h3>
 
-<div class="plaque">
+    <div id="avg-breakout" class="avg">0.0 / 10</div>
 
-<h3>Monkey Trying to Break Out</h3>
+    <select id="rate-breakout">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-breakout" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('breakout')">Rate</button>
+  </div>
 
-<select id="rate-breakout">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-breakout"></div>
 
-<button onclick="rateArt('breakout')">Rate</button>
+  <textarea id="text-breakout" placeholder="Anonymous comment..."></textarea>
 
+  <button onclick="commentArt('breakout')">Comment</button>
 </div>
 
-<div id="comments-breakout"></div>
-
-<textarea id="text-breakout"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('breakout')">
-Comment
-</button>
-
-</div>
-
-<!-- CURIOUS -->
-
+<!-- Curious Monkey -->
 <div class="frame">
+  <img src="curious.webp">
 
-<img src="curious.webp">
+  <div class="plaque">
+    <h3>Curious Monkey</h3>
 
-<div class="plaque">
+    <div id="avg-curious" class="avg">0.0 / 10</div>
 
-<h3>Curious Monkey</h3>
+    <select id="rate-curious">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-curious" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('curious')">Rate</button>
+  </div>
 
-<select id="rate-curious">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-curious"></div>
 
-<button onclick="rateArt('curious')">Rate</button>
+  <textarea id="text-curious" placeholder="Anonymous comment..."></textarea>
 
+  <button onclick="commentArt('curious')">Comment</button>
 </div>
 
-<div id="comments-curious"></div>
-
-<textarea id="text-curious"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('curious')">
-Comment
-</button>
-
-</div>
-
-<!-- BABY -->
-
+<!-- Baby Monkey -->
 <div class="frame">
+  <img src="baby.webp">
 
-<img src="baby.webp">
+  <div class="plaque">
+    <h3>Awwww... Baby Monkey!</h3>
 
-<div class="plaque">
+    <div id="avg-baby" class="avg">0.0 / 10</div>
 
-<h3>Awwww... Baby Monkey!</h3>
+    <select id="rate-baby">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
 
-<div id="avg-baby" class="avg">0.0 / 10</div>
+    <button onclick="rateArt('baby')">Rate</button>
+  </div>
 
-<select id="rate-baby">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option>
-<option selected>10</option>
-</select>
+  <div id="comments-baby"></div>
 
-<button onclick="rateArt('baby')">Rate</button>
+  <textarea id="text-baby" placeholder="Anonymous comment..."></textarea>
 
-</div>
-
-<div id="comments-baby"></div>
-
-<textarea id="text-baby"
-placeholder="Anonymous comment..."></textarea>
-
-<button onclick="commentArt('baby')">
-Comment
-</button>
-
+  <button onclick="commentArt('baby')">Comment</button>
 </div>
 
 </section>
 
 <footer>
-👑 Curated by Senyu Huang • The Sama Museum
+  👑 Curated by Senyu Huang • The Sama Museum
 </footer>
 
 </div>
 
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
 import {
   getFirestore,
   collection,
+  doc,
+  setDoc,
   addDoc,
-  getDocs,
   query,
   where,
   orderBy,
@@ -419,150 +381,121 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// PASSWORD
+// Password
+const PASSWORD = "bigdaddyhuangjiba123";
 
-const PASSWORD="bigdaddyhuangjiba123";
-
-enterBtn.onclick=()=>{
-
-  if(pass.value===PASSWORD){
-
-    gate.style.display="none";
-    museum.style.display="block";
-
+document.getElementById("enterBtn").onclick = () => {
+  if(document.getElementById("pass").value === PASSWORD){
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("museum").style.display = "block";
   }else{
-
-    wrong.textContent="❌ Wrong password";
-
+    document.getElementById("wrong").textContent = "❌ Wrong password";
   }
-
 };
 
-// DEVICE ID (1 vote per browser)
-
-let device=localStorage.getItem("samaDevice");
-
+// One vote per browser
+let device = localStorage.getItem("samaDevice");
 if(!device){
-
-  device=Math.random().toString(36).slice(2);
-
-  localStorage.setItem("samaDevice",device);
-
+  device = Math.random().toString(36).slice(2);
+  localStorage.setItem("samaDevice", device);
 }
 
-const ratings=collection(db,"ratings");
-const comments=collection(db,"comments");
+const ratings = collection(db,"ratings");
+const comments = collection(db,"comments");
 
-const arts=[
-"birthday",
-"megamind",
-"knee",
-"breakout",
-"curious",
-"baby"
+const arts = [
+  "birthday",
+  "megamind",
+  "knee",
+  "breakout",
+  "curious",
+  "baby"
 ];
 
-// RATE
-
-window.rateArt=async(art)=>{
-
-  const value=Number(
+// Rate / update rating
+window.rateArt = async (art) => {
+  const rating = Number(
     document.getElementById("rate-"+art).value
   );
 
-  const exists=await getDocs(query(
-    ratings,
-    where("artwork","==",art),
-    where("device","==",device)
-  ));
+  await setDoc(
+    doc(db,"ratings", art+"_"+device),
+    {
+      artwork: art,
+      device: device,
+      rating: rating
+    }
+  );
 
-  if(!exists.empty){
-
-    alert("You've already rated this artwork!");
-
-    return;
-
-  }
-
-  await addDoc(ratings,{
-    artwork:art,
-    device,
-    rating:value
-  });
-
+  alert("⭐ Rating saved!");
 };
 
-// COMMENT
+// Anonymous comment
+window.commentArt = async (art) => {
+  const text = document
+    .getElementById("text-"+art)
+    .value
+    .trim();
 
-window.commentArt=async(art)=>{
-
-  const text=document
-  .getElementById("text-"+art)
-  .value
-  .trim();
-
-  if(!text)return;
+  if(!text) return;
 
   await addDoc(comments,{
-    artwork:art,
-    text,
-    created:Date.now()
+    artwork: art,
+    text: text,
+    created: Date.now()
   });
 
-  document.getElementById("text-"+art).value="";
-
+  document.getElementById("text-"+art).value = "";
 };
 
-// LIVE SYNC
-
+// Live sync
 arts.forEach(art=>{
 
-  onSnapshot(query(
-    ratings,
-    where("artwork","==",art)
-  ),snap=>{
+  // Average rating
+  onSnapshot(
+    query(ratings, where("artwork","==",art)),
+    snap=>{
 
-    let total=0;
+      let total = 0;
 
-    snap.forEach(d=>{
+      snap.forEach(docSnap=>{
+        total += docSnap.data().rating;
+      });
 
-      total+=d.data().rating;
+      const avg = snap.size
+        ? (total/snap.size).toFixed(1)
+        : "0.0";
 
-    });
+      document.getElementById("avg-"+art).textContent =
+        avg + " / 10";
+    }
+  );
 
-    const avg=snap.size
-    ?(total/snap.size).toFixed(1)
-    :"0.0";
+  // Comments
+  onSnapshot(
+    query(
+      comments,
+      where("artwork","==",art),
+      orderBy("created","desc")
+    ),
+    snap=>{
 
-    document.getElementById(
-      "avg-"+art
-    ).textContent=avg+" / 10";
+      const box = document.getElementById("comments-"+art);
+      box.innerHTML = "";
 
-  });
+      snap.forEach(docSnap=>{
 
-  onSnapshot(query(
-    comments,
-    where("artwork","==",art),
-    orderBy("created","desc")
-  ),snap=>{
+        box.innerHTML += `
+          <div class="comment">
+            <b>Anonymous</b><br>
+            ${docSnap.data().text}
+          </div>
+        `;
 
-    const box=document.getElementById(
-      "comments-"+art
-    );
+      });
 
-    box.innerHTML="";
-
-    snap.forEach(doc=>{
-
-      box.innerHTML+=`
-      <div class="comment">
-      Anonymous: ${doc.data().text}
-      </div>
-      `;
-
-    });
-
-  });
+    }
+  );
 
 });
 
