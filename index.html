@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sama Museum</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Georgia,serif;
+}
+
+body{
+  background:#0f0b14;
+  color:#f7eed8;
+}
+
+/* PASSWORD GATE */
+
+#gate{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at top,#4b2867 0%,#201129 45%,#09060d 100%);
+}
+
+.gateBox{
+  width:420px;
+  max-width:90%;
+  background:rgba(28,16,39,.96);
+  border:2px solid #d6b36d;
+  border-radius:24px;
+  padding:38px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.65);
+}
+
+.gateBox h1{
+  font-size:48px;
+  color:#f1d089;
+  margin-bottom:10px;
+}
+
+.gateBox h2{
+  color:#efe4c3;
+  margin-bottom:8px;
+}
+
+.gateBox p{
+  color:#c9b58a;
+  margin-bottom:20px;
+}
+
+.gateBox input{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#2a1936;
+  color:white;
+  font-size:16px;
+}
+
+.gateBox button{
+  width:100%;
+  padding:14px;
+  margin-top:14px;
+  border:none;
+  border-radius:12px;
+  background:#d6b36d;
+  color:#23170c;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.gateBox button:hover{
+  background:#e5c988;
+}
+
+#wrong{
+  color:#ffaaaa;
+  margin-top:12px;
+}
+
+/* MUSEUM */
+
+#museum{
+  display:none;
+}
+
+header{
+  text-align:center;
+  padding:60px 20px;
+  background:linear-gradient(#34194b,#170d23);
+  border-bottom:2px solid #9b7a36;
+}
+
+header h1{
+  font-size:58px;
+  color:#f2d38f;
+  letter-spacing:3px;
+}
+
+header p{
+  color:#d4c099;
+  margin-top:10px;
+  font-style:italic;
+}
+
+.gallery{
+  max-width:1300px;
+  margin:50px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+  padding:0 25px;
+}
+
+.frame{
+  background:#51371b;
+  padding:14px;
+  border:10px solid #c99b46;
+  outline:3px solid #f0db9c;
+  box-shadow:
+    0 0 0 3px #715420,
+    inset 0 0 15px rgba(255,215,120,.18),
+    0 18px 35px rgba(0,0,0,.55);
+  transition:.25s ease;
+}
+
+.frame:hover{
+  transform:translateY(-8px) scale(1.02);
+}
+
+.frame img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+  border:3px solid #28190c;
+}
+
+.plaque{
+  margin-top:14px;
+  text-align:center;
+}
+
+.plaque h3{
+  color:#f7dfaa;
+  font-size:22px;
+}
+
+.plaque p{
+  color:#d0b980;
+  font-size:14px;
+  margin-top:4px;
+}
+
+footer{
+  margin-top:60px;
+  padding:35px;
+  text-align:center;
+  color:#9f8a64;
+  border-top:1px solid #5b4522;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+
+<div id="gate">
+
+  <div class="gateBox">
+
+    <h1>👑</h1>
+
+    <h2>Sama Museum</h2>
+
+    <p>Private Exhibition curated by Senyu Huang</p>
+
+    <input
+      id="museumPassword"
+      type="password"
+      placeholder="Enter museum password">
+
+    <button id="enterMuseum">Enter Exhibition</button>
+
+    <div id="wrong"></div>
+
+  </div>
+
+</div>
+
+<!-- MUSEUM -->
+
+<div id="museum">
+
+<header>
+
+  <h1>👑 SAMA MUSEUM</h1>
+
+  <p>
+    The Official Senyu Huang Collection • Est. 2026
+  </p>
+
+</header>
+
+<section class="gallery">
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1551841589654196234/IMG_4484.jpg?format=webp&width=768&height=1024">
+    <div class="plaque">
+      <h3>Birthday Monkey</h3>
+      <p>Senyu Huang Collection</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1550354004805029928/IMG_3303.jpg?format=webp&width=768&height=1024">
+    <div class="plaque">
+      <h3>Megamind</h3>
+      <p>Sama Gallery • 2026</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1551842192069369916/image.png?format=webp&quality=lossless">
+    <div class="plaque">
+      <h3>Knee Eater</h3>
+      <p>Rare Sama Exhibition</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1543170076113379338/IMG_2375.png?format=webp&quality=lossless">
+    <div class="plaque">
+      <h3>Monkey Trying to Break Out</h3>
+      <p>Senyu Huang Archives</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1543169963999764541/IMG_2382.png?format=webp&quality=lossless">
+    <div class="plaque">
+      <h3>Curious Monkey</h3>
+      <p>The Sama Renaissance</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <img src="https://media.discordapp.net/attachments/1532617660515352887/1551842621788397650/image.png?format=webp&quality=lossless">
+    <div class="plaque">
+      <h3>Awwww... Baby Monkey!</h3>
+      <p>Hall of Precious Art</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  👑 The Sama Museum • Curated by Senyu Huang
+</footer>
+
+</div>
+
+<script>
+const PASSWORD = "bigdaddyhuangjiba123";
+
+const input = document.getElementById("museumPassword");
+const button = document.getElementById("enterMuseum");
+const wrong = document.getElementById("wrong");
+
+function unlock(){
+
+  if(input.value === PASSWORD){
+
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("museum").style.display = "block";
+
+  }else{
+
+    wrong.textContent = "❌ Access denied.";
+
+    input.value = "";
+    input.focus();
+
+  }
+
+}
+
+button.onclick = unlock;
+
+input.addEventListener("keydown",e=>{
+  if(e.key==="Enter") unlock();
+});
+</script>
+
+</body>
+</html>
