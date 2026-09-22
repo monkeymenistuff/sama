@@ -384,15 +384,23 @@ const db = getFirestore(app);
 // Password
 const PASSWORD = "bigdaddyhuangjiba123";
 
-document.getElementById("enterBtn").onclick = () => {
-  if(document.getElementById("pass").value === PASSWORD){
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("museum").style.display = "block";
-  }else{
-    document.getElementById("wrong").textContent = "❌ Wrong password";
-  }
-};
+const gate = document.getElementById("gate");
+const museum = document.getElementById("museum");
+const pass = document.getElementById("pass");
+const wrong = document.getElementById("wrong");
+const enterBtn = document.getElementById("enterBtn");
 
+enterBtn.addEventListener("click", () => {
+
+  if(pass.value === PASSWORD){
+    gate.style.display = "none";
+    museum.style.display = "block";
+    wrong.textContent = "";
+  } else {
+    wrong.textContent = "❌ Wrong password";
+  }
+
+});
 // One vote per browser
 let device = localStorage.getItem("samaDevice");
 if(!device){
@@ -414,12 +422,14 @@ const arts = [
 
 // Rate / update rating
 window.rateArt = async (art) => {
+
   const rating = Number(
-    document.getElementById("rate-"+art).value
+    document.getElementById("rate-" + art).value
   );
 
+  // Same browser = same document, so rating updates instead of duplicating
   await setDoc(
-    doc(db,"ratings", art+"_"+device),
+    doc(db, "ratings", art + "_" + device),
     {
       artwork: art,
       device: device,
@@ -427,7 +437,6 @@ window.rateArt = async (art) => {
     }
   );
 
-  alert("⭐ Rating saved!");
 };
 
 // Anonymous comment
@@ -453,23 +462,24 @@ arts.forEach(art=>{
 
   // Average rating
   onSnapshot(
-    query(ratings, where("artwork","==",art)),
-    snap=>{
+  query(ratings, where("artwork","==",art)),
+  (snap)=>{
 
-      let total = 0;
+    let total = 0;
 
-      snap.forEach(docSnap=>{
-        total += docSnap.data().rating;
-      });
+    snap.forEach((docSnap)=>{
+      total += Number(docSnap.data().rating);
+    });
 
-      const avg = snap.size
-        ? (total/snap.size).toFixed(1)
-        : "0.0";
+    const average = snap.size === 0
+      ? 0
+      : total / snap.size;
 
-      document.getElementById("avg-"+art).textContent =
-        avg + " / 10";
-    }
-  );
+    document.getElementById("avg-" + art).textContent =
+      average.toFixed(1) + " / 10";
+
+  }
+);
 
   // Comments
  // Comments
