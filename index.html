@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,301 +6,267 @@
 <title>Sama Museum</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Georgia,serif;
-}
-
-body{
-  background:#0f0b14;
-  color:#f7eed8;
-}
-
-/* PASSWORD GATE */
-
-#gate{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:
-    radial-gradient(circle at top,#4b2867 0%,#201129 45%,#09060d 100%);
-}
-
-.gateBox{
-  width:420px;
-  max-width:90%;
-  background:rgba(28,16,39,.96);
-  border:2px solid #d6b36d;
-  border-radius:24px;
-  padding:38px;
-  text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.65);
-}
-
-.gateBox h1{
-  font-size:48px;
-  color:#f1d089;
-  margin-bottom:10px;
-}
-
-.gateBox h2{
-  color:#efe4c3;
-  margin-bottom:8px;
-}
-
-.gateBox p{
-  color:#c9b58a;
-  margin-bottom:20px;
-}
-
-.gateBox input{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:#2a1936;
-  color:white;
-  font-size:16px;
-}
-
-.gateBox button{
-  width:100%;
-  padding:14px;
-  margin-top:14px;
-  border:none;
-  border-radius:12px;
-  background:#d6b36d;
-  color:#23170c;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.gateBox button:hover{
-  background:#e5c988;
-}
-
-#wrong{
-  color:#ffaaaa;
-  margin-top:12px;
-}
-
-/* MUSEUM */
-
-#museum{
-  display:none;
-}
-
-header{
-  text-align:center;
-  padding:60px 20px;
-  background:linear-gradient(#34194b,#170d23);
-  border-bottom:2px solid #9b7a36;
-}
-
-header h1{
-  font-size:58px;
-  color:#f2d38f;
-  letter-spacing:3px;
-}
-
-header p{
-  color:#d4c099;
-  margin-top:10px;
-  font-style:italic;
-}
-
-.gallery{
-  max-width:1300px;
-  margin:50px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:40px;
-  padding:0 25px;
-}
-
-.frame{
-  background:#51371b;
-  padding:14px;
-  border:10px solid #c99b46;
-  outline:3px solid #f0db9c;
-  box-shadow:
-    0 0 0 3px #715420,
-    inset 0 0 15px rgba(255,215,120,.18),
-    0 18px 35px rgba(0,0,0,.55);
-  transition:.25s ease;
-}
-
-.frame:hover{
-  transform:translateY(-8px) scale(1.02);
-}
-
-.frame img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  display:block;
-  border:3px solid #28190c;
-}
-
-.plaque{
-  margin-top:14px;
-  text-align:center;
-}
-
-.plaque h3{
-  color:#f7dfaa;
-  font-size:22px;
-}
-
-.plaque p{
-  color:#d0b980;
-  font-size:14px;
-  margin-top:4px;
-}
-
-footer{
-  margin-top:60px;
-  padding:35px;
-  text-align:center;
-  color:#9f8a64;
-  border-top:1px solid #5b4522;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Georgia,serif}
+body{background:#120b16;color:#f7eed8}
+#gate{min-height:100vh;display:flex;justify-content:center;align-items:center;background:radial-gradient(circle,#512d70,#120b16)}
+.gate{width:400px;background:#24152b;padding:35px;border-radius:20px;border:2px solid #d6b36d;text-align:center}
+.gate h1{font-size:48px;color:#f3d48a}
+.gate input{width:100%;padding:12px;margin:15px 0;background:#382046;border:none;border-radius:10px;color:#fff}
+.gate button,.btn{width:100%;padding:12px;background:#d6b36d;border:none;border-radius:10px;font-weight:bold;cursor:pointer}
+#museum{display:none}
+header{text-align:center;padding:50px;background:linear-gradient(#34194b,#170d23);border-bottom:2px solid #9b7a36}
+header h1{font-size:56px;color:#f2d38f}
+header p{color:#d4c099;margin-top:8px}
+.gallery{max-width:1300px;margin:40px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;padding:20px}
+.frame{background:#4d3318;padding:12px;border:8px solid #c89a43;outline:3px solid #f1dd9f;box-shadow:0 15px 30px rgba(0,0,0,.5);transition:.2s}
+.frame:hover{transform:translateY(-6px) scale(1.02)}
+.frame img{width:100%;aspect-ratio:4/5;object-fit:cover;border:3px solid #28190c}
+.plaque{text-align:center;margin-top:10px}
+.plaque h3{color:#f5dfaa}
+.plaque p{color:#ceb77f;font-size:14px}
+.panel{max-width:900px;margin:20px auto;background:#24152b;padding:25px;border-radius:20px;border:1px solid #5f4420}
+.panel h2{color:#f3d48a;margin-bottom:15px}
+#avg{font-size:52px;color:#8eff9c;font-weight:bold}
+input,textarea,select{width:100%;padding:12px;margin-top:10px;background:#382046;border:none;border-radius:10px;color:#fff}
+textarea{height:100px;resize:none}
+.comment{background:#321d3c;padding:14px;border-radius:12px;margin-top:12px}
+footer{text-align:center;padding:30px;color:#9f8a64;border-top:1px solid #4b3518;margin-top:40px}
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD -->
-
 <div id="gate">
-
-  <div class="gateBox">
-
+  <div class="gate">
     <h1>👑</h1>
-
-    <h2>Sama Museum</h2>
-
-    <p>Private Exhibition curated by Senyu Huang</p>
-
-    <input
-      id="museumPassword"
-      type="password"
-      placeholder="Enter museum password">
-
-    <button id="enterMuseum">Enter Exhibition</button>
-
-    <div id="wrong"></div>
-
+    <h2 style="color:#f3d48a;">SAMA MUSEUM</h2>
+    <p>Private Senyu Huang Exhibition</p>
+    <input id="pass" type="password" placeholder="Museum Password">
+    <button id="enterBtn">Enter Museum</button>
+    <p id="wrong" style="color:#ff9f9f;margin-top:10px;"></p>
   </div>
-
 </div>
-
-<!-- MUSEUM -->
 
 <div id="museum">
 
 <header>
-
   <h1>👑 SAMA MUSEUM</h1>
-
-  <p>
-    The Official Senyu Huang Collection • Est. 2026
-  </p>
-
+  <p>The Official Senyu Huang Collection</p>
 </header>
 
 <section class="gallery">
 
-  <div class="frame">
-    <img src="birthday.webp">
-    <div class="plaque">
-      <h3>Birthday Monkey</h3>
-      <p>Senyu Huang Collection</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="birthday.webp">
+<div class="plaque">
+<h3>Birthday Monkey</h3>
+<p>Senyu Huang Collection</p>
+</div>
+</div>
 
-  <div class="frame">
-    <img src="megamind.webp">
-    <div class="plaque">
-      <h3>Megamind</h3>
-      <p>Sama Gallery • 2026</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="megamind.webp">
+<div class="plaque">
+<h3>Megamind</h3>
+<p>Sama Gallery</p>
+</div>
+</div>
 
-  <div class="frame">
-    <img src="knee.webp">
-    <div class="plaque">
-      <h3>Knee Eater</h3>
-      <p>Rare Sama Exhibition</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="knee.webp">
+<div class="plaque">
+<h3>Knee Eater</h3>
+<p>Rare Exhibition</p>
+</div>
+</div>
 
-  <div class="frame">
-    <img src="breakout.webp">
-    <div class="plaque">
-      <h3>Monkey Trying to Break Out</h3>
-      <p>Senyu Huang Archives</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="breakout.webp">
+<div class="plaque">
+<h3>Monkey Trying to Break Out</h3>
+<p>Expressionism</p>
+</div>
+</div>
 
-  <div class="frame">
-    <img src="curious.webp">
-    <div class="plaque">
-      <h3>Curious Monkey</h3>
-      <p>The Sama Renaissance</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="curious.webp">
+<div class="plaque">
+<h3>Curious Monkey</h3>
+<p>Renaissance Revival</p>
+</div>
+</div>
 
-  <div class="frame">
-    <img src="baby.webp">
-    <div class="plaque">
-      <h3>Awwww... Baby Monkey!</h3>
-      <p>Hall of Precious Art</p>
-    </div>
-  </div>
+<div class="frame">
+<img src="baby.webp">
+<div class="plaque">
+<h3>Awwww... Baby Monkey!</h3>
+<p>Hall of Precious Art</p>
+</div>
+</div>
 
 </section>
 
+<div class="panel">
+
+<h2>⭐ Rate the Museum</h2>
+
+<div id="avg">0.0 / 10</div>
+<p id="count">0 ratings</p>
+
+<select id="rating">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option selected>10</option>
+</select>
+
+<button id="rateBtn" class="btn">Submit Rating</button>
+
+<hr style="margin:25px 0;border-color:#5d4520">
+
+<h2>💬 Visitor Comments</h2>
+
+<input id="name" placeholder="Your name">
+<textarea id="text" placeholder="Write your review..."></textarea>
+
+<button id="commentBtn" class="btn">Post Comment</button>
+
+<div id="comments"></div>
+
+</div>
+
 <footer>
-  👑 The Sama Museum • Curated by Senyu Huang
+👑 Curated by Senyu Huang • The Sama Museum
 </footer>
 
 </div>
 
-<script>
-const PASSWORD = "bigdaddyhuangjiba123";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
-const input = document.getElementById("museumPassword");
-const button = document.getElementById("enterMuseum");
-const wrong = document.getElementById("wrong");
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-function unlock(){
+const firebaseConfig = {
+  apiKey: "AIzaSyC_9Eu-TaqYy3EbgUck28SGOtiZaGqam_8",
+  authDomain: "sama-huang.firebaseapp.com",
+  projectId: "sama-huang",
+  storageBucket: "sama-huang.firebasestorage.app",
+  messagingSenderId: "264734586867",
+  appId: "1:264734586867:web:47dab5f804f204078fc486"
+};
 
-  if(input.value === PASSWORD){
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("museum").style.display = "block";
+// PASSWORD
+const PASSWORD="bigdaddyhuangjiba123";
+
+document.getElementById("enterBtn").onclick=()=>{
+
+  if(document.getElementById("pass").value===PASSWORD){
+
+    document.getElementById("gate").style.display="none";
+    document.getElementById("museum").style.display="block";
 
   }else{
 
-    wrong.textContent = "❌ Access denied.";
-
-    input.value = "";
-    input.focus();
+    document.getElementById("wrong").textContent="❌ Wrong password";
 
   }
 
-}
+};
 
-button.onclick = unlock;
-
-input.addEventListener("keydown",e=>{
-  if(e.key==="Enter") unlock();
+document.getElementById("pass").addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("enterBtn").click();
 });
+
+// FIRESTORE
+const ratingsRef=collection(db,"ratings");
+const commentsRef=collection(db,"comments");
+
+// LIVE RATING
+onSnapshot(ratingsRef,(snapshot)=>{
+
+  let total=0;
+
+  snapshot.forEach(doc=>{
+    total+=doc.data().rating;
+  });
+
+  const count=snapshot.size;
+  const avg=count?(total/count).toFixed(1):"0.0";
+
+  document.getElementById("avg").textContent=avg+" / 10";
+  document.getElementById("count").textContent=count+" ratings";
+
+});
+
+// SUBMIT RATING
+document.getElementById("rateBtn").onclick=async()=>{
+
+  await addDoc(ratingsRef,{
+    rating:Number(document.getElementById("rating").value),
+    created:Date.now()
+  });
+
+  alert("⭐ Thanks for rating!");
+
+};
+
+// LIVE COMMENTS
+const q=query(commentsRef,orderBy("created","desc"));
+
+onSnapshot(q,(snapshot)=>{
+
+  const comments=document.getElementById("comments");
+  comments.innerHTML="";
+
+  snapshot.forEach(doc=>{
+
+    const d=doc.data();
+
+    comments.innerHTML+=`
+      <div class="comment">
+        <b>${d.name}</b>
+        <p style="margin-top:6px">${d.text}</p>
+      </div>
+    `;
+
+  });
+
+});
+
+// POST COMMENT
+document.getElementById("commentBtn").onclick=async()=>{
+
+  const name=document.getElementById("name").value.trim();
+  const text=document.getElementById("text").value.trim();
+
+  if(!name||!text) return;
+
+  await addDoc(commentsRef,{
+    name,
+    text,
+    created:Date.now()
+  });
+
+  document.getElementById("name").value="";
+  document.getElementById("text").value="";
+
+};
 </script>
 
 </body>
