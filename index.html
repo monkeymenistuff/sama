@@ -508,18 +508,25 @@ onSnapshot(
     list.sort((a,b)=> b.created - a.created);
 
     list.forEach(data=>{
+
       box.innerHTML += `
+
         <div class="comment">
+
           <b>Anonymous</b><br>
+
           ${data.text}
+
         </div>
+
       `;
+
     });
 
   }
+
 );
 
-</script>
+}); // <-- closes arts.forEach
 
-</body>
-</html>
+</script>
