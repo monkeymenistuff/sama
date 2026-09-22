@@ -415,12 +415,6 @@ if (!device) {
   device = Math.random().toString(36).slice(2);
   localStorage.setItem("samaDevice", device);
 }
-// One vote per browser
-let device = localStorage.getItem("samaDevice");
-if(!device){
-  device = Math.random().toString(36).slice(2);
-  localStorage.setItem("samaDevice", device);
-}
 
 const ratings = collection(db,"ratings");
 const comments = collection(db,"comments");
