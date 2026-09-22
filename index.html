@@ -472,32 +472,34 @@ arts.forEach(art=>{
   );
 
   // Comments
-  onSnapshot(
-    query(
-      comments,
-      where("artwork","==",art),
-      orderBy("created","desc")
-    ),
-    snap=>{
+ // Comments
+onSnapshot(
+  query(comments, where("artwork","==",art)),
+  snap=>{
 
-      const box = document.getElementById("comments-"+art);
-      box.innerHTML = "";
+    const box = document.getElementById("comments-"+art);
+    box.innerHTML = "";
 
-      snap.forEach(docSnap=>{
+    const list = [];
 
-        box.innerHTML += `
-          <div class="comment">
-            <b>Anonymous</b><br>
-            ${docSnap.data().text}
-          </div>
-        `;
+    snap.forEach(docSnap=>{
+      list.push(docSnap.data());
+    });
 
-      });
+    // newest first
+    list.sort((a,b)=> b.created - a.created);
 
-    }
-  );
+    list.forEach(data=>{
+      box.innerHTML += `
+        <div class="comment">
+          <b>Anonymous</b><br>
+          ${data.text}
+        </div>
+      `;
+    });
 
-});
+  }
+);
 
 </script>
 
