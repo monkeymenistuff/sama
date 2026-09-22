@@ -382,25 +382,39 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Password
+// ================= PASSWORD =================
+
 const PASSWORD = "bigdaddyhuangjiba123";
 
 const gate = document.getElementById("gate");
 const museum = document.getElementById("museum");
-const pass = document.getElementById("pass");
+const passInput = document.getElementById("pass");
 const wrong = document.getElementById("wrong");
 const enterBtn = document.getElementById("enterBtn");
 
 enterBtn.addEventListener("click", () => {
-
-  if(pass.value === PASSWORD){
+  if (passInput.value === PASSWORD) {
     gate.style.display = "none";
     museum.style.display = "block";
     wrong.textContent = "";
   } else {
     wrong.textContent = "❌ Wrong password";
   }
-
 });
+
+// Press Enter key too
+passInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") enterBtn.click();
+});
+
+// ================= DEVICE ID =================
+
+let device = localStorage.getItem("samaDevice");
+
+if (!device) {
+  device = Math.random().toString(36).slice(2);
+  localStorage.setItem("samaDevice", device);
+}
 // One vote per browser
 let device = localStorage.getItem("samaDevice");
 if(!device){
