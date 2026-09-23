@@ -537,6 +537,7 @@ import {
   addDoc,
   query,
   where,
+  orderBy,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
@@ -893,55 +894,23 @@ arts.forEach(art => {
 
   // COMMENTS
 
-  onSnapshot(
+onSnapshot(
+  query(
+    comments,
+    where("artwork", "==", art),
+    orderBy("created", "desc")
+  ),
+  (snap) => {
+    const list = [];
 
-    query(
-      comments,
-      where("artwork","==",art)
-    ),
+    snap.forEach((doc) => {
+      list.push(doc.data());
+    });
 
-    snap => {
-
-      const list = [];
-
-
-      snap.forEach(docSnap => {
-
-        list.push(
-          docSnap.data()
-        );
-
-      });
-
-
-      list.sort(
-        (a,b) =>
-          b.created - a.created
-      );
-
-
-      commentLists[art] = list;
-
-
-      renderComments(
-        art,
-        list
-      );
-
-    },
-
-    error => {
-
-      console.error(
-        "Comment sync error:",
-        error
-      );
-
-    }
-
-  );
-
-});
+    commentLists[art] = list;
+    renderComments(art, list);
+  }
+);
 
 </script>
 
