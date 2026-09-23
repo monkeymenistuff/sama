@@ -514,6 +514,42 @@ footer{
   ></div>
 
 </div>
+  <!-- Confused Monkey -->
+
+<div class="frame">
+
+  <img src="confused.webp">
+
+  <div class="plaque">
+
+    <h3>Confused Monkey</h3>
+
+    <div id="avg-confused" class="avg">0.0 / 10</div>
+
+    <div id="count-confused" class="rating-count">
+      ⭐ 0 ratings
+    </div>
+
+    <select id="rate-confused">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option>
+      <option selected>10</option>
+    </select>
+
+    <button onclick="rateArt('confused')">Rate</button>
+
+  </div>
+
+  <textarea id="text-confused" placeholder="Anonymous comment..."></textarea>
+
+  <button onclick="commentArt('confused')">Comment</button>
+
+  <div id="comments-confused"></div>
+
+  <div id="comment-controls-confused" class="comment-controls"></div>
+
+</div>
 
 </section>
 
@@ -627,7 +663,8 @@ const arts = [
   "knee",
   "breakout",
   "curious",
-  "baby"
+  "baby",
+  "confused"
 ];
 
 
