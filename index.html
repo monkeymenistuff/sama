@@ -931,27 +931,35 @@ arts.forEach(art => {
 
   // COMMENTS
 
-onSnapshot(
-  query(
-    comments,
-    where("artwork", "==", art),
-    orderBy("created", "desc")
-  ),
-  (snap) => {
-    const list = [];
+  // COMMENTS
 
-    snap.forEach((doc) => {
-      list.push(doc.data());
-    });
+  onSnapshot(
+    query(
+      comments,
+      where("artwork", "==", art),
+      orderBy("created", "desc")
+    ),
+    (snap) => {
+      const list = [];
 
-    commentLists[art] = list;
-    renderComments(art, list);
-  }
-);
+      snap.forEach((doc) => {
+        list.push(doc.data());
+      });
+
+      commentLists[art] = list;
+      renderComments(art, list);
+    },
+    (error) => {
+      console.error("Comment sync error:", error);
+    }
+  );
+
+}); // closes arts.forEach
 
 </script>
 
 </body>
 </html>
+
 
 
