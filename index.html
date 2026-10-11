@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +22,7 @@ body{
   color:#f7eed8;
 }
 
-/* ================= PASSWORD GATE ================= */
+/* ================= GATE ================= */
 
 #gate{
   min-height:100vh;
@@ -32,6 +34,7 @@ body{
 
 .gate{
   width:420px;
+  max-width:90%;
   background:#24152b;
   padding:35px;
   border-radius:22px;
@@ -54,10 +57,11 @@ body{
   color:#d8c6a3;
 }
 
-.gate input{
+input,
+select{
   width:100%;
   padding:12px;
-  margin:15px 0;
+  margin:8px 0;
   background:#382046;
   border:none;
   border-radius:10px;
@@ -102,6 +106,28 @@ header p{
   margin-top:8px;
 }
 
+/* ================= ACCOUNT BAR ================= */
+
+.accountBar{
+  max-width:1200px;
+  margin:25px auto 0;
+  padding:15px 20px;
+  background:#24152b;
+  border:1px solid #6b4a25;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.accountBar button{
+  width:auto;
+  padding:8px 15px;
+  margin:0;
+}
+
 /* ================= GALLERY ================= */
 
 .gallery{
@@ -138,8 +164,6 @@ header p{
   margin-bottom:5px;
 }
 
-/* ================= RATINGS ================= */
-
 .avg{
   font-size:22px;
   font-weight:bold;
@@ -154,13 +178,127 @@ header p{
 }
 
 select{
-  width:100%;
-  padding:10px;
   margin-top:8px;
+}
+
+/* ================= SUBMISSION ================= */
+
+.panel{
+  max-width:800px;
+  margin:40px auto;
+  padding:25px;
+  background:#24152b;
+  border:2px solid #d6b36d;
+  border-radius:18px;
+}
+
+.panel h2{
+  color:#f3d48a;
+  margin-bottom:15px;
+}
+
+.panel p{
+  color:#d5c29a;
+  margin-bottom:10px;
+}
+
+#uploadBox{
+  display:none;
+}
+
+#loginBox{
+  display:none;
+}
+
+#userInfo{
+  color:#d5c29a;
+  margin-top:8px;
+}
+
+.status{
+  margin-top:12px;
+  color:#8fff9b;
+}
+
+/* ================= ADMIN ================= */
+
+#adminGate{
+  display:none;
+  max-width:500px;
+  margin:40px auto;
+  padding:25px;
+  background:#24152b;
+  border:2px solid #d6b36d;
+  border-radius:18px;
+}
+
+#adminPanel{
+  display:none;
+  max-width:1000px;
+  margin:40px auto;
+  padding:25px;
+  background:#24152b;
+  border:2px solid #d6b36d;
+  border-radius:18px;
+}
+
+#adminPanel h2,
+#adminGate h2{
+  color:#f3d48a;
+  margin-bottom:15px;
+}
+
+.submission{
   background:#382046;
-  color:white;
-  border:none;
+  padding:18px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.submission img{
+  width:100%;
+  max-width:400px;
+  max-height:400px;
+  object-fit:contain;
+  display:block;
+  margin:12px auto;
   border-radius:8px;
+}
+
+.submission h3{
+  color:#f6dfab;
+}
+
+.submission p{
+  color:#d5c29a;
+  margin-top:5px;
+}
+
+.adminButtons{
+  display:flex;
+  gap:10px;
+}
+
+.adminButtons button{
+  flex:1;
+}
+
+.approve{
+  background:#5e9e68;
+  color:white;
+}
+
+.approve:hover{
+  background:#70b97b;
+}
+
+.reject{
+  background:#9e4d4d;
+  color:white;
+}
+
+.reject:hover{
+  background:#bd5d5d;
 }
 
 /* ================= FOOTER ================= */
@@ -171,13 +309,21 @@ footer{
   color:#a38d65;
 }
 
+.hidden{
+  display:none !important;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- ================= PASSWORD ================= -->
+<!-- =====================================================
+     PASSWORD GATE
+===================================================== -->
 
 <div id="gate">
 
@@ -192,7 +338,7 @@ footer{
     <input
       id="pass"
       type="password"
-      placeholder="Password"
+      placeholder="Museum Password"
     >
 
     <button id="enterBtn">
@@ -209,7 +355,9 @@ footer{
 </div>
 
 
-<!-- ================= MUSEUM ================= -->
+<!-- =====================================================
+     MUSEUM
+===================================================== -->
 
 <div id="museum">
 
@@ -225,10 +373,205 @@ footer{
 </header>
 
 
+<!-- =====================================================
+     ACCOUNT BAR
+===================================================== -->
+
+<div class="accountBar">
+
+  <div>
+
+    <strong id="accountText">
+      Not logged in
+    </strong>
+
+    <div id="userInfo"></div>
+
+  </div>
+
+  <button
+    id="logoutBtn"
+    style="display:none;"
+  >
+    Logout
+  </button>
+
+</div>
+
+
+<!-- =====================================================
+     LOGIN / ACCOUNT
+===================================================== -->
+
+<div
+  class="panel"
+  id="loginBox"
+>
+
+  <h2>👤 Museum Account</h2>
+
+  <p>
+    Create an account to submit artwork to the museum.
+  </p>
+
+  <input
+    id="username"
+    type="text"
+    placeholder="Username"
+  >
+
+  <input
+    id="email"
+    type="email"
+    placeholder="Email"
+  >
+
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+  >
+
+  <button id="signupBtn">
+    Create Account
+  </button>
+
+  <button id="loginBtn">
+    Login
+  </button>
+
+  <p
+    id="authMessage"
+    style="margin-top:10px;color:#ff9d9d;"
+  ></p>
+
+</div>
+
+
+<!-- =====================================================
+     UPLOAD ARTWORK
+===================================================== -->
+
+<div
+  class="panel"
+  id="uploadBox"
+>
+
+  <h2>🖼️ Submit Artwork</h2>
+
+  <p>
+    Submit an artwork for consideration.
+    All submissions must be approved before appearing
+    in the museum.
+  </p>
+
+  <input
+    id="artTitle"
+    type="text"
+    placeholder="Artwork title"
+  >
+
+  <input
+    id="artImage"
+    type="file"
+    accept="image/*"
+  >
+
+  <button id="submitArtworkBtn">
+    📤 Submit Artwork
+  </button>
+
+  <p
+    id="uploadStatus"
+    class="status"
+  ></p>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN ADMISSIONS BUTTON
+===================================================== -->
+
+<div
+  class="panel"
+  style="text-align:center;"
+>
+
+  <h2>👑 Art Admissions</h2>
+
+  <p>
+    Have an artwork to submit? Use your account above.
+  </p>
+
+  <button id="adminButton">
+    🔐 Admin Admissions
+  </button>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN PASSWORD
+===================================================== -->
+
+<div id="adminGate">
+
+  <h2>🔐 Admin Admissions</h2>
+
+  <p>
+    Enter the administrator password.
+  </p>
+
+  <input
+    id="adminPassword"
+    type="password"
+    placeholder="Admin Password"
+  >
+
+  <button id="adminLoginBtn">
+    Enter Admissions
+  </button>
+
+  <p
+    id="adminError"
+    style="color:#ff9d9d;margin-top:10px;"
+  ></p>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div id="adminPanel">
+
+  <h2>👑 Artwork Admissions</h2>
+
+  <p>
+    Review submitted artwork before it enters the museum.
+  </p>
+
+  <div id="submissionsList">
+
+    <p>
+      Loading submissions...
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
 <section class="gallery">
 
 
-<!-- ================= BIRTHDAY ================= -->
+<!-- BIRTHDAY -->
 
 <div class="frame">
 
@@ -276,7 +619,7 @@ footer{
 </div>
 
 
-<!-- ================= MEGAMIND ================= -->
+<!-- MEGAMIND -->
 
 <div class="frame">
 
@@ -324,7 +667,7 @@ footer{
 </div>
 
 
-<!-- ================= KNEE EATER ================= -->
+<!-- KNEE -->
 
 <div class="frame">
 
@@ -372,7 +715,7 @@ footer{
 </div>
 
 
-<!-- ================= BREAKOUT ================= -->
+<!-- BREAKOUT -->
 
 <div class="frame">
 
@@ -420,7 +763,7 @@ footer{
 </div>
 
 
-<!-- ================= CURIOUS ================= -->
+<!-- CURIOUS -->
 
 <div class="frame">
 
@@ -468,7 +811,7 @@ footer{
 </div>
 
 
-<!-- ================= BABY ================= -->
+<!-- BABY -->
 
 <div class="frame">
 
@@ -516,7 +859,7 @@ footer{
 </div>
 
 
-<!-- ================= CONFUSED ================= -->
+<!-- CONFUSED -->
 
 <div class="frame">
 
@@ -564,6 +907,13 @@ footer{
 </div>
 
 
+<!-- =====================================================
+     APPROVED SUBMISSIONS APPEAR HERE
+===================================================== -->
+
+<div id="approvedSubmissions"></div>
+
+
 </section>
 
 
@@ -577,23 +927,51 @@ footer{
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
+
 
 import {
   initializeApp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
 
 import {
   getFirestore,
   collection,
   doc,
   setDoc,
+  addDoc,
   query,
   where,
-  onSnapshot
+  onSnapshot,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 
 const firebaseConfig = {
@@ -622,14 +1000,46 @@ const firebaseConfig = {
 const app =
   initializeApp(firebaseConfig);
 
+
 const db =
   getFirestore(app);
 
 
-/* ================= PASSWORD ================= */
+const auth =
+  getAuth(app);
 
-const PASSWORD =
+
+const storage =
+  getStorage(app);
+
+
+/* =====================================================
+   PASSWORDS
+===================================================== */
+
+
+/*
+   Museum password
+*/
+
+const MUSEUM_PASSWORD =
   "bigdaddyhuangjiba123";
+
+
+/*
+   ADMIN ADMISSIONS PASSWORD
+
+   CHANGE THIS.
+*/
+
+const ADMIN_PASSWORD =
+  "CHANGE_THIS_ADMIN_PASSWORD";
+
+
+/* =====================================================
+   DOM
+===================================================== */
+
 
 const gate =
   document.getElementById("gate");
@@ -647,15 +1057,60 @@ const enterBtn =
   document.getElementById("enterBtn");
 
 
+const loginBox =
+  document.getElementById("loginBox");
+
+const uploadBox =
+  document.getElementById("uploadBox");
+
+const usernameInput =
+  document.getElementById("username");
+
+const emailInput =
+  document.getElementById("email");
+
+const passwordInput =
+  document.getElementById("password");
+
+const signupBtn =
+  document.getElementById("signupBtn");
+
+const loginBtn =
+  document.getElementById("loginBtn");
+
+const logoutBtn =
+  document.getElementById("logoutBtn");
+
+const authMessage =
+  document.getElementById("authMessage");
+
+const accountText =
+  document.getElementById("accountText");
+
+const userInfo =
+  document.getElementById("userInfo");
+
+
+/* =====================================================
+   ENTER MUSEUM
+===================================================== */
+
+
 function enterMuseum(){
 
-  if(passInput.value === PASSWORD){
+  if(
+    passInput.value ===
+    MUSEUM_PASSWORD
+  ){
 
-    gate.style.display = "none";
+    gate.style.display =
+      "none";
 
-    museum.style.display = "block";
+    museum.style.display =
+      "block";
 
-    wrong.textContent = "";
+    wrong.textContent =
+      "";
 
   }else{
 
@@ -687,10 +1142,892 @@ passInput.addEventListener(
 );
 
 
-/* ================= DEVICE ID ================= */
+/* =====================================================
+   ACCOUNT SIGNUP
+===================================================== */
+
+
+signupBtn.addEventListener(
+  "click",
+  async () => {
+
+    const username =
+      usernameInput.value.trim();
+
+    const email =
+      emailInput.value.trim();
+
+    const password =
+      passwordInput.value;
+
+
+    if(!username || !email || !password){
+
+      authMessage.textContent =
+        "❌ Fill in all fields.";
+
+      return;
+
+    }
+
+
+    try{
+
+      const result =
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          result.user.uid
+        ),
+        {
+
+          username:
+            username,
+
+          email:
+            email,
+
+          uid:
+            result.user.uid
+
+        }
+      );
+
+
+      authMessage.style.color =
+        "#8fff9b";
+
+      authMessage.textContent =
+        "✅ Account created!";
+
+
+    }catch(error){
+
+      authMessage.style.color =
+        "#ff9d9d";
+
+      authMessage.textContent =
+        "❌ " + error.message;
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+
+loginBtn.addEventListener(
+  "click",
+  async () => {
+
+    const email =
+      emailInput.value.trim();
+
+    const password =
+      passwordInput.value;
+
+
+    if(!email || !password){
+
+      authMessage.textContent =
+        "❌ Enter your email and password.";
+
+      return;
+
+    }
+
+
+    try{
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+      authMessage.style.color =
+        "#8fff9b";
+
+      authMessage.textContent =
+        "✅ Logged in!";
+
+
+    }catch(error){
+
+      authMessage.style.color =
+        "#ff9d9d";
+
+      authMessage.textContent =
+        "❌ Login failed.";
+
+      console.error(error);
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+
+logoutBtn.addEventListener(
+  "click",
+  async () => {
+
+    await signOut(auth);
+
+  }
+);
+
+
+/* =====================================================
+   ACCOUNT STATE
+===================================================== */
+
+
+onAuthStateChanged(
+  auth,
+  async (user) => {
+
+    if(user){
+
+      loginBox.style.display =
+        "none";
+
+      uploadBox.style.display =
+        "block";
+
+      logoutBtn.style.display =
+        "block";
+
+      accountText.textContent =
+        "👤 " +
+        user.email;
+
+      userInfo.textContent =
+        "Account UID: " +
+        user.uid;
+
+    }else{
+
+      loginBox.style.display =
+        "block";
+
+      uploadBox.style.display =
+        "none";
+
+      logoutBtn.style.display =
+        "none";
+
+      accountText.textContent =
+        "Not logged in";
+
+      userInfo.textContent =
+        "";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   SUBMIT ARTWORK
+===================================================== */
+
+
+document
+  .getElementById("submitArtworkBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      const user =
+        auth.currentUser;
+
+
+      if(!user){
+
+        alert(
+          "You must be logged in."
+        );
+
+        return;
+
+      }
+
+
+      const title =
+        document
+          .getElementById("artTitle")
+          .value
+          .trim();
+
+
+      const file =
+        document
+          .getElementById("artImage")
+          .files[0];
+
+
+      const status =
+        document
+          .getElementById("uploadStatus");
+
+
+      if(!title){
+
+        status.textContent =
+          "❌ Enter an artwork title.";
+
+        return;
+
+      }
+
+
+      if(!file){
+
+        status.textContent =
+          "❌ Choose an image.";
+
+        return;
+
+      }
+
+
+      if(!file.type.startsWith("image/")){
+
+        status.textContent =
+          "❌ That isn't an image.";
+
+        return;
+
+      }
+
+
+      try{
+
+        status.textContent =
+          "⏳ Uploading image...";
+
+
+        const fileName =
+          Date.now() +
+          "_" +
+          file.name;
+
+
+        const imageRef =
+          ref(
+            storage,
+            "submissions/" +
+            user.uid +
+            "/" +
+            fileName
+          );
+
+
+        await uploadBytes(
+          imageRef,
+          file
+        );
+
+
+        const imageUrl =
+          await getDownloadURL(
+            imageRef
+          );
+
+
+        await addDoc(
+          collection(
+            db,
+            "submissions"
+          ),
+          {
+
+            title:
+              title,
+
+            imageUrl:
+              imageUrl,
+
+            imagePath:
+              imageRef.fullPath,
+
+            uid:
+              user.uid,
+
+            email:
+              user.email,
+
+            status:
+              "pending",
+
+            created:
+              Date.now()
+
+          }
+        );
+
+
+        document
+          .getElementById("artTitle")
+          .value = "";
+
+
+        document
+          .getElementById("artImage")
+          .value = "";
+
+
+        status.textContent =
+          "✅ Submitted! Your artwork is waiting for approval.";
+
+      }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+          "❌ Upload failed: " +
+          error.message;
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADMIN PASSWORD
+===================================================== */
+
+
+document
+  .getElementById("adminButton")
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById("adminGate")
+        .style.display =
+        "block";
+
+      window.scrollTo({
+        top:
+          document
+            .getElementById("adminGate")
+            .offsetTop - 20,
+
+        behavior:
+          "smooth"
+
+      });
+
+    }
+  );
+
+
+document
+  .getElementById("adminLoginBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      const entered =
+        document
+          .getElementById("adminPassword")
+          .value;
+
+
+      if(
+        entered ===
+        ADMIN_PASSWORD
+      ){
+
+        document
+          .getElementById("adminGate")
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById("adminPanel")
+          .style.display =
+          "block";
+
+
+        loadSubmissions();
+
+
+      }else{
+
+        document
+          .getElementById("adminError")
+          .textContent =
+          "❌ Wrong admin password.";
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADMIN SUBMISSIONS
+===================================================== */
+
+
+function loadSubmissions(){
+
+  const list =
+    document.getElementById(
+      "submissionsList"
+    );
+
+
+  onSnapshot(
+
+    query(
+      collection(
+        db,
+        "submissions"
+      ),
+      where(
+        "status",
+        "==",
+        "pending"
+      )
+    ),
+
+    (snap) => {
+
+      list.innerHTML = "";
+
+
+      if(snap.empty){
+
+        list.innerHTML =
+          "<p>🎉 No pending submissions!</p>";
+
+        return;
+
+      }
+
+
+      snap.forEach(
+        (docSnap) => {
+
+          const data =
+            docSnap.data();
+
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+
+          card.className =
+            "submission";
+
+
+          const title =
+            document.createElement(
+              "h3"
+            );
+
+          title.textContent =
+            data.title;
+
+
+          const submitter =
+            document.createElement(
+              "p"
+            );
+
+          submitter.textContent =
+            "Submitted by: " +
+            data.email;
+
+
+          const uid =
+            document.createElement(
+              "p"
+            );
+
+          uid.textContent =
+            "UID: " +
+            data.uid;
+
+
+          const image =
+            document.createElement(
+              "img"
+            );
+
+          image.src =
+            data.imageUrl;
+
+
+          const buttons =
+            document.createElement(
+              "div"
+            );
+
+
+          buttons.className =
+            "adminButtons";
+
+
+          const approve =
+            document.createElement(
+              "button"
+            );
+
+          approve.textContent =
+            "✅ APPROVE";
+
+          approve.className =
+            "approve";
+
+
+          const reject =
+            document.createElement(
+              "button"
+            );
+
+          reject.textContent =
+            "❌ REJECT";
+
+          reject.className =
+            "reject";
+
+
+          approve.onclick =
+            () => approveSubmission(
+              docSnap.id
+            );
+
+
+          reject.onclick =
+            () => rejectSubmission(
+              docSnap.id
+            );
+
+
+          buttons.appendChild(
+            approve
+          );
+
+          buttons.appendChild(
+            reject
+          );
+
+
+          card.appendChild(
+            title
+          );
+
+          card.appendChild(
+            submitter
+          );
+
+          card.appendChild(
+            uid
+          );
+
+          card.appendChild(
+            image
+          );
+
+          card.appendChild(
+            buttons
+          );
+
+
+          list.appendChild(
+            card
+          );
+
+        }
+      );
+
+    },
+
+    (error) => {
+
+      console.error(
+        "Submission error:",
+        error
+      );
+
+      list.innerHTML =
+        "<p>❌ Couldn't load submissions.</p>";
+
+    }
+
+  );
+
+}
+
+
+/* =====================================================
+   APPROVE
+===================================================== */
+
+
+async function approveSubmission(
+  id
+){
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "submissions",
+        id
+      ),
+      {
+
+        status:
+          "approved",
+
+        approvedAt:
+          Date.now()
+
+      }
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Couldn't approve submission."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   REJECT
+===================================================== */
+
+
+async function rejectSubmission(
+  id
+){
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "submissions",
+        id
+      ),
+      {
+
+        status:
+          "rejected",
+
+        rejectedAt:
+          Date.now()
+
+      }
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Couldn't reject submission."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   APPROVED ARTWORKS
+===================================================== */
+
+
+const approvedQuery =
+  query(
+    collection(
+      db,
+      "submissions"
+    ),
+    where(
+      "status",
+      "==",
+      "approved"
+    )
+  );
+
+
+onSnapshot(
+  approvedQuery,
+  (snap) => {
+
+    const container =
+      document.getElementById(
+        "approvedSubmissions"
+      );
+
+
+    container.innerHTML =
+      "";
+
+
+    snap.forEach(
+      (docSnap) => {
+
+        const data =
+          docSnap.data();
+
+
+        const frame =
+          document.createElement(
+            "div"
+          );
+
+
+        frame.className =
+          "frame";
+
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+        image.src =
+          data.imageUrl;
+
+
+        const plaque =
+          document.createElement(
+            "div"
+          );
+
+
+        plaque.className =
+          "plaque";
+
+
+        const title =
+          document.createElement(
+            "h3"
+          );
+
+
+        title.textContent =
+          data.title;
+
+
+        const label =
+          document.createElement(
+            "p"
+          );
+
+
+        label.textContent =
+          "Community Submission";
+
+
+        plaque.appendChild(
+          title
+        );
+
+        plaque.appendChild(
+          label
+        );
+
+
+        frame.appendChild(
+          image
+        );
+
+        frame.appendChild(
+          plaque
+        );
+
+
+        container.appendChild(
+          frame
+        );
+
+      }
+
+    );
+
+  },
+
+  (error) => {
+
+    console.error(
+      "Approved artwork sync error:",
+      error
+    );
+
+  }
+);
+
+
+/* =====================================================
+   RATINGS
+===================================================== */
+
+
+const ratings =
+  collection(
+    db,
+    "ratings"
+  );
+
+
+const arts = [
+
+  "birthday",
+  "megamind",
+  "knee",
+  "breakout",
+  "curious",
+  "baby",
+  "confused"
+
+];
+
 
 let device =
-  localStorage.getItem("samaDevice");
+  localStorage.getItem(
+    "samaDevice"
+  );
 
 
 if(!device){
@@ -708,37 +2045,21 @@ if(!device){
 }
 
 
-/* ================= FIRESTORE ================= */
+/* =====================================================
+   RATE ART
+===================================================== */
 
-const ratings =
-  collection(db,"ratings");
-
-
-/* ================= ARTWORKS ================= */
-
-const arts = [
-
-  "birthday",
-  "megamind",
-  "knee",
-  "breakout",
-  "curious",
-  "baby",
-  "confused"
-
-];
-
-
-/* ================= RATE ART ================= */
 
 window.rateArt =
   async (art) => {
 
     const rating =
       Number(
-        document.getElementById(
-          "rate-" + art
-        ).value
+        document
+          .getElementById(
+            "rate-" + art
+          )
+          .value
       );
 
 
@@ -754,11 +2075,14 @@ window.rateArt =
 
         {
 
-          artwork: art,
+          artwork:
+            art,
 
-          device: device,
+          device:
+            device,
 
-          rating: rating
+          rating:
+            rating
 
         }
 
@@ -776,7 +2100,10 @@ window.rateArt =
   };
 
 
-/* ================= LIVE RATING SYNC ================= */
+/* =====================================================
+   LIVE RATINGS
+===================================================== */
+
 
 arts.forEach(
   (art) => {
@@ -823,6 +2150,7 @@ arts.forEach(
             "avg-" + art
           );
 
+
         const countElement =
           document.getElementById(
             "count-" + art
@@ -865,8 +2193,8 @@ arts.forEach(
   }
 );
 
-</script>
 
+</script>
 
 </body>
 </html>
