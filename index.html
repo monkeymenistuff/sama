@@ -2,1789 +2,1603 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sama Museum</title>
 
-<title>Sama Museum</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
+    body {
+      margin: 0;
+      background: #120b16;
+      color: #f4ead7;
+      font-family: Georgia, serif;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Georgia,serif;
-}
+    /* ================= GATE ================= */
 
-body{
-  background:#120b16;
-  color:#f7eed8;
-}
+    #gate {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #4f2b6f, #120b16 70%);
+      padding: 20px;
+    }
 
-/* ================= GATE ================= */
+    .gateBox {
+      width: 100%;
+      max-width: 420px;
+      background: #24152b;
+      border: 2px solid #d6b36d;
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      box-shadow: 0 0 35px rgba(214, 179, 109, 0.25);
+    }
 
-#gate{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle,#4f2b6f,#120b16);
-}
+    .gateBox h1 {
+      color: #d6b36d;
+      margin-top: 0;
+      font-size: 32px;
+    }
 
-.gate{
-  width:420px;
-  max-width:90%;
-  background:#24152b;
-  padding:35px;
-  border-radius:22px;
-  border:2px solid #d6b36d;
-  text-align:center;
-}
+    .gateBox p {
+      color: #d8cbb9;
+    }
 
-.gate h1{
-  font-size:48px;
-  color:#f3d48a;
-  margin-bottom:8px;
-}
+    input,
+    select,
+    button {
+      font-family: inherit;
+    }
 
-.gate h2{
-  color:#f7e2ad;
-  margin-bottom:6px;
-}
+    #pass {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: 1px solid #d6b36d;
+      background: #120b16;
+      color: white;
+      margin-top: 15px;
+    }
 
-.gate p{
-  color:#d8c6a3;
-}
+    #enterBtn {
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #d6b36d;
+      color: #24152b;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-input,
-select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  background:#382046;
-  border:none;
-  border-radius:10px;
-  color:white;
-}
+    #enterBtn:hover {
+      opacity: 0.85;
+    }
 
-button{
-  width:100%;
-  padding:12px;
-  background:#d6b36d;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:10px;
-}
+    #wrong {
+      color: #ff7777;
+      display: none;
+      margin-top: 12px;
+    }
 
-button:hover{
-  background:#e6c47b;
-}
+    /* ================= MUSEUM ================= */
 
-/* ================= MUSEUM ================= */
+    #museum {
+      display: none;
+    }
 
-#museum{
-  display:none;
-}
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #34194b, #170d23);
+      border-bottom: 2px solid #d6b36d;
+    }
 
-header{
-  background:linear-gradient(#34194b,#170d23);
-  padding:50px;
-  text-align:center;
-  border-bottom:2px solid #9b7a36;
-}
+    header h1 {
+      margin: 0;
+      color: #d6b36d;
+      font-size: 42px;
+    }
 
-header h1{
-  font-size:58px;
-  color:#f2d38f;
-}
+    header p {
+      margin-bottom: 0;
+      color: #d8cbb9;
+      font-size: 17px;
+    }
 
-header p{
-  color:#d5c29a;
-  margin-top:8px;
-}
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 35px 20px;
+    }
 
-/* ================= SUBMISSION PANEL ================= */
+    .sectionTitle {
+      text-align: center;
+      color: #d6b36d;
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
 
-.panel{
-  max-width:800px;
-  margin:35px auto;
-  padding:25px;
-  background:#24152b;
-  border:2px solid #d6b36d;
-  border-radius:18px;
-}
+    /* ================= GALLERY ================= */
 
-.panel h2{
-  color:#f3d48a;
-  margin-bottom:12px;
-}
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
 
-.panel p{
-  color:#d5c29a;
-  margin-bottom:10px;
-}
+    .frame {
+      background: #24152b;
+      border: 12px solid #5a3d24;
+      border-radius: 5px;
+      padding: 8px;
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 2px #d6b36d;
+    }
 
-.panel input[type="text"],
-.panel input[type="password"],
-.panel input[type="file"]{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  background:#382046;
-  border:none;
-  border-radius:10px;
-  color:white;
-}
+    .artImage {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #0d0810;
+    }
 
-/* ================= GALLERY ================= */
+    .plaque {
+      background: #e4d2ae;
+      color: #24152b;
+      padding: 15px;
+      margin-top: 10px;
+      text-align: center;
+    }
 
-.gallery{
-  max-width:1300px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:35px;
-  padding:20px;
-}
+    .plaque h2 {
+      margin: 0 0 7px;
+      font-size: 20px;
+    }
 
-.frame{
-  background:#50341b;
-  padding:12px;
-  border:8px solid #c89a43;
-  outline:3px solid #f2dc9d;
-  box-shadow:0 15px 30px rgba(0,0,0,.45);
-}
+    .plaque p {
+      margin: 0;
+      font-size: 14px;
+    }
 
-.frame img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  border:3px solid #28190c;
-}
+    /* ================= RATINGS ================= */
 
-.plaque{
-  text-align:center;
-  margin-top:10px;
-}
+    .rating {
+      margin-top: 12px;
+      text-align: center;
+      color: #f4ead7;
+    }
 
-.plaque h3{
-  color:#f6dfab;
-  margin-bottom:5px;
-}
+    .ratingAverage {
+      font-size: 18px;
+      color: #d6b36d;
+      font-weight: bold;
+    }
 
-.avg{
-  font-size:22px;
-  font-weight:bold;
-  color:#8fff9b;
-  margin:8px 0 3px 0;
-}
+    .ratingCount {
+      margin: 4px 0 10px;
+      font-size: 14px;
+    }
 
-.rating-count{
-  color:#cdbd9e;
-  font-size:14px;
-  margin-bottom:8px;
-}
+    .rating select {
+      padding: 7px;
+      border-radius: 6px;
+      border: 1px solid #d6b36d;
+      background: #120b16;
+      color: white;
+    }
 
-/* ================= COMMUNITY ART ================= */
+    .rateButton {
+      padding: 7px 12px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #d6b36d;
+      color: #24152b;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.community-label{
-  color:#d5c29a;
-  font-size:14px;
-  margin-top:6px;
-}
+    .rateButton:hover {
+      opacity: 0.85;
+    }
 
-/* ================= ADMIN ================= */
+    /* ================= PANELS ================= */
 
-#adminGate,
-#adminPanel{
-  display:none;
-}
+    .panel {
+      margin-top: 55px;
+      background: #24152b;
+      border: 1px solid #d6b36d;
+      border-radius: 12px;
+      padding: 25px;
+    }
 
-.adminSubmission{
-  background:#382046;
-  padding:18px;
-  border-radius:12px;
-  margin-top:20px;
-}
+    .panel h2 {
+      color: #d6b36d;
+      margin-top: 0;
+    }
 
-.adminSubmission img{
-  width:100%;
-  max-height:450px;
-  object-fit:contain;
-  display:block;
-  margin:15px auto;
-  border-radius:8px;
-}
+    .panel input[type="text"],
+    .panel input[type="file"],
+    .panel input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      border-radius: 7px;
+      border: 1px solid #6d5279;
+      background: #120b16;
+      color: white;
+    }
 
-.adminSubmission h3{
-  color:#f6dfab;
-}
+    .goldButton {
+      padding: 11px 18px;
+      border: none;
+      border-radius: 7px;
+      background: #d6b36d;
+      color: #24152b;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.adminSubmission p{
-  color:#d5c29a;
-  margin-top:5px;
-}
+    .goldButton:hover {
+      opacity: 0.85;
+    }
 
-.adminButtons{
-  display:flex;
-  gap:10px;
-}
+    .goldButton:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-.adminButtons button{
-  flex:1;
-}
+    #submitStatus {
+      margin-top: 12px;
+      color: #d6b36d;
+    }
 
-.approve{
-  background:#5e9e68;
-  color:white;
-}
+    /* ================= ADMIN ================= */
 
-.approve:hover{
-  background:#70b97b;
-}
+    .adminLogin {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #5a3d65;
+    }
 
-.reject{
-  background:#9e4d4d;
-  color:white;
-}
+    #adminPanel {
+      display: none;
+      margin-top: 30px;
+    }
 
-.reject:hover{
-  background:#bd5d5d;
-}
+    .submission {
+      background: #170d23;
+      border: 1px solid #5d4168;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 18px;
+    }
 
-/* ================= FOOTER ================= */
+    .submission img {
+      width: 100%;
+      max-width: 400px;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+      margin: 15px 0;
+      border: 2px solid #d6b36d;
+    }
 
-footer{
-  text-align:center;
-  padding:30px;
-  color:#a38d65;
-}
+    .submission h3 {
+      color: #d6b36d;
+      margin-top: 0;
+    }
 
-</style>
+    .submission p {
+      color: #c7b9ca;
+    }
 
+    .approveButton {
+      background: #5eaf70;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 15px;
+      cursor: pointer;
+      margin-right: 7px;
+    }
+
+    .rejectButton {
+      background: #a94c4c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 15px;
+      cursor: pointer;
+    }
+
+    .approveButton:hover,
+    .rejectButton:hover {
+      opacity: 0.85;
+    }
+
+    .empty {
+      color: #a99aaa;
+      font-style: italic;
+    }
+
+    /* ================= COMMUNITY ART ================= */
+
+    .communityLabel {
+      margin-top: 5px;
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+      border-top: 1px solid #3c2945;
+      color: #9e8eaa;
+    }
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 32px;
+      }
+
+      .gateBox {
+        padding: 25px;
+      }
+
+      main {
+        padding: 25px 12px;
+      }
+
+      #gallery {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- ================= PASSWORD GATE ================= -->
 
-<!-- =====================================================
-     MUSEUM PASSWORD
-===================================================== -->
+  <div id="gate">
 
-<div id="gate">
+    <div class="gateBox">
 
-  <div class="gate">
+      <h1>👑 SAMA MUSEUM</h1>
 
-    <h1>👑</h1>
+      <p>
+        The Official Senyu Huang Collection
+      </p>
 
-    <h2>SAMA MUSEUM</h2>
+      <input
+        id="pass"
+        type="password"
+        placeholder="Enter museum password"
+      >
 
-    <p>Private Senyu Huang Exhibition</p>
+      <button id="enterBtn">
+        Enter Museum
+      </button>
 
-    <input
-      id="pass"
-      type="password"
-      placeholder="Museum Password"
-    >
+      <div id="wrong">
+        ❌ Incorrect password
+      </div>
 
-    <button id="enterBtn">
-      Enter Museum
-    </button>
-
-    <p
-      id="wrong"
-      style="color:#ff9d9d;margin-top:10px;"
-    ></p>
+    </div>
 
   </div>
 
-</div>
+
+  <!-- ================= MUSEUM ================= -->
+
+  <div id="museum">
+
+    <header>
+
+      <h1>👑 SAMA MUSEUM</h1>
+
+      <p>
+        The Official Senyu Huang Collection
+      </p>
+
+    </header>
 
 
-<!-- =====================================================
-     MUSEUM
-===================================================== -->
+    <main>
 
-<div id="museum">
+      <h2 class="sectionTitle">
+        The Collection
+      </h2>
 
-
-<header>
-
-  <h1>👑 SAMA MUSEUM</h1>
-
-  <p>The Official Senyu Huang Collection</p>
-
-</header>
+      <div id="gallery"></div>
 
 
-<!-- =====================================================
-     SUBMIT ARTWORK
-===================================================== -->
+      <!-- ================= SUBMISSION PANEL ================= -->
 
-<div class="panel">
+      <div class="panel">
 
-  <h2>🖼️ Submit Artwork</h2>
+        <h2>🖼️ Submit Your Own Artwork</h2>
 
-  <p>
-    Submit an artwork to the museum.
-    Your submission is anonymous and must be approved
-    before it appears in the exhibition.
-  </p>
+        <p>
+          Have something worthy of the Sama Museum?
+          Submit an image and title below.
+        </p>
 
-  <input
-    id="artTitle"
-    type="text"
-    placeholder="Artwork title"
-  >
+        <p>
+          Your submission is anonymous and must be approved
+          by the museum curator before appearing in the gallery.
+        </p>
 
-  <input
-    id="artImage"
-    type="file"
-    accept="image/*"
-  >
+        <input
+          id="artTitle"
+          type="text"
+          placeholder="Artwork title"
+          maxlength="100"
+        >
 
-  <button id="submitArtworkBtn">
-    📤 Submit Artwork
-  </button>
+        <input
+          id="artImage"
+          type="file"
+          accept="image/*"
+        >
 
-  <p
-    id="uploadStatus"
-    style="margin-top:12px;"
-  ></p>
+        <button
+          id="submitArtwork"
+          class="goldButton"
+        >
+          Submit Artwork
+        </button>
 
-</div>
-
-
-<!-- =====================================================
-     ADMIN ADMISSIONS
-===================================================== -->
-
-<div class="panel">
-
-  <h2>👑 Art Admissions</h2>
-
-  <p>
-    Museum administrator only.
-  </p>
-
-  <button id="adminButton">
-    🔐 Admin Admissions
-  </button>
-
-</div>
+        <div id="submitStatus"></div>
 
 
-<!-- =====================================================
-     ADMIN PASSWORD
-===================================================== -->
+        <!-- ================= ADMIN LOGIN ================= -->
 
-<div
-  id="adminGate"
-  class="panel"
->
+        <div class="adminLogin">
 
-  <h2>🔐 Admin Admissions</h2>
+          <h2>👑 Admissions Office</h2>
 
-  <p>
-    Enter the administrator password.
-  </p>
+          <p>
+            Curator access only.
+          </p>
 
-  <input
-    id="adminPassword"
-    type="password"
-    placeholder="Admin Password"
-  >
+          <input
+            id="adminPassword"
+            type="password"
+            placeholder="Admin password"
+          >
 
-  <button id="adminLoginBtn">
-    Enter Admissions
-  </button>
+          <button
+            id="adminLoginButton"
+            class="goldButton"
+          >
+            Enter Admissions
+          </button>
 
-  <p
-    id="adminError"
-    style="color:#ff9d9d;margin-top:10px;"
-  ></p>
-
-</div>
+        </div>
 
 
-<!-- =====================================================
-     ADMIN PANEL
-===================================================== -->
+        <!-- ================= ADMIN PANEL ================= -->
 
-<div
-  id="adminPanel"
-  class="panel"
->
+        <div id="adminPanel">
 
-  <h2>👑 Artwork Admissions</h2>
+          <h2>📋 Pending Submissions</h2>
 
-  <p>
-    Review anonymous artwork submissions.
-  </p>
+          <div id="submissionList">
+            <p class="empty">
+              Loading submissions...
+            </p>
+          </div>
 
-  <div id="submissionsList">
+        </div>
 
-    <p>
-      Loading submissions...
-    </p>
+      </div>
+
+    </main>
+
+
+    <footer>
+      👑 Curated by Senyu Huang • The Sama Museum
+    </footer>
 
   </div>
 
-</div>
 
+  <!-- ================= FIREBASE ================= -->
 
-<!-- =====================================================
-     GALLERY
-===================================================== -->
+  <script type="module">
 
-<section class="gallery">
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
-<!-- BIRTHDAY -->
+    import {
+      getFirestore,
+      collection,
+      doc,
+      setDoc,
+      addDoc,
+      query,
+      where,
+      onSnapshot,
+      updateDoc
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-<div class="frame">
 
-  <img src="birthday.webp">
+    import {
+      getStorage,
+      ref,
+      uploadBytes,
+      getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
 
-  <div class="plaque">
 
-    <h3>Birthday Monkey</h3>
+    // ================= FIREBASE CONFIG =================
 
-    <div
-      id="avg-birthday"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
+    const firebaseConfig = {
 
-    <div
-      id="count-birthday"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
+      apiKey:
+        "AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ",
 
-    <select id="rate-birthday">
+      authDomain:
+        "sama-pics-a3cf6.firebaseapp.com",
 
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
+      projectId:
+        "sama-pics-a3cf6",
 
-    </select>
+      storageBucket:
+        "sama-pics-a3cf6.firebasestorage.app",
 
-    <button onclick="rateArt('birthday')">
-      Rate
-    </button>
+      messagingSenderId:
+        "407213655664",
 
-  </div>
+      appId:
+        "1:407213655664:web:200f0e35402f6b139ed6b5",
 
-</div>
+      measurementId:
+        "G-478W5P7WX8"
 
+    };
 
-<!-- MEGAMIND -->
 
-<div class="frame">
+    const app =
+      initializeApp(firebaseConfig);
 
-  <img src="megamind.webp">
 
-  <div class="plaque">
+    const db =
+      getFirestore(app);
 
-    <h3>Megamind</h3>
 
-    <div
-      id="avg-megamind"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
+    const storage =
+      getStorage(app);
 
-    <div
-      id="count-megamind"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
 
-    <select id="rate-megamind">
+    // ================= PASSWORDS =================
 
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
+    const MUSEUM_PASSWORD =
+      "bigdaddyhuangjiba123";
 
-    </select>
 
-    <button onclick="rateArt('megamind')">
-      Rate
-    </button>
+    const ADMIN_PASSWORD =
+      "bigdaddyhuanghasabigdaddydiaper";
 
-  </div>
 
-</div>
+    // ================= ELEMENTS =================
 
+    const gate =
+      document.getElementById("gate");
 
-<!-- KNEE -->
+    const museum =
+      document.getElementById("museum");
 
-<div class="frame">
+    const passInput =
+      document.getElementById("pass");
 
-  <img src="knee.webp">
+    const enterBtn =
+      document.getElementById("enterBtn");
 
-  <div class="plaque">
+    const wrong =
+      document.getElementById("wrong");
 
-    <h3>Knee Eater</h3>
 
-    <div
-      id="avg-knee"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
+    // ================= ENTER MUSEUM =================
 
-    <div
-      id="count-knee"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
+    function enterMuseum() {
 
-    <select id="rate-knee">
+      if (
+        passInput.value ===
+        MUSEUM_PASSWORD
+      ) {
 
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
+        gate.style.display =
+          "none";
 
-    </select>
+        museum.style.display =
+          "block";
 
-    <button onclick="rateArt('knee')">
-      Rate
-    </button>
+        wrong.style.display =
+          "none";
 
-  </div>
+      } else {
 
-</div>
+        wrong.style.display =
+          "block";
 
-
-<!-- BREAKOUT -->
-
-<div class="frame">
-
-  <img src="breakout.webp">
-
-  <div class="plaque">
-
-    <h3>Monkey Trying to Break Out</h3>
-
-    <div
-      id="avg-breakout"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
-
-    <div
-      id="count-breakout"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
-
-    <select id="rate-breakout">
-
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
-
-    </select>
-
-    <button onclick="rateArt('breakout')">
-      Rate
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- CURIOUS -->
-
-<div class="frame">
-
-  <img src="curious.webp">
-
-  <div class="plaque">
-
-    <h3>Curious Monkey</h3>
-
-    <div
-      id="avg-curious"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
-
-    <div
-      id="count-curious"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
-
-    <select id="rate-curious">
-
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
-
-    </select>
-
-    <button onclick="rateArt('curious')">
-      Rate
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- BABY -->
-
-<div class="frame">
-
-  <img src="baby.webp">
-
-  <div class="plaque">
-
-    <h3>Awwww... Baby Monkey!</h3>
-
-    <div
-      id="avg-baby"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
-
-    <div
-      id="count-baby"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
-
-    <select id="rate-baby">
-
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
-
-    </select>
-
-    <button onclick="rateArt('baby')">
-      Rate
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- CONFUSED -->
-
-<div class="frame">
-
-  <img src="confused.webp">
-
-  <div class="plaque">
-
-    <h3>Confused Monkey</h3>
-
-    <div
-      id="avg-confused"
-      class="avg"
-    >
-      0.0 / 10
-    </div>
-
-    <div
-      id="count-confused"
-      class="rating-count"
-    >
-      ⭐ 0 ratings
-    </div>
-
-    <select id="rate-confused">
-
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option selected>10</option>
-
-    </select>
-
-    <button onclick="rateArt('confused')">
-      Rate
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- APPROVED COMMUNITY ART -->
-
-<div id="approvedSubmissions"></div>
-
-
-</section>
-
-
-<footer>
-
-  👑 Curated by Senyu Huang • The Sama Museum
-
-</footer>
-
-
-</div>
-
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
-
-<script type="module">
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  doc,
-  setDoc,
-  addDoc,
-  query,
-  where,
-  onSnapshot,
-  updateDoc
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
-
-
-/* ================= FIREBASE ================= */
-
-const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyC_9Eu-TaqYy3EbgUck28SGOtiZaGqam_8",
-
-  authDomain:
-    "sama-huang.firebaseapp.com",
-
-  projectId:
-    "sama-huang",
-
-  storageBucket:
-    "sama-huang.firebasestorage.app",
-
-  messagingSenderId:
-    "264734586867",
-
-  appId:
-    "1:264734586867:web:47dab5f804f204078fc486"
-
-};
-
-
-const app =
-  initializeApp(firebaseConfig);
-
-const db =
-  getFirestore(app);
-
-const storage =
-  getStorage(app);
-
-
-/* ================= PASSWORDS ================= */
-
-const MUSEUM_PASSWORD =
-  "bigdaddyhuangjiba123";
-
-const ADMIN_PASSWORD =
-  "bigdaddyhuanghasabigdaddydiaper";
-
-
-/* ================= MUSEUM GATE ================= */
-
-const gate =
-  document.getElementById("gate");
-
-const museum =
-  document.getElementById("museum");
-
-const passInput =
-  document.getElementById("pass");
-
-const wrong =
-  document.getElementById("wrong");
-
-const enterBtn =
-  document.getElementById("enterBtn");
-
-
-function enterMuseum(){
-
-  if(
-    passInput.value ===
-    MUSEUM_PASSWORD
-  ){
-
-    gate.style.display =
-      "none";
-
-    museum.style.display =
-      "block";
-
-    wrong.textContent =
-      "";
-
-  }else{
-
-    wrong.textContent =
-      "❌ Wrong password";
-
-  }
-
-}
-
-
-enterBtn.addEventListener(
-  "click",
-  enterMuseum
-);
-
-
-passInput.addEventListener(
-  "keydown",
-  (e) => {
-
-    if(e.key === "Enter"){
-
-      enterMuseum();
+      }
 
     }
 
-  }
-);
+
+    enterBtn.addEventListener(
+      "click",
+      enterMuseum
+    );
 
 
-/* =====================================================
-   ANONYMOUS ART SUBMISSION
-===================================================== */
+    passInput.addEventListener(
+      "keydown",
+      (event) => {
 
-document
-  .getElementById("submitArtworkBtn")
-  .addEventListener(
-    "click",
-    async () => {
+        if (event.key === "Enter") {
 
-      const title =
-        document
-          .getElementById("artTitle")
-          .value
-          .trim();
+          enterMuseum();
 
-      const file =
-        document
-          .getElementById("artImage")
-          .files[0];
-
-      const status =
-        document
-          .getElementById("uploadStatus");
-
-
-      if(!title){
-
-        status.textContent =
-          "❌ Enter an artwork title.";
-
-        return;
+        }
 
       }
+    );
 
 
-      if(!file){
+    // ================= BUILT-IN ARTWORKS =================
 
-        status.textContent =
-          "❌ Choose an image.";
+    const arts = [
 
-        return;
+      {
+        id: "birthday",
+        title: "Birthday Monkey",
+        image: "birthday.webp"
+      },
 
+      {
+        id: "megamind",
+        title: "Megamind",
+        image: "megamind.webp"
+      },
+
+      {
+        id: "knee",
+        title: "Knee Eater",
+        image: "knee.webp"
+      },
+
+      {
+        id: "breakout",
+        title: "Monkey Trying to Break Out",
+        image: "breakout.webp"
+      },
+
+      {
+        id: "curious",
+        title: "Curious Monkey",
+        image: "curious.webp"
+      },
+
+      {
+        id: "baby",
+        title: "Awwww... Baby Monkey!",
+        image: "baby.webp"
+      },
+
+      {
+        id: "confused",
+        title: "Confused Monkey",
+        image: "confused.webp"
       }
 
-
-      if(!file.type.startsWith("image/")){
-
-        status.textContent =
-          "❌ Please upload an image.";
-
-        return;
-
-      }
+    ];
 
 
-      /*
-        Limit uploads to 10 MB.
-      */
+    // ================= DEVICE ID =================
 
-      if(file.size > 10 * 1024 * 1024){
-
-        status.textContent =
-          "❌ Image must be under 10 MB.";
-
-        return;
-
-      }
+    let device =
+      localStorage.getItem(
+        "samaDevice"
+      );
 
 
-      try{
+    if (!device) {
 
-        status.textContent =
-          "⏳ Uploading...";
+      device =
+        Math.random()
+          .toString(36)
+          .slice(2);
 
+      localStorage.setItem(
+        "samaDevice",
+        device
+      );
 
-        const uniqueName =
-          Date.now() +
-          "_" +
-          Math.random()
-            .toString(36)
-            .slice(2) +
-          "_" +
-          file.name;
-
-
-        const imageRef =
-          ref(
-            storage,
-            "submissions/" +
-            uniqueName
-          );
+    }
 
 
-        await uploadBytes(
-          imageRef,
-          file
+    // ================= CREATE ART CARD =================
+
+    function createArtworkCard(art) {
+
+      const frame =
+        document.createElement("div");
+
+
+      frame.className =
+        "frame";
+
+
+      frame.innerHTML = `
+
+        <img
+          class="artImage"
+          src="${art.image}"
+          alt="${art.title}"
+        >
+
+        <div class="plaque">
+
+          <h2>
+            ${art.title}
+          </h2>
+
+          <p>
+            The Sama Collection
+          </p>
+
+        </div>
+
+        <div class="rating">
+
+          <div
+            class="ratingAverage"
+            id="avg-${art.id}"
+          >
+            0.0 / 10
+          </div>
+
+          <div
+            class="ratingCount"
+            id="count-${art.id}"
+          >
+            ⭐ 0 ratings
+          </div>
+
+          <select
+            id="rate-${art.id}"
+          >
+
+            <option value="10">10</option>
+            <option value="9">9</option>
+            <option value="8">8</option>
+            <option value="7">7</option>
+            <option value="6">6</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+
+          </select>
+
+          <button
+            class="rateButton"
+            id="button-${art.id}"
+          >
+            Rate
+          </button>
+
+        </div>
+
+      `;
+
+
+      document
+        .getElementById("gallery")
+        .appendChild(frame);
+
+
+      document
+        .getElementById(
+          "button-" + art.id
+        )
+        .addEventListener(
+          "click",
+          async () => {
+
+            const value =
+              Number(
+                document.getElementById(
+                  "rate-" + art.id
+                ).value
+              );
+
+
+            try {
+
+              await setDoc(
+
+                doc(
+                  db,
+                  "ratings",
+                  art.id + "_" + device
+                ),
+
+                {
+                  artwork: art.id,
+                  device: device,
+                  rating: value
+                }
+
+              );
+
+            } catch (error) {
+
+              console.error(
+                "Rating error:",
+                error
+              );
+
+              alert(
+                "Could not submit rating."
+              );
+
+            }
+
+          }
         );
 
+    }
 
-        const imageUrl =
-          await getDownloadURL(
-            imageRef
+
+    // ================= LOAD BUILT-IN ART =================
+
+    arts.forEach(
+      createArtworkCard
+    );
+
+
+    // ================= LIVE RATINGS =================
+
+    arts.forEach(
+      (art) => {
+
+        const ratingQuery =
+          query(
+            collection(
+              db,
+              "ratings"
+            ),
+
+            where(
+              "artwork",
+              "==",
+              art.id
+            )
           );
 
 
-        await addDoc(
+        onSnapshot(
+
+          ratingQuery,
+
+          (snap) => {
+
+            let total = 0;
+
+
+            snap.forEach(
+              (docSnap) => {
+
+                total +=
+                  Number(
+                    docSnap.data().rating
+                  );
+
+              }
+            );
+
+
+            const count =
+              snap.size;
+
+
+            const average =
+              count === 0
+                ? 0
+                : total / count;
+
+
+            const avgElement =
+              document.getElementById(
+                "avg-" + art.id
+              );
+
+
+            const countElement =
+              document.getElementById(
+                "count-" + art.id
+              );
+
+
+            if (avgElement) {
+
+              avgElement.textContent =
+                average.toFixed(1) +
+                " / 10";
+
+            }
+
+
+            if (countElement) {
+
+              countElement.textContent =
+                count === 1
+                  ? "⭐ 1 rating"
+                  : "⭐ " +
+                    count +
+                    " ratings";
+
+            }
+
+          },
+
+          (error) => {
+
+            console.error(
+              "Rating sync error:",
+              error
+            );
+
+          }
+
+        );
+
+      }
+    );
+
+
+    // ================= SUBMIT ARTWORK =================
+
+    const submitButton =
+      document.getElementById(
+        "submitArtwork"
+      );
+
+
+    const submitStatus =
+      document.getElementById(
+        "submitStatus"
+      );
+
+
+    submitButton.addEventListener(
+      "click",
+      async () => {
+
+        const title =
+          document
+            .getElementById(
+              "artTitle"
+            )
+            .value
+            .trim();
+
+
+        const file =
+          document
+            .getElementById(
+              "artImage"
+            )
+            .files[0];
+
+
+        if (!title) {
+
+          submitStatus.textContent =
+            "❌ Enter an artwork title.";
+
+          return;
+
+        }
+
+
+        if (!file) {
+
+          submitStatus.textContent =
+            "❌ Choose an image.";
+
+          return;
+
+        }
+
+
+        if (
+          !file.type.startsWith(
+            "image/"
+          )
+        ) {
+
+          submitStatus.textContent =
+            "❌ Please upload an image.";
+
+          return;
+
+        }
+
+
+        if (
+          file.size >
+          10 * 1024 * 1024
+        ) {
+
+          submitStatus.textContent =
+            "❌ Image must be under 10 MB.";
+
+          return;
+
+        }
+
+
+        try {
+
+          submitButton.disabled =
+            true;
+
+
+          submitStatus.textContent =
+            "⏳ Uploading artwork...";
+
+
+          const uniqueName =
+            Date.now() +
+            "_" +
+            Math.random()
+              .toString(36)
+              .slice(2) +
+            "_" +
+            file.name;
+
+
+          const imageRef =
+            ref(
+              storage,
+              "submissions/" +
+              uniqueName
+            );
+
+
+          await uploadBytes(
+            imageRef,
+            file
+          );
+
+
+          submitStatus.textContent =
+            "⏳ Saving submission...";
+
+
+          const imageUrl =
+            await getDownloadURL(
+              imageRef
+            );
+
+
+          await addDoc(
+
+            collection(
+              db,
+              "submissions"
+            ),
+
+            {
+              title: title,
+
+              imageUrl: imageUrl,
+
+              imagePath:
+                imageRef.fullPath,
+
+              status: "pending",
+
+              created: Date.now()
+
+            }
+
+          );
+
+
+          submitStatus.textContent =
+            "✅ Submitted! Your artwork is waiting for approval.";
+
+
+          document.getElementById(
+            "artTitle"
+          ).value = "";
+
+
+          document.getElementById(
+            "artImage"
+          ).value = "";
+
+
+        } catch (error) {
+
+          console.error(
+            "Submission error:",
+            error
+          );
+
+
+          submitStatus.textContent =
+            "❌ Upload failed: " +
+            error.message;
+
+        }
+
+
+        submitButton.disabled =
+          false;
+
+      }
+    );
+
+
+    // ================= ADMIN LOGIN =================
+
+    const adminLoginButton =
+      document.getElementById(
+        "adminLoginButton"
+      );
+
+
+    const adminPanel =
+      document.getElementById(
+        "adminPanel"
+      );
+
+
+    adminLoginButton.addEventListener(
+      "click",
+      () => {
+
+        const password =
+          document.getElementById(
+            "adminPassword"
+          ).value;
+
+
+        if (
+          password ===
+          ADMIN_PASSWORD
+        ) {
+
+          adminPanel.style.display =
+            "block";
+
+          loadSubmissions();
+
+        } else {
+
+          alert(
+            "❌ Incorrect admin password."
+          );
+
+        }
+
+      }
+    );
+
+
+    // ================= ADMIN SUBMISSIONS =================
+
+    let submissionsUnsubscribe =
+      null;
+
+
+    function loadSubmissions() {
+
+      if (
+        submissionsUnsubscribe
+      ) {
+
+        submissionsUnsubscribe();
+
+      }
+
+
+      const pendingQuery =
+        query(
           collection(
             db,
             "submissions"
           ),
-          {
 
-            title:
-              title,
-
-            imageUrl:
-              imageUrl,
-
-            imagePath:
-              imageRef.fullPath,
-
-            status:
-              "pending",
-
-            created:
-              Date.now()
-
-          }
+          where(
+            "status",
+            "==",
+            "pending"
+          )
         );
 
 
-        document
-          .getElementById("artTitle")
-          .value = "";
+      submissionsUnsubscribe =
+        onSnapshot(
 
-        document
-          .getElementById("artImage")
-          .value = "";
+          pendingQuery,
+
+          (snap) => {
+
+            const list =
+              document.getElementById(
+                "submissionList"
+              );
 
 
-        status.textContent =
-          "✅ Submitted anonymously! Waiting for approval.";
+            list.innerHTML = "";
 
-      }catch(error){
+
+            if (snap.empty) {
+
+              list.innerHTML =
+                `
+                  <p class="empty">
+                    No pending submissions.
+                  </p>
+                `;
+
+              return;
+
+            }
+
+
+            const submissions = [];
+
+
+            snap.forEach(
+              (docSnap) => {
+
+                submissions.push({
+                  id: docSnap.id,
+                  ...docSnap.data()
+                });
+
+              }
+            );
+
+
+            submissions.sort(
+              (a, b) =>
+                (b.created || 0) -
+                (a.created || 0)
+            );
+
+
+            submissions.forEach(
+              (submission) => {
+
+                const card =
+                  document.createElement(
+                    "div"
+                  );
+
+
+                card.className =
+                  "submission";
+
+
+                const date =
+                  submission.created
+                    ? new Date(
+                        submission.created
+                      ).toLocaleString(
+                        "en-NZ"
+                      )
+                    : "Unknown time";
+
+
+                card.innerHTML = `
+
+                  <h3>
+                    ${escapeHtml(
+                      submission.title
+                    )}
+                  </h3>
+
+                  <p>
+                    👤 Anonymous submission
+                  </p>
+
+                  <p>
+                    🕐 ${date}
+                  </p>
+
+                  <img
+                    src="${submission.imageUrl}"
+                    alt="${escapeHtml(
+                      submission.title
+                    )}"
+                  >
+
+                  <button
+                    class="approveButton"
+                    data-id="${submission.id}"
+                  >
+                    ✅ Approve
+                  </button>
+
+                  <button
+                    class="rejectButton"
+                    data-id="${submission.id}"
+                  >
+                    ❌ Reject
+                  </button>
+
+                `;
+
+
+                list.appendChild(card);
+
+
+                card
+                  .querySelector(
+                    ".approveButton"
+                  )
+                  .addEventListener(
+                    "click",
+                    () =>
+                      approveSubmission(
+                        submission.id
+                      )
+                  );
+
+
+                card
+                  .querySelector(
+                    ".rejectButton"
+                  )
+                  .addEventListener(
+                    "click",
+                    () =>
+                      rejectSubmission(
+                        submission.id
+                      )
+                  );
+
+              }
+            );
+
+          },
+
+          (error) => {
+
+            console.error(
+              "Submission listener error:",
+              error
+            );
+
+
+            document.getElementById(
+              "submissionList"
+            ).innerHTML =
+              `
+                <p style="color:#ff7777;">
+                  ❌ Could not load submissions.
+                  Check your Firestore rules.
+                </p>
+              `;
+
+          }
+
+        );
+
+    }
+
+
+    // ================= APPROVE =================
+
+    async function approveSubmission(
+      id
+    ) {
+
+      try {
+
+        await updateDoc(
+
+          doc(
+            db,
+            "submissions",
+            id
+          ),
+
+          {
+            status: "approved",
+            approvedAt: Date.now()
+          }
+
+        );
+
+      } catch (error) {
 
         console.error(
-          "Upload error:",
+          "Approve error:",
           error
         );
 
-        status.textContent =
-          "❌ Upload failed: " +
-          error.message;
-
-      }
-
-    }
-  );
-
-
-/* =====================================================
-   ADMIN GATE
-===================================================== */
-
-document
-  .getElementById("adminButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      const box =
-        document.getElementById(
-          "adminGate"
+        alert(
+          "Could not approve submission."
         );
 
-      box.style.display =
-        "block";
-
-      box.scrollIntoView({
-        behavior:"smooth"
-      });
-
-    }
-  );
-
-
-document
-  .getElementById("adminLoginBtn")
-  .addEventListener(
-    "click",
-    () => {
-
-      const entered =
-        document
-          .getElementById(
-            "adminPassword"
-          )
-          .value;
-
-
-      if(
-        entered ===
-        ADMIN_PASSWORD
-      ){
-
-        document
-          .getElementById(
-            "adminGate"
-          )
-          .style.display =
-          "none";
-
-
-        document
-          .getElementById(
-            "adminPanel"
-          )
-          .style.display =
-          "block";
-
-
-        loadSubmissions();
-
-      }else{
-
-        document
-          .getElementById(
-            "adminError"
-          )
-          .textContent =
-          "❌ Wrong admin password.";
-
       }
 
     }
-  );
 
 
-/* =====================================================
-   ADMIN SUBMISSIONS
-===================================================== */
+    // ================= REJECT =================
 
-let submissionsListenerStarted =
-  false;
+    async function rejectSubmission(
+      id
+    ) {
 
+      try {
 
-function loadSubmissions(){
+        await updateDoc(
 
-  if(submissionsListenerStarted)
-    return;
+          doc(
+            db,
+            "submissions",
+            id
+          ),
 
-  submissionsListenerStarted =
-    true;
-
-
-  const list =
-    document.getElementById(
-      "submissionsList"
-    );
-
-
-  const pendingQuery =
-    query(
-      collection(
-        db,
-        "submissions"
-      ),
-      where(
-        "status",
-        "==",
-        "pending"
-      )
-    );
-
-
-  onSnapshot(
-    pendingQuery,
-
-    (snap) => {
-
-      list.innerHTML =
-        "";
-
-
-      if(snap.empty){
-
-        list.innerHTML =
-          "<p>🎉 No pending submissions!</p>";
-
-        return;
-
-      }
-
-
-      snap.forEach(
-        (docSnap) => {
-
-          const data =
-            docSnap.data();
-
-
-          const card =
-            document.createElement(
-              "div"
-            );
-
-          card.className =
-            "adminSubmission";
-
-
-          const title =
-            document.createElement(
-              "h3"
-            );
-
-          title.textContent =
-            data.title;
-
-
-          const anonymous =
-            document.createElement(
-              "p"
-            );
-
-          anonymous.textContent =
-            "👤 Anonymous submission";
-
-
-          const date =
-            document.createElement(
-              "p"
-            );
-
-          if(data.created){
-
-            date.textContent =
-              new Date(
-                data.created
-              ).toLocaleString();
-
+          {
+            status: "rejected",
+            rejectedAt: Date.now()
           }
 
+        );
 
-          const image =
-            document.createElement(
-              "img"
-            );
+      } catch (error) {
 
-          image.src =
-            data.imageUrl;
+        console.error(
+          "Reject error:",
+          error
+        );
 
+        alert(
+          "Could not reject submission."
+        );
 
-          const buttons =
-            document.createElement(
-              "div"
-            );
-
-          buttons.className =
-            "adminButtons";
-
-
-          const approve =
-            document.createElement(
-              "button"
-            );
-
-          approve.textContent =
-            "✅ APPROVE";
-
-          approve.className =
-            "approve";
-
-
-          const reject =
-            document.createElement(
-              "button"
-            );
-
-          reject.textContent =
-            "❌ REJECT";
-
-          reject.className =
-            "reject";
-
-
-          approve.onclick =
-            () => approveSubmission(
-              docSnap.id
-            );
-
-
-          reject.onclick =
-            () => rejectSubmission(
-              docSnap.id
-            );
-
-
-          buttons.appendChild(
-            approve
-          );
-
-          buttons.appendChild(
-            reject
-          );
-
-
-          card.appendChild(
-            title
-          );
-
-          card.appendChild(
-            anonymous
-          );
-
-          card.appendChild(
-            date
-          );
-
-          card.appendChild(
-            image
-          );
-
-          card.appendChild(
-            buttons
-          );
-
-
-          list.appendChild(
-            card
-          );
-
-        }
-      );
-
-    },
-
-    (error) => {
-
-      console.error(
-        "Admin submissions error:",
-        error
-      );
-
-      list.innerHTML =
-        "<p>❌ Couldn't load submissions.</p>";
+      }
 
     }
 
-  );
 
-}
+    // ================= APPROVED COMMUNITY ART =================
 
-
-/* =====================================================
-   APPROVE
-===================================================== */
-
-async function approveSubmission(
-  id
-){
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "submissions",
-        id
-      ),
-      {
-
-        status:
-          "approved",
-
-        approvedAt:
-          Date.now()
-
-      }
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ Couldn't approve artwork."
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   REJECT
-===================================================== */
-
-async function rejectSubmission(
-  id
-){
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "submissions",
-        id
-      ),
-      {
-
-        status:
-          "rejected",
-
-        rejectedAt:
-          Date.now()
-
-      }
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ Couldn't reject artwork."
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   APPROVED ARTWORKS
-===================================================== */
-
-const approvedQuery =
-  query(
-    collection(
-      db,
-      "submissions"
-    ),
-    where(
-      "status",
-      "==",
-      "approved"
-    )
-  );
-
-
-onSnapshot(
-  approvedQuery,
-
-  (snap) => {
-
-    const container =
-      document.getElementById(
-        "approvedSubmissions"
-      );
-
-
-    container.innerHTML =
-      "";
-
-
-    snap.forEach(
-      (docSnap) => {
-
-        const data =
-          docSnap.data();
-
-
-        const frame =
-          document.createElement(
-            "div"
-          );
-
-
-        frame.className =
-          "frame";
-
-
-        const image =
-          document.createElement(
-            "img"
-          );
-
-
-        image.src =
-          data.imageUrl;
-
-
-        const plaque =
-          document.createElement(
-            "div"
-          );
-
-
-        plaque.className =
-          "plaque";
-
-
-        const title =
-          document.createElement(
-            "h3"
-          );
-
-
-        title.textContent =
-          data.title;
-
-
-        const label =
-          document.createElement(
-            "p"
-          );
-
-
-        label.className =
-          "community-label";
-
-
-        label.textContent =
-          "Community Submission";
-
-
-        plaque.appendChild(
-          title
-        );
-
-        plaque.appendChild(
-          label
-        );
-
-
-        frame.appendChild(
-          image
-        );
-
-        frame.appendChild(
-          plaque
-        );
-
-
-        container.appendChild(
-          frame
-        );
-
-      }
-
-    );
-
-  },
-
-  (error) => {
-
-    console.error(
-      "Approved artwork error:",
-      error
-    );
-
-  }
-
-);
-
-
-/* =====================================================
-   RATINGS
-===================================================== */
-
-const ratings =
-  collection(
-    db,
-    "ratings"
-  );
-
-
-const arts = [
-
-  "birthday",
-  "megamind",
-  "knee",
-  "breakout",
-  "curious",
-  "baby",
-  "confused"
-
-];
-
-
-let device =
-  localStorage.getItem(
-    "samaDevice"
-  );
-
-
-if(!device){
-
-  device =
-    Math.random()
-      .toString(36)
-      .slice(2);
-
-  localStorage.setItem(
-    "samaDevice",
-    device
-  );
-
-}
-
-
-/* =====================================================
-   RATE ART
-===================================================== */
-
-window.rateArt =
-  async (art) => {
-
-    const rating =
-      Number(
-        document
-          .getElementById(
-            "rate-" + art
-          )
-          .value
-      );
-
-
-    try{
-
-      await setDoc(
-
-        doc(
+    const approvedQuery =
+      query(
+        collection(
           db,
-          "ratings",
-          art + "_" + device
+          "submissions"
         ),
 
-        {
-
-          artwork:
-            art,
-
-          device:
-            device,
-
-          rating:
-            rating
-
-        }
-
+        where(
+          "status",
+          "==",
+          "approved"
+        )
       );
 
-    }catch(error){
-
-      console.error(
-        "Rating error:",
-        error
-      );
-
-    }
-
-  };
-
-
-/* =====================================================
-   LIVE RATINGS
-===================================================== */
-
-arts.forEach(
-  (art) => {
 
     onSnapshot(
 
-      query(
-        ratings,
-        where(
-          "artwork",
-          "==",
-          art
-        )
-      ),
+      approvedQuery,
 
       (snap) => {
 
-        let total = 0;
+        const gallery =
+          document.getElementById(
+            "gallery"
+          );
 
 
         snap.forEach(
           (docSnap) => {
 
-            total += Number(
-              docSnap.data().rating
-            );
+            const submission =
+              docSnap.data();
+
+
+            const existing =
+              document.getElementById(
+                "community-" +
+                docSnap.id
+              );
+
+
+            if (existing) {
+              return;
+            }
+
+
+            const frame =
+              document.createElement(
+                "div"
+              );
+
+
+            frame.className =
+              "frame";
+
+
+            frame.id =
+              "community-" +
+              docSnap.id;
+
+
+            frame.innerHTML = `
+
+              <img
+                class="artImage"
+                src="${submission.imageUrl}"
+                alt="${escapeHtml(
+                  submission.title
+                )}"
+              >
+
+              <div class="plaque">
+
+                <h2>
+                  ${escapeHtml(
+                    submission.title
+                  )}
+                </h2>
+
+                <p class="communityLabel">
+                  Community Submission
+                </p>
+
+              </div>
+
+            `;
+
+
+            gallery.appendChild(frame);
 
           }
+
         );
-
-
-        const count =
-          snap.size;
-
-
-        const average =
-          count === 0
-            ? 0
-            : total / count;
-
-
-        const avgElement =
-          document.getElementById(
-            "avg-" + art
-          );
-
-
-        const countElement =
-          document.getElementById(
-            "count-" + art
-          );
-
-
-        if(avgElement){
-
-          avgElement.textContent =
-            average.toFixed(1) +
-            " / 10";
-
-        }
-
-
-        if(countElement){
-
-          countElement.textContent =
-            count === 1
-              ? "⭐ 1 rating"
-              : "⭐ " +
-                count +
-                " ratings";
-
-        }
 
       },
 
       (error) => {
 
         console.error(
-          "Rating sync error:",
+          "Approved artwork error:",
           error
         );
 
@@ -1792,10 +1606,28 @@ arts.forEach(
 
     );
 
-  }
-);
 
-</script>
+    // ================= HTML ESCAPE =================
+
+    function escapeHtml(
+      text
+    ) {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        text ?? "";
+
+
+      return div.innerHTML;
+
+    }
+
+  </script>
 
 </body>
 </html>
