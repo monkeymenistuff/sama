@@ -106,26 +106,37 @@ header p{
   margin-top:8px;
 }
 
-/* ================= ACCOUNT BAR ================= */
+/* ================= SUBMISSION PANEL ================= */
 
-.accountBar{
-  max-width:1200px;
-  margin:25px auto 0;
-  padding:15px 20px;
+.panel{
+  max-width:800px;
+  margin:35px auto;
+  padding:25px;
   background:#24152b;
-  border:1px solid #6b4a25;
-  border-radius:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
+  border:2px solid #d6b36d;
+  border-radius:18px;
 }
 
-.accountBar button{
-  width:auto;
-  padding:8px 15px;
-  margin:0;
+.panel h2{
+  color:#f3d48a;
+  margin-bottom:12px;
+}
+
+.panel p{
+  color:#d5c29a;
+  margin-bottom:10px;
+}
+
+.panel input[type="text"],
+.panel input[type="password"],
+.panel input[type="file"]{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  background:#382046;
+  border:none;
+  border-radius:10px;
+  color:white;
 }
 
 /* ================= GALLERY ================= */
@@ -177,99 +188,42 @@ header p{
   margin-bottom:8px;
 }
 
-select{
-  margin-top:8px;
-}
+/* ================= COMMUNITY ART ================= */
 
-/* ================= SUBMISSION ================= */
-
-.panel{
-  max-width:800px;
-  margin:40px auto;
-  padding:25px;
-  background:#24152b;
-  border:2px solid #d6b36d;
-  border-radius:18px;
-}
-
-.panel h2{
-  color:#f3d48a;
-  margin-bottom:15px;
-}
-
-.panel p{
+.community-label{
   color:#d5c29a;
-  margin-bottom:10px;
-}
-
-#uploadBox{
-  display:none;
-}
-
-#loginBox{
-  display:none;
-}
-
-#userInfo{
-  color:#d5c29a;
-  margin-top:8px;
-}
-
-.status{
-  margin-top:12px;
-  color:#8fff9b;
+  font-size:14px;
+  margin-top:6px;
 }
 
 /* ================= ADMIN ================= */
 
-#adminGate{
-  display:none;
-  max-width:500px;
-  margin:40px auto;
-  padding:25px;
-  background:#24152b;
-  border:2px solid #d6b36d;
-  border-radius:18px;
-}
-
+#adminGate,
 #adminPanel{
   display:none;
-  max-width:1000px;
-  margin:40px auto;
-  padding:25px;
-  background:#24152b;
-  border:2px solid #d6b36d;
-  border-radius:18px;
 }
 
-#adminPanel h2,
-#adminGate h2{
-  color:#f3d48a;
-  margin-bottom:15px;
-}
-
-.submission{
+.adminSubmission{
   background:#382046;
   padding:18px;
   border-radius:12px;
-  margin-top:15px;
+  margin-top:20px;
 }
 
-.submission img{
+.adminSubmission img{
   width:100%;
-  max-width:400px;
-  max-height:400px;
+  max-height:450px;
   object-fit:contain;
   display:block;
-  margin:12px auto;
+  margin:15px auto;
   border-radius:8px;
 }
 
-.submission h3{
+.adminSubmission h3{
   color:#f6dfab;
 }
 
-.submission p{
+.adminSubmission p{
   color:#d5c29a;
   margin-top:5px;
 }
@@ -309,10 +263,6 @@ footer{
   color:#a38d65;
 }
 
-.hidden{
-  display:none !important;
-}
-
 </style>
 
 </head>
@@ -322,7 +272,7 @@ footer{
 
 
 <!-- =====================================================
-     PASSWORD GATE
+     MUSEUM PASSWORD
 ===================================================== -->
 
 <div id="gate">
@@ -366,103 +316,23 @@ footer{
 
   <h1>👑 SAMA MUSEUM</h1>
 
-  <p>
-    The Official Senyu Huang Collection
-  </p>
+  <p>The Official Senyu Huang Collection</p>
 
 </header>
 
 
 <!-- =====================================================
-     ACCOUNT BAR
+     SUBMIT ARTWORK
 ===================================================== -->
 
-<div class="accountBar">
-
-  <div>
-
-    <strong id="accountText">
-      Not logged in
-    </strong>
-
-    <div id="userInfo"></div>
-
-  </div>
-
-  <button
-    id="logoutBtn"
-    style="display:none;"
-  >
-    Logout
-  </button>
-
-</div>
-
-
-<!-- =====================================================
-     LOGIN / ACCOUNT
-===================================================== -->
-
-<div
-  class="panel"
-  id="loginBox"
->
-
-  <h2>👤 Museum Account</h2>
-
-  <p>
-    Create an account to submit artwork to the museum.
-  </p>
-
-  <input
-    id="username"
-    type="text"
-    placeholder="Username"
-  >
-
-  <input
-    id="email"
-    type="email"
-    placeholder="Email"
-  >
-
-  <input
-    id="password"
-    type="password"
-    placeholder="Password"
-  >
-
-  <button id="signupBtn">
-    Create Account
-  </button>
-
-  <button id="loginBtn">
-    Login
-  </button>
-
-  <p
-    id="authMessage"
-    style="margin-top:10px;color:#ff9d9d;"
-  ></p>
-
-</div>
-
-
-<!-- =====================================================
-     UPLOAD ARTWORK
-===================================================== -->
-
-<div
-  class="panel"
-  id="uploadBox"
->
+<div class="panel">
 
   <h2>🖼️ Submit Artwork</h2>
 
   <p>
-    Submit an artwork for consideration.
-    All submissions must be approved before appearing
-    in the museum.
+    Submit an artwork to the museum.
+    Your submission is anonymous and must be approved
+    before it appears in the exhibition.
   </p>
 
   <input
@@ -483,25 +353,22 @@ footer{
 
   <p
     id="uploadStatus"
-    class="status"
+    style="margin-top:12px;"
   ></p>
 
 </div>
 
 
 <!-- =====================================================
-     ADMIN ADMISSIONS BUTTON
+     ADMIN ADMISSIONS
 ===================================================== -->
 
-<div
-  class="panel"
-  style="text-align:center;"
->
+<div class="panel">
 
   <h2>👑 Art Admissions</h2>
 
   <p>
-    Have an artwork to submit? Use your account above.
+    Museum administrator only.
   </p>
 
   <button id="adminButton">
@@ -515,7 +382,10 @@ footer{
      ADMIN PASSWORD
 ===================================================== -->
 
-<div id="adminGate">
+<div
+  id="adminGate"
+  class="panel"
+>
 
   <h2>🔐 Admin Admissions</h2>
 
@@ -545,12 +415,15 @@ footer{
      ADMIN PANEL
 ===================================================== -->
 
-<div id="adminPanel">
+<div
+  id="adminPanel"
+  class="panel"
+>
 
   <h2>👑 Artwork Admissions</h2>
 
   <p>
-    Review submitted artwork before it enters the museum.
+    Review anonymous artwork submissions.
   </p>
 
   <div id="submissionsList">
@@ -907,9 +780,7 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     APPROVED SUBMISSIONS APPEAR HERE
-===================================================== -->
+<!-- APPROVED COMMUNITY ART -->
 
 <div id="approvedSubmissions"></div>
 
@@ -933,11 +804,9 @@ footer{
 
 <script type="module">
 
-
 import {
   initializeApp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
 
 import {
   getFirestore,
@@ -951,16 +820,6 @@ import {
   updateDoc
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-
 import {
   getStorage,
   ref,
@@ -969,10 +828,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
 
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
-
+/* ================= FIREBASE ================= */
 
 const firebaseConfig = {
 
@@ -1000,46 +856,23 @@ const firebaseConfig = {
 const app =
   initializeApp(firebaseConfig);
 
-
 const db =
   getFirestore(app);
-
-
-const auth =
-  getAuth(app);
-
 
 const storage =
   getStorage(app);
 
 
-/* =====================================================
-   PASSWORDS
-===================================================== */
-
-
-/*
-   Museum password
-*/
+/* ================= PASSWORDS ================= */
 
 const MUSEUM_PASSWORD =
   "bigdaddyhuangjiba123";
 
-
-/*
-   ADMIN ADMISSIONS PASSWORD
-
-   CHANGE THIS.
-*/
-
 const ADMIN_PASSWORD =
-  "CHANGE_THIS_ADMIN_PASSWORD";
+  "bigdaddyhuanghasabigdaddydiaper";
 
 
-/* =====================================================
-   DOM
-===================================================== */
-
+/* ================= MUSEUM GATE ================= */
 
 const gate =
   document.getElementById("gate");
@@ -1055,45 +888,6 @@ const wrong =
 
 const enterBtn =
   document.getElementById("enterBtn");
-
-
-const loginBox =
-  document.getElementById("loginBox");
-
-const uploadBox =
-  document.getElementById("uploadBox");
-
-const usernameInput =
-  document.getElementById("username");
-
-const emailInput =
-  document.getElementById("email");
-
-const passwordInput =
-  document.getElementById("password");
-
-const signupBtn =
-  document.getElementById("signupBtn");
-
-const loginBtn =
-  document.getElementById("loginBtn");
-
-const logoutBtn =
-  document.getElementById("logoutBtn");
-
-const authMessage =
-  document.getElementById("authMessage");
-
-const accountText =
-  document.getElementById("accountText");
-
-const userInfo =
-  document.getElementById("userInfo");
-
-
-/* =====================================================
-   ENTER MUSEUM
-===================================================== */
 
 
 function enterMuseum(){
@@ -1143,214 +937,8 @@ passInput.addEventListener(
 
 
 /* =====================================================
-   ACCOUNT SIGNUP
+   ANONYMOUS ART SUBMISSION
 ===================================================== */
-
-
-signupBtn.addEventListener(
-  "click",
-  async () => {
-
-    const username =
-      usernameInput.value.trim();
-
-    const email =
-      emailInput.value.trim();
-
-    const password =
-      passwordInput.value;
-
-
-    if(!username || !email || !password){
-
-      authMessage.textContent =
-        "❌ Fill in all fields.";
-
-      return;
-
-    }
-
-
-    try{
-
-      const result =
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-
-      await setDoc(
-        doc(
-          db,
-          "users",
-          result.user.uid
-        ),
-        {
-
-          username:
-            username,
-
-          email:
-            email,
-
-          uid:
-            result.user.uid
-
-        }
-      );
-
-
-      authMessage.style.color =
-        "#8fff9b";
-
-      authMessage.textContent =
-        "✅ Account created!";
-
-
-    }catch(error){
-
-      authMessage.style.color =
-        "#ff9d9d";
-
-      authMessage.textContent =
-        "❌ " + error.message;
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-
-loginBtn.addEventListener(
-  "click",
-  async () => {
-
-    const email =
-      emailInput.value.trim();
-
-    const password =
-      passwordInput.value;
-
-
-    if(!email || !password){
-
-      authMessage.textContent =
-        "❌ Enter your email and password.";
-
-      return;
-
-    }
-
-
-    try{
-
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-      authMessage.style.color =
-        "#8fff9b";
-
-      authMessage.textContent =
-        "✅ Logged in!";
-
-
-    }catch(error){
-
-      authMessage.style.color =
-        "#ff9d9d";
-
-      authMessage.textContent =
-        "❌ Login failed.";
-
-      console.error(error);
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-
-logoutBtn.addEventListener(
-  "click",
-  async () => {
-
-    await signOut(auth);
-
-  }
-);
-
-
-/* =====================================================
-   ACCOUNT STATE
-===================================================== */
-
-
-onAuthStateChanged(
-  auth,
-  async (user) => {
-
-    if(user){
-
-      loginBox.style.display =
-        "none";
-
-      uploadBox.style.display =
-        "block";
-
-      logoutBtn.style.display =
-        "block";
-
-      accountText.textContent =
-        "👤 " +
-        user.email;
-
-      userInfo.textContent =
-        "Account UID: " +
-        user.uid;
-
-    }else{
-
-      loginBox.style.display =
-        "block";
-
-      uploadBox.style.display =
-        "none";
-
-      logoutBtn.style.display =
-        "none";
-
-      accountText.textContent =
-        "Not logged in";
-
-      userInfo.textContent =
-        "";
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   SUBMIT ARTWORK
-===================================================== */
-
 
 document
   .getElementById("submitArtworkBtn")
@@ -1358,33 +946,16 @@ document
     "click",
     async () => {
 
-      const user =
-        auth.currentUser;
-
-
-      if(!user){
-
-        alert(
-          "You must be logged in."
-        );
-
-        return;
-
-      }
-
-
       const title =
         document
           .getElementById("artTitle")
           .value
           .trim();
 
-
       const file =
         document
           .getElementById("artImage")
           .files[0];
-
 
       const status =
         document
@@ -1414,7 +985,21 @@ document
       if(!file.type.startsWith("image/")){
 
         status.textContent =
-          "❌ That isn't an image.";
+          "❌ Please upload an image.";
+
+        return;
+
+      }
+
+
+      /*
+        Limit uploads to 10 MB.
+      */
+
+      if(file.size > 10 * 1024 * 1024){
+
+        status.textContent =
+          "❌ Image must be under 10 MB.";
 
         return;
 
@@ -1424,11 +1009,15 @@ document
       try{
 
         status.textContent =
-          "⏳ Uploading image...";
+          "⏳ Uploading...";
 
 
-        const fileName =
+        const uniqueName =
           Date.now() +
+          "_" +
+          Math.random()
+            .toString(36)
+            .slice(2) +
           "_" +
           file.name;
 
@@ -1437,9 +1026,7 @@ document
           ref(
             storage,
             "submissions/" +
-            user.uid +
-            "/" +
-            fileName
+            uniqueName
           );
 
 
@@ -1471,12 +1058,6 @@ document
             imagePath:
               imageRef.fullPath,
 
-            uid:
-              user.uid,
-
-            email:
-              user.email,
-
             status:
               "pending",
 
@@ -1491,18 +1072,20 @@ document
           .getElementById("artTitle")
           .value = "";
 
-
         document
           .getElementById("artImage")
           .value = "";
 
 
         status.textContent =
-          "✅ Submitted! Your artwork is waiting for approval.";
+          "✅ Submitted anonymously! Waiting for approval.";
 
       }catch(error){
 
-        console.error(error);
+        console.error(
+          "Upload error:",
+          error
+        );
 
         status.textContent =
           "❌ Upload failed: " +
@@ -1515,9 +1098,8 @@ document
 
 
 /* =====================================================
-   ADMIN PASSWORD
+   ADMIN GATE
 ===================================================== */
-
 
 document
   .getElementById("adminButton")
@@ -1525,20 +1107,16 @@ document
     "click",
     () => {
 
-      document
-        .getElementById("adminGate")
-        .style.display =
+      const box =
+        document.getElementById(
+          "adminGate"
+        );
+
+      box.style.display =
         "block";
 
-      window.scrollTo({
-        top:
-          document
-            .getElementById("adminGate")
-            .offsetTop - 20,
-
-        behavior:
-          "smooth"
-
+      box.scrollIntoView({
+        behavior:"smooth"
       });
 
     }
@@ -1553,7 +1131,9 @@ document
 
       const entered =
         document
-          .getElementById("adminPassword")
+          .getElementById(
+            "adminPassword"
+          )
           .value;
 
 
@@ -1563,24 +1143,29 @@ document
       ){
 
         document
-          .getElementById("adminGate")
+          .getElementById(
+            "adminGate"
+          )
           .style.display =
           "none";
 
 
         document
-          .getElementById("adminPanel")
+          .getElementById(
+            "adminPanel"
+          )
           .style.display =
           "block";
 
 
         loadSubmissions();
 
-
       }else{
 
         document
-          .getElementById("adminError")
+          .getElementById(
+            "adminError"
+          )
           .textContent =
           "❌ Wrong admin password.";
 
@@ -1594,8 +1179,18 @@ document
    ADMIN SUBMISSIONS
 ===================================================== */
 
+let submissionsListenerStarted =
+  false;
+
 
 function loadSubmissions(){
+
+  if(submissionsListenerStarted)
+    return;
+
+  submissionsListenerStarted =
+    true;
+
 
   const list =
     document.getElementById(
@@ -1603,8 +1198,7 @@ function loadSubmissions(){
     );
 
 
-  onSnapshot(
-
+  const pendingQuery =
     query(
       collection(
         db,
@@ -1615,11 +1209,16 @@ function loadSubmissions(){
         "==",
         "pending"
       )
-    ),
+    );
+
+
+  onSnapshot(
+    pendingQuery,
 
     (snap) => {
 
-      list.innerHTML = "";
+      list.innerHTML =
+        "";
 
 
       if(snap.empty){
@@ -1644,9 +1243,8 @@ function loadSubmissions(){
               "div"
             );
 
-
           card.className =
-            "submission";
+            "adminSubmission";
 
 
           const title =
@@ -1658,24 +1256,28 @@ function loadSubmissions(){
             data.title;
 
 
-          const submitter =
+          const anonymous =
             document.createElement(
               "p"
             );
 
-          submitter.textContent =
-            "Submitted by: " +
-            data.email;
+          anonymous.textContent =
+            "👤 Anonymous submission";
 
 
-          const uid =
+          const date =
             document.createElement(
               "p"
             );
 
-          uid.textContent =
-            "UID: " +
-            data.uid;
+          if(data.created){
+
+            date.textContent =
+              new Date(
+                data.created
+              ).toLocaleString();
+
+          }
 
 
           const image =
@@ -1691,7 +1293,6 @@ function loadSubmissions(){
             document.createElement(
               "div"
             );
-
 
           buttons.className =
             "adminButtons";
@@ -1747,11 +1348,11 @@ function loadSubmissions(){
           );
 
           card.appendChild(
-            submitter
+            anonymous
           );
 
           card.appendChild(
-            uid
+            date
           );
 
           card.appendChild(
@@ -1775,7 +1376,7 @@ function loadSubmissions(){
     (error) => {
 
       console.error(
-        "Submission error:",
+        "Admin submissions error:",
         error
       );
 
@@ -1792,7 +1393,6 @@ function loadSubmissions(){
 /* =====================================================
    APPROVE
 ===================================================== */
-
 
 async function approveSubmission(
   id
@@ -1822,7 +1422,7 @@ async function approveSubmission(
     console.error(error);
 
     alert(
-      "Couldn't approve submission."
+      "❌ Couldn't approve artwork."
     );
 
   }
@@ -1833,7 +1433,6 @@ async function approveSubmission(
 /* =====================================================
    REJECT
 ===================================================== */
-
 
 async function rejectSubmission(
   id
@@ -1863,7 +1462,7 @@ async function rejectSubmission(
     console.error(error);
 
     alert(
-      "Couldn't reject submission."
+      "❌ Couldn't reject artwork."
     );
 
   }
@@ -1874,7 +1473,6 @@ async function rejectSubmission(
 /* =====================================================
    APPROVED ARTWORKS
 ===================================================== */
-
 
 const approvedQuery =
   query(
@@ -1892,6 +1490,7 @@ const approvedQuery =
 
 onSnapshot(
   approvedQuery,
+
   (snap) => {
 
     const container =
@@ -1926,6 +1525,7 @@ onSnapshot(
             "img"
           );
 
+
         image.src =
           data.imageUrl;
 
@@ -1954,6 +1554,10 @@ onSnapshot(
           document.createElement(
             "p"
           );
+
+
+        label.className =
+          "community-label";
 
 
         label.textContent =
@@ -1991,18 +1595,18 @@ onSnapshot(
   (error) => {
 
     console.error(
-      "Approved artwork sync error:",
+      "Approved artwork error:",
       error
     );
 
   }
+
 );
 
 
 /* =====================================================
    RATINGS
 ===================================================== */
-
 
 const ratings =
   collection(
@@ -2048,7 +1652,6 @@ if(!device){
 /* =====================================================
    RATE ART
 ===================================================== */
-
 
 window.rateArt =
   async (art) => {
@@ -2103,7 +1706,6 @@ window.rateArt =
 /* =====================================================
    LIVE RATINGS
 ===================================================== */
-
 
 arts.forEach(
   (art) => {
@@ -2192,7 +1794,6 @@ arts.forEach(
 
   }
 );
-
 
 </script>
 
