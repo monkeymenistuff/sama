@@ -5,105 +5,419 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sama Museum</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#120b16;color:#f4ead7;font-family:Georgia,serif}
-button,input,select{font:inherit}
-button{cursor:pointer}
-#gate{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle,#4f2b6f,#120b16 70%)}
-.gateBox{width:100%;max-width:420px;background:#24152b;border:2px solid #d6b36d;border-radius:16px;padding:35px;text-align:center;box-shadow:0 0 35px #d6b36d40}
-.gateBox h1,header h1,.sectionTitle{color:#d6b36d}
-.gateBox input{width:100%;padding:13px;margin:15px 0 12px;border:1px solid #d6b36d;border-radius:8px;background:#120b16;color:white}
-.goldButton,.rateButton{border:0;border-radius:8px;background:#d6b36d;color:#24152b;font-weight:bold;padding:11px 17px}
-.gateBox .goldButton{width:100%}
-#wrong{color:#ff7777;display:none}
-#museum{display:none}
-header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#34194b,#170d23);border-bottom:2px solid #d6b36d}
-header h1{font-size:40px;margin:0}
-header p{color:#d8cbb9}
-.layout{max-width:1400px;margin:auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding:30px 20px}
-.sidebar{background:#24152b;border:1px solid #70507a;border-radius:12px;padding:18px;height:max-content}
-.sidebar h2{font-size:18px;color:#d6b36d;margin:0 0 15px}
-.navButton{display:block;width:100%;text-align:left;background:transparent;color:#f4ead7;border:1px solid transparent;padding:13px;border-radius:8px;margin-bottom:8px}
-.navButton:hover,.navButton.active{background:#432952;border-color:#d6b36d}
-.sectionTitle{text-align:center;font-size:30px;margin:5px 0 28px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
-.frame{background:#24152b;border:12px solid #5a3d24;border-radius:5px;padding:8px;box-shadow:0 8px 25px #0008,inset 0 0 0 2px #d6b36d}
-.artImage{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#0d0810}
-.plaque{background:#e4d2ae;color:#24152b;padding:15px;margin-top:10px;text-align:center}
-.plaque h2{margin:0 0 7px;font-size:20px;overflow-wrap:anywhere}
-.plaque p{margin:0;font-size:14px}
-.rating{text-align:center;margin-top:12px}
-.ratingAverage{font-size:18px;font-weight:bold;color:#d6b36d}
-.ratingCount{font-size:14px;margin:5px 0 10px}
-.rating select{padding:8px;border-radius:6px;background:#120b16;color:white;border:1px solid #d6b36d}
-.rateButton{padding:9px 13px;margin-left:5px}
-#newSection{display:none}
-.empty{color:#b7a6c0;font-style:italic;text-align:center}
-footer{text-align:center;padding:36px 20px;border-top:1px solid #3c2945;color:#9e8eaa}
-@media(max-width:720px){
-.layout{grid-template-columns:1fr}
-.sidebar{display:flex;flex-wrap:wrap;gap:8px}
-.sidebar h2{width:100%}
-.navButton{width:auto;flex:1;margin:0}
-header h1{font-size:30px}
-.gallery{grid-template-columns:1fr}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #120b16;
+  color: #f4ead7;
+  font-family: Georgia, serif;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* PASSWORD ENTRANCE */
+
+#gate {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: radial-gradient(
+    circle,
+    #4f2b6f,
+    #120b16 70%
+  );
+}
+
+.gateBox {
+  width: 100%;
+  max-width: 420px;
+  background: #24152b;
+  border: 2px solid #d6b36d;
+  border-radius: 16px;
+  padding: 35px;
+  text-align: center;
+  box-shadow: 0 0 35px #d6b36d40;
+}
+
+.gateBox h1 {
+  color: #d6b36d;
+}
+
+.gateBox input {
+  width: 100%;
+  padding: 13px;
+  margin: 15px 0 12px;
+  border: 1px solid #d6b36d;
+  border-radius: 8px;
+  background: #120b16;
+  color: white;
+}
+
+.goldButton,
+.rateButton {
+  border: 0;
+  border-radius: 8px;
+  background: #d6b36d;
+  color: #24152b;
+  font-weight: bold;
+  padding: 11px 17px;
+}
+
+.gateBox .goldButton {
+  width: 100%;
+}
+
+#wrong {
+  color: #ff7777;
+  display: none;
+}
+
+/* MAIN MUSEUM */
+
+#museum {
+  display: none;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(
+    135deg,
+    #34194b,
+    #170d23
+  );
+  border-bottom: 2px solid #d6b36d;
+}
+
+header h1 {
+  font-size: 40px;
+  color: #d6b36d;
+  margin: 0;
+}
+
+header p {
+  color: #d8cbb9;
+}
+
+.layout {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 28px;
+  padding: 30px 20px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  background: #24152b;
+  border: 1px solid #70507a;
+  border-radius: 12px;
+  padding: 18px;
+  height: max-content;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  color: #d6b36d;
+  margin: 0 0 15px;
+}
+
+.navButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #f4ead7;
+  border: 1px solid transparent;
+  padding: 13px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.navButton:hover,
+.navButton.active {
+  background: #432952;
+  border-color: #d6b36d;
+}
+
+/* COLLECTIONS */
+
+.sectionTitle {
+  text-align: center;
+  font-size: 30px;
+  color: #d6b36d;
+  margin: 5px 0 12px;
+}
+
+.sectionDescription {
+  text-align: center;
+  color: #cbbcd0;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  );
+  gap: 26px;
+}
+
+.frame {
+  background: #24152b;
+  border: 12px solid #5a3d24;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow:
+    0 8px 25px #0008,
+    inset 0 0 0 2px #d6b36d;
+}
+
+.artImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #0d0810;
+}
+
+.plaque {
+  background: #e4d2ae;
+  color: #24152b;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.plaque h2 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.plaque p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.artDescription {
+  margin-top: 10px !important;
+  font-style: italic;
+  line-height: 1.5;
+  color: #5a4055;
+}
+
+/* RATINGS */
+
+.rating {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.ratingAverage {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d6b36d;
+}
+
+.ratingCount {
+  font-size: 14px;
+  margin: 5px 0 10px;
+}
+
+.rating select {
+  padding: 8px;
+  border-radius: 6px;
+  background: #120b16;
+  color: white;
+  border: 1px solid #d6b36d;
+}
+
+.rateButton {
+  padding: 9px 13px;
+  margin-left: 5px;
+}
+
+#newSection {
+  display: none;
+}
+
+.empty {
+  color: #b7a6c0;
+  font-style: italic;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 36px 20px;
+  border-top: 1px solid #3c2945;
+  color: #9e8eaa;
+}
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebar h2 {
+    width: 100%;
+  }
+
+  .navButton {
+    width: auto;
+    flex: 1;
+    margin: 0;
+  }
+
+  header h1 {
+    font-size: 30px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
+
 <body>
+
+<!-- PASSWORD GATE -->
 
 <div id="gate">
   <div class="gateBox">
     <h1>👑 SAMA MUSEUM</h1>
     <p>The Official Senyu Huang Collection</p>
-    <input id="pass" type="password" placeholder="Enter museum password">
-    <button id="enterBtn" class="goldButton">Enter Museum</button>
+
+    <input
+      id="pass"
+      type="password"
+      placeholder="Enter museum password"
+    >
+
+    <button id="enterBtn" class="goldButton">
+      Enter Museum
+    </button>
+
     <p id="wrong">❌ Incorrect password</p>
   </div>
 </div>
 
+<!-- MUSEUM -->
+
 <div id="museum">
+
   <header>
     <h1>👑 SAMA MUSEUM</h1>
     <p>The Official Senyu Huang Collection</p>
   </header>
 
   <div class="layout">
+
+    <!-- SIDEBAR -->
+
     <aside class="sidebar">
       <h2>Explore</h2>
-      <button id="originalTab" class="navButton active">
+
+      <button
+        id="originalTab"
+        class="navButton active"
+      >
         🖼️ The Collection
       </button>
-      <button id="newTab" class="navButton">
-        ＋ New Collection
+
+      <button
+        id="newTab"
+        class="navButton"
+      >
+        ✨ New Collection
       </button>
     </aside>
 
     <main>
+
+      <!-- ORIGINAL COLLECTION -->
+
       <section id="originalSection">
-        <h2 class="sectionTitle">The Collection</h2>
+
+        <h2 class="sectionTitle">
+          The Original Collection
+        </h2>
+
+        <p class="sectionDescription">
+          Where the legend first began.
+        </p>
+
         <div id="gallery" class="gallery"></div>
+
       </section>
 
+      <!-- NEW COLLECTION -->
+
       <section id="newSection">
-        <h2 class="sectionTitle">New Collection</h2>
-        <div id="newGallery" class="gallery"></div>
-        <p id="newEmpty" class="empty">
-          No new pictures yet. Add them through GitHub!
+
+        <h2 class="sectionTitle">
+          The Legendary Archives
+        </h2>
+
+        <p class="sectionDescription">
+          Six extraordinary masterpieces.
+          One unforgettable legend.
         </p>
+
+        <div id="newGallery" class="gallery"></div>
+
+        <p id="newEmpty" class="empty">
+          No new pictures yet.
+        </p>
+
       </section>
+
     </main>
   </div>
 
   <footer>
     👑 Curated by Senyu Huang • The Sama Museum
   </footer>
+
 </div>
 
+<!-- FIREBASE + JAVASCRIPT -->
+
 <script type="module">
-import {initializeApp}
-  from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js';
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
 import {
   getFirestore,
@@ -113,245 +427,429 @@ import {
   query,
   where,
   onSnapshot
-} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+}
+from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+// FIREBASE CONFIG
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ',
-  authDomain: 'sama-pics-a3cf6.firebaseapp.com',
-  projectId: 'sama-pics-a3cf6',
-  storageBucket: 'sama-pics-a3cf6.firebasestorage.app',
-  messagingSenderId: '407213655664',
-  appId: '1:407213655664:web:200f0e35402f6b139ed6b5',
-  measurementId: 'G-478W5P7WX8'
+  apiKey: "AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ",
+  authDomain: "sama-pics-a3cf6.firebaseapp.com",
+  projectId: "sama-pics-a3cf6",
+  storageBucket: "sama-pics-a3cf6.firebasestorage.app",
+  messagingSenderId: "407213655664",
+  appId: "1:407213655664:web:200f0e35402f6b139ed6b5",
+  measurementId: "G-478W5P7WX8"
 };
 
-const db = getFirestore(initializeApp(firebaseConfig));
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const $ = id => document.getElementById(id);
 
-// MUSEUM PASSWORD
-// This is a simple entrance screen, not secure authentication.
-const MUSEUM_PASSWORD = 'bigdaddyhuangjiba123';
+// PASSWORD
 
-function enter() {
-  if ($('pass').value === MUSEUM_PASSWORD) {
-    $('gate').style.display = 'none';
-    $('museum').style.display = 'block';
+// Note: This is a visual entrance screen.
+// Passwords inside public HTML are not secure.
+
+const MUSEUM_PASSWORD = "bigdaddyhuangjiba123";
+
+function enterMuseum() {
+
+  if ($("pass").value === MUSEUM_PASSWORD) {
+
+    $("gate").style.display = "none";
+    $("museum").style.display = "block";
+
   } else {
-    $('wrong').style.display = 'block';
+
+    $("wrong").style.display = "block";
+
   }
 }
 
-$('enterBtn').onclick = enter;
+$("enterBtn").onclick = enterMuseum;
 
-$('pass').addEventListener('keydown', e => {
-  if (e.key === 'Enter') enter();
+$("pass").addEventListener("keydown", event => {
+
+  if (event.key === "Enter") {
+    enterMuseum();
+  }
+
 });
 
 // SIDEBAR NAVIGATION
-function showSection(isNew) {
-  $('originalSection').style.display = isNew ? 'none' : 'block';
-  $('newSection').style.display = isNew ? 'block' : 'none';
 
-  $('originalTab').classList.toggle('active', !isNew);
-  $('newTab').classList.toggle('active', isNew);
+function showSection(isNew) {
+
+  $("originalSection").style.display =
+    isNew ? "none" : "block";
+
+  $("newSection").style.display =
+    isNew ? "block" : "none";
+
+  $("originalTab").classList.toggle(
+    "active",
+    !isNew
+  );
+
+  $("newTab").classList.toggle(
+    "active",
+    isNew
+  );
+
 }
 
-$('originalTab').onclick = () => showSection(false);
-$('newTab').onclick = () => showSection(true);
+$("originalTab").onclick = () => showSection(false);
+$("newTab").onclick = () => showSection(true);
 
+// ==========================================
 // ORIGINAL COLLECTION
-// Keep these images in the same folder as index.html.
+// ==========================================
 
 const originalArts = [
+
   {
-    id: 'birthday',
-    title: 'Birthday Monkey',
-    image: 'birthday.webp'
+    id: "birthday",
+    title: "Birthday Monkey",
+    image: "birthday.webp"
   },
+
   {
-    id: 'megamind',
-    title: 'Megamind',
-    image: 'megamind.webp'
+    id: "megamind",
+    title: "Megamind",
+    image: "megamind.webp"
   },
+
   {
-    id: 'knee',
-    title: 'Knee Eater',
-    image: 'knee.webp'
+    id: "knee",
+    title: "Knee Eater",
+    image: "knee.webp"
   },
+
   {
-    id: 'breakout',
-    title: 'Monkey Trying to Break Out',
-    image: 'breakout.webp'
+    id: "breakout",
+    title: "Monkey Trying to Break Out",
+    image: "breakout.webp"
   },
+
   {
-    id: 'curious',
-    title: 'Curious Monkey',
-    image: 'curious.webp'
+    id: "curious",
+    title: "Curious Monkey",
+    image: "curious.webp"
   },
+
   {
-    id: 'baby',
-    title: 'Awwww... Baby Monkey!',
-    image: 'baby.webp'
+    id: "baby",
+    title: "Awwww... Baby Monkey!",
+    image: "baby.webp"
   },
+
   {
-    id: 'confused',
-    title: 'Confused Monkey',
-    image: 'confused.webp'
+    id: "confused",
+    title: "Confused Monkey",
+    image: "confused.webp"
   }
+
 ];
 
-// ==================================================
-// NEW COLLECTION — ADD YOUR NEW PICTURES HERE!
-// ==================================================
+// ==========================================
+// NEW COLLECTION — THE LEGENDARY ARCHIVES
+// ==========================================
 //
-// HOW TO ADD A PICTURE:
+// Upload images to GitHub first.
+// Then add their filenames here.
 //
-// 1. Upload the image to your GitHub repository.
-// 2. Add an entry to newArts below.
-// 3. Give every picture a UNIQUE id.
-// 4. Make sure the filename matches EXACTLY.
-// 5. Commit your changes.
-//
-// EXAMPLE:
-//
-// {
-//   id: 'golden-monkey',
-//   title: 'Golden Monkey',
-//   image: 'golden-monkey.png'
-// },
-//
-// If your images are inside a folder called "images",
-// use: image: 'images/golden-monkey.png'
-//
-// ==================================================
+// Keep every ID unique so ratings work.
+// ==========================================
 
 const newArts = [
 
-  // ADD NEW PICTURES HERE
+  {
+    id: "scared",
+    title: "The Face of Pure Terror",
+    image: "scared.webp",
+    description:
+      "A rare portrait capturing the exact moment when courage officially left the room."
+  },
+
+  {
+    id: "religious",
+    title: "The Divine Revelation",
+    image: "religious.webp",
+    description:
+      "An extraordinary display of spiritual enlightenment. Historians remain unsure what was revealed."
+  },
+
+  {
+    id: "mating",
+    title: "The Ritual of Eternal Love",
+    image: "mating.webp",
+    description:
+      "A fascinating study of romance, instinct, and the questionable decisions of nature."
+  },
+
+  {
+    id: "tuff",
+    title: "The Unbreakable Aura",
+    image: "tuff.webp",
+    description:
+      "An overwhelming display of confidence. Scientists estimate the aura levels to be immeasurable."
+  },
+
+  {
+    id: "scriptmaster",
+    title: "The Grand Scriptmaster",
+    image: "scriptmaster.webp",
+    description:
+      "A mysterious mastermind believed to control the very code of reality itself."
+  },
+
+  {
+    id: "model",
+    title: "The Renaissance Supermodel",
+    image: "model.webp",
+    description:
+      "A timeless icon of elegance, beauty, and absolutely unmatched photogenic excellence."
+  }
 
 ];
 
+// ==========================================
 // DEVICE ID FOR RATINGS
-let device = localStorage.getItem('samaDevice');
+// ==========================================
+
+let device = localStorage.getItem("samaDevice");
 
 if (!device) {
+
   device = crypto.randomUUID();
-  localStorage.setItem('samaDevice', device);
+
+  localStorage.setItem(
+    "samaDevice",
+    device
+  );
+
 }
 
-// CREATE ARTWORK CARDS
-function createCard(art, target) {
-  const frame = document.createElement('article');
-  frame.className = 'frame';
+// ==========================================
+// CREATE ARTWORK CARD
+// ==========================================
 
-  const img = document.createElement('img');
-  img.className = 'artImage';
+function createCard(art, target) {
+
+  const frame = document.createElement("article");
+  frame.className = "frame";
+
+  // IMAGE
+
+  const img = document.createElement("img");
+
+  img.className = "artImage";
   img.src = art.image;
   img.alt = art.title;
-  img.loading = 'lazy';
+  img.loading = "lazy";
 
-  const plaque = document.createElement('div');
-  plaque.className = 'plaque';
+  // PLAQUE
 
-  const heading = document.createElement('h2');
+  const plaque = document.createElement("div");
+  plaque.className = "plaque";
+
+  const heading = document.createElement("h2");
   heading.textContent = art.title;
 
-  const sub = document.createElement('p');
-  sub.textContent = 'The Sama Collection';
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "The Sama Collection";
 
-  plaque.append(heading, sub);
+  plaque.append(heading, subtitle);
 
-  const rating = document.createElement('div');
-  rating.className = 'rating';
+  // OPTIONAL DESCRIPTION
 
-  const avg = document.createElement('div');
-  avg.className = 'ratingAverage';
-  avg.textContent = '0.0 / 10';
+  if (art.description) {
 
-  const count = document.createElement('div');
-  count.className = 'ratingCount';
-  count.textContent = '⭐ 0 ratings';
+    const description = document.createElement("p");
 
-  const select = document.createElement('select');
-  select.setAttribute('aria-label', 'Rate ' + art.title);
+    description.className = "artDescription";
+    description.textContent = art.description;
 
-  for (let i = 10; i >= 1; i--) {
-    const option = document.createElement('option');
-    option.value = i;
-    option.textContent = i;
-    select.appendChild(option);
+    plaque.appendChild(description);
+
   }
 
-  const button = document.createElement('button');
-  button.className = 'rateButton';
-  button.textContent = 'Rate';
+  // RATING SECTION
+
+  const rating = document.createElement("div");
+  rating.className = "rating";
+
+  const average = document.createElement("div");
+  average.className = "ratingAverage";
+  average.textContent = "0.0 / 10";
+
+  const count = document.createElement("div");
+  count.className = "ratingCount";
+  count.textContent = "⭐ 0 ratings";
+
+  const select = document.createElement("select");
+
+  select.setAttribute(
+    "aria-label",
+    "Rate " + art.title
+  );
+
+  for (let i = 10; i >= 1; i--) {
+
+    const option = document.createElement("option");
+
+    option.value = i;
+    option.textContent = i;
+
+    select.appendChild(option);
+
+  }
+
+  const button = document.createElement("button");
+
+  button.className = "rateButton";
+  button.textContent = "Rate";
+
+  // SUBMIT RATING
 
   button.onclick = async () => {
+
     button.disabled = true;
 
     try {
+
       await setDoc(
-        doc(db, 'ratings', art.id + '_' + device),
+
+        doc(
+          db,
+          "ratings",
+          art.id + "_" + device
+        ),
+
         {
           artwork: art.id,
           device: device,
           rating: Number(select.value)
         }
+
       );
+
     } catch (error) {
+
       console.error(error);
-      alert('Could not submit rating. Check Firebase Firestore rules.');
+
+      alert(
+        "Could not submit rating. Check Firebase Firestore rules."
+      );
+
     } finally {
+
       button.disabled = false;
+
     }
+
   };
 
-  rating.append(avg, count, select, button);
-  frame.append(img, plaque, rating);
+  rating.append(
+    average,
+    count,
+    select,
+    button
+  );
+
+  frame.append(
+    img,
+    plaque,
+    rating
+  );
+
   target.appendChild(frame);
 
-  // LIVE FIREBASE RATINGS
+  // LIVE RATING UPDATES
+
   onSnapshot(
+
     query(
-      collection(db, 'ratings'),
-      where('artwork', '==', art.id)
+      collection(db, "ratings"),
+      where("artwork", "==", art.id)
     ),
-    snap => {
+
+    snapshot => {
+
       let total = 0;
 
-      snap.forEach(d => {
-        total += Number(d.data().rating) || 0;
+      snapshot.forEach(docSnap => {
+
+        total += Number(
+          docSnap.data().rating
+        ) || 0;
+
       });
 
-      const average = snap.size ? total / snap.size : 0;
+      const averageScore =
+        snapshot.size
+          ? total / snapshot.size
+          : 0;
 
-      avg.textContent = average.toFixed(1) + ' / 10';
+      average.textContent =
+        averageScore.toFixed(1) + " / 10";
 
       count.textContent =
-        '⭐ ' + snap.size +
-        (snap.size === 1 ? ' rating' : ' ratings');
+        "⭐ " +
+        snapshot.size +
+        (
+          snapshot.size === 1
+            ? " rating"
+            : " ratings"
+        );
+
     },
+
     error => {
-      console.error(error);
-      count.textContent = 'Ratings unavailable';
+
+      console.error(
+        "Rating sync error:",
+        error
+      );
+
+      count.textContent = "Ratings unavailable";
+
     }
+
   );
+
 }
 
-// LOAD ORIGINAL COLLECTION
+// ==========================================
+// LOAD ALL ARTWORK
+// ==========================================
+
 originalArts.forEach(art => {
-  createCard(art, $('gallery'));
+
+  createCard(
+    art,
+    $("gallery")
+  );
+
 });
 
-// LOAD NEW COLLECTION
 newArts.forEach(art => {
-  createCard(art, $('newGallery'));
+
+  createCard(
+    art,
+    $("newGallery")
+  );
+
 });
 
-// EMPTY MESSAGE
-$('newEmpty').style.display =
-  newArts.length ? 'none' : 'block';
+// EMPTY COLLECTION MESSAGE
+
+$("newEmpty").style.display =
+  newArts.length ? "none" : "block";
 
 </script>
+
 </body>
 </html>
