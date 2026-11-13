@@ -10,17 +10,15 @@
 body{margin:0;background:#120b16;color:#f4ead7;font-family:Georgia,serif}
 button,input,select{font:inherit}
 button{cursor:pointer}
-button:disabled{opacity:.5;cursor:wait}
 #gate{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle,#4f2b6f,#120b16 70%)}
 .gateBox{width:100%;max-width:420px;background:#24152b;border:2px solid #d6b36d;border-radius:16px;padding:35px;text-align:center;box-shadow:0 0 35px #d6b36d40}
-.gateBox h1,header h1,.sectionTitle,.panel h2{color:#d6b36d}
-.gateBox input,.panel input{width:100%;padding:12px;margin:8px 0 14px;border:1px solid #745b81;border-radius:8px;background:#120b16;color:white}
-.goldButton{border:0;border-radius:8px;background:#d6b36d;color:#24152b;font-weight:bold;padding:12px 18px}
+.gateBox h1,header h1,.sectionTitle{color:#d6b36d}
+.gateBox input{width:100%;padding:13px;margin:15px 0 12px;border:1px solid #d6b36d;border-radius:8px;background:#120b16;color:white}
+.goldButton,.rateButton{border:0;border-radius:8px;background:#d6b36d;color:#24152b;font-weight:bold;padding:11px 17px}
 .gateBox .goldButton{width:100%}
-.error{color:#ff9292}
-.success{color:#b1e9b6}
+#wrong{color:#ff7777;display:none}
 #museum{display:none}
-header{text-align:center;padding:38px 20px;background:linear-gradient(135deg,#34194b,#170d23);border-bottom:2px solid #d6b36d}
+header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#34194b,#170d23);border-bottom:2px solid #d6b36d}
 header h1{font-size:40px;margin:0}
 header p{color:#d8cbb9}
 .layout{max-width:1400px;margin:auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding:30px 20px}
@@ -29,7 +27,7 @@ header p{color:#d8cbb9}
 .navButton{display:block;width:100%;text-align:left;background:transparent;color:#f4ead7;border:1px solid transparent;padding:13px;border-radius:8px;margin-bottom:8px}
 .navButton:hover,.navButton.active{background:#432952;border-color:#d6b36d}
 .sectionTitle{text-align:center;font-size:30px;margin:5px 0 28px}
-#gallery,#newGallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
 .frame{background:#24152b;border:12px solid #5a3d24;border-radius:5px;padding:8px;box-shadow:0 8px 25px #0008,inset 0 0 0 2px #d6b36d}
 .artImage{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#0d0810}
 .plaque{background:#e4d2ae;color:#24152b;padding:15px;margin-top:10px;text-align:center}
@@ -39,330 +37,321 @@ header p{color:#d8cbb9}
 .ratingAverage{font-size:18px;font-weight:bold;color:#d6b36d}
 .ratingCount{font-size:14px;margin:5px 0 10px}
 .rating select{padding:8px;border-radius:6px;background:#120b16;color:white;border:1px solid #d6b36d}
-.rateButton{background:#d6b36d;border:0;border-radius:6px;padding:9px 13px;color:#24152b;font-weight:bold;margin-left:5px}
-.panel{background:#24152b;border:1px solid #d6b36d;border-radius:12px;padding:24px;margin:32px 0}
-.panel h2{margin-top:0}
-.panel p{line-height:1.5}
+.rateButton{padding:9px 13px;margin-left:5px}
 #newSection{display:none}
-#uploadForm{display:none}
-#uploadStatus,#loginStatus{margin-top:12px}
+.empty{color:#b7a6c0;font-style:italic;text-align:center}
 footer{text-align:center;padding:36px 20px;border-top:1px solid #3c2945;color:#9e8eaa}
-.muted{color:#cbbcd0}
-.hidden{display:none!important}
 @media(max-width:720px){
 .layout{grid-template-columns:1fr}
-.sidebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.sidebar h2{width:100%;margin:0}
-.navButton{width:auto;margin:0;flex:1}
+.sidebar{display:flex;flex-wrap:wrap;gap:8px}
+.sidebar h2{width:100%}
+.navButton{width:auto;flex:1;margin:0}
 header h1{font-size:30px}
-#gallery,#newGallery{grid-template-columns:1fr}
+.gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
+
 <div id="gate">
   <div class="gateBox">
     <h1>👑 SAMA MUSEUM</h1>
     <p>The Official Senyu Huang Collection</p>
     <input id="pass" type="password" placeholder="Enter museum password">
     <button id="enterBtn" class="goldButton">Enter Museum</button>
-    <p id="wrong" class="error hidden">❌ Incorrect password</p>
+    <p id="wrong">❌ Incorrect password</p>
   </div>
 </div>
+
 <div id="museum">
   <header>
     <h1>👑 SAMA MUSEUM</h1>
     <p>The Official Senyu Huang Collection</p>
   </header>
+
   <div class="layout">
     <aside class="sidebar">
       <h2>Explore</h2>
-      <button id="originalTab" class="navButton active">🖼️ The Collection</button>
-      <button id="newTab" class="navButton">＋ New Collection</button>
+      <button id="originalTab" class="navButton active">
+        🖼️ The Collection
+      </button>
+      <button id="newTab" class="navButton">
+        ＋ New Collection
+      </button>
     </aside>
+
     <main>
       <section id="originalSection">
         <h2 class="sectionTitle">The Collection</h2>
-        <div id="gallery"></div>
+        <div id="gallery" class="gallery"></div>
       </section>
+
       <section id="newSection">
         <h2 class="sectionTitle">New Collection</h2>
-        <div id="newGallery"></div>
-        <p id="newEmpty" class="muted">No new pictures yet.</p>
-        <div class="panel">
-          <h2>👑 Curator Uploads</h2>
-          <p class="muted">Only the curator can upload pictures. Visitors can view the collection.</p>
-          <div id="loginForm">
-            <input id="curatorEmail" type="email" placeholder="Curator email" autocomplete="username">
-            <input id="curatorPassword" type="password" placeholder="Curator password" autocomplete="current-password">
-            <button id="loginBtn" class="goldButton">Curator Sign In</button>
-            <p id="loginStatus"></p>
-          </div>
-          <div id="uploadForm">
-            <p id="signedInAs"></p>
-            <input id="newTitle" type="text" maxlength="100" placeholder="Picture title">
-            <input id="newImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
-            <button id="uploadBtn" class="goldButton">Add Picture to Collection</button>
-            <button id="logoutBtn" class="goldButton" type="button">Sign Out</button>
-            <p id="uploadStatus" aria-live="polite"></p>
-          </div>
-        </div>
+        <div id="newGallery" class="gallery"></div>
+        <p id="newEmpty" class="empty">
+          No new pictures yet. Add them through GitHub!
+        </p>
       </section>
     </main>
   </div>
-  <footer>👑 Curated by Senyu Huang • The Sama Museum</footer>
-</div>
-<script type="module">
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js';
-import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
-import {getFirestore,collection,doc,setDoc,addDoc,query,where,onSnapshot} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
-import {getStorage,ref,uploadBytes,getDownloadURL} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js';
 
-const firebaseConfig={
-  apiKey:'AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ',
-  authDomain:'sama-pics-a3cf6.firebaseapp.com',
-  projectId:'sama-pics-a3cf6',
-  storageBucket:'sama-pics-a3cf6.firebasestorage.app',
-  messagingSenderId:'407213655664',
-  appId:'1:407213655664:web:200f0e35402f6b139ed6b5',
-  measurementId:'G-478W5P7WX8'
+  <footer>
+    👑 Curated by Senyu Huang • The Sama Museum
+  </footer>
+</div>
+
+<script type="module">
+import {initializeApp}
+  from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js';
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  query,
+  where,
+  onSnapshot
+} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ',
+  authDomain: 'sama-pics-a3cf6.firebaseapp.com',
+  projectId: 'sama-pics-a3cf6',
+  storageBucket: 'sama-pics-a3cf6.firebasestorage.app',
+  messagingSenderId: '407213655664',
+  appId: '1:407213655664:web:200f0e35402f6b139ed6b5',
+  measurementId: 'G-478W5P7WX8'
 };
 
-const app=initializeApp(firebaseConfig);
-const db=getFirestore(app);
-const storage=getStorage(app);
-const auth=getAuth(app);
+const db = getFirestore(initializeApp(firebaseConfig));
+const $ = id => document.getElementById(id);
 
-// The entrance password is visible in the HTML source.
-// It is NOT secure authentication.
-const MUSEUM_PASSWORD='bigdaddyhuangjiba123';
+// MUSEUM PASSWORD
+// This is a simple entrance screen, not secure authentication.
+const MUSEUM_PASSWORD = 'bigdaddyhuangjiba123';
 
-const $=id=>document.getElementById(id);
-
-function enter(){
-  if($('pass').value===MUSEUM_PASSWORD){
-    $('gate').style.display='none';
-    $('museum').style.display='block';
-    $('wrong').classList.add('hidden');
-  }else{
-    $('wrong').classList.remove('hidden');
+function enter() {
+  if ($('pass').value === MUSEUM_PASSWORD) {
+    $('gate').style.display = 'none';
+    $('museum').style.display = 'block';
+  } else {
+    $('wrong').style.display = 'block';
   }
 }
-$('enterBtn').onclick=enter;
-$('pass').addEventListener('keydown',e=>{
-  if(e.key==='Enter')enter();
+
+$('enterBtn').onclick = enter;
+
+$('pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') enter();
 });
 
-function showSection(which){
-  const isNew=which==='new';
-  $('originalSection').style.display=isNew?'none':'block';
-  $('newSection').style.display=isNew?'block':'none';
-  $('originalTab').classList.toggle('active',!isNew);
-  $('newTab').classList.toggle('active',isNew);
-}
-$('originalTab').onclick=()=>showSection('original');
-$('newTab').onclick=()=>showSection('new');
+// SIDEBAR NAVIGATION
+function showSection(isNew) {
+  $('originalSection').style.display = isNew ? 'none' : 'block';
+  $('newSection').style.display = isNew ? 'block' : 'none';
 
-const arts=[
-  {id:'birthday',title:'Birthday Monkey',image:'birthday.webp'},
-  {id:'megamind',title:'Megamind',image:'megamind.webp'},
-  {id:'knee',title:'Knee Eater',image:'knee.webp'},
-  {id:'breakout',title:'Monkey Trying to Break Out',image:'breakout.webp'},
-  {id:'curious',title:'Curious Monkey',image:'curious.webp'},
-  {id:'baby',title:'Awwww... Baby Monkey!',image:'baby.webp'},
-  {id:'confused',title:'Confused Monkey',image:'confused.webp'}
+  $('originalTab').classList.toggle('active', !isNew);
+  $('newTab').classList.toggle('active', isNew);
+}
+
+$('originalTab').onclick = () => showSection(false);
+$('newTab').onclick = () => showSection(true);
+
+// ORIGINAL COLLECTION
+// Keep these images in the same folder as index.html.
+
+const originalArts = [
+  {
+    id: 'birthday',
+    title: 'Birthday Monkey',
+    image: 'birthday.webp'
+  },
+  {
+    id: 'megamind',
+    title: 'Megamind',
+    image: 'megamind.webp'
+  },
+  {
+    id: 'knee',
+    title: 'Knee Eater',
+    image: 'knee.webp'
+  },
+  {
+    id: 'breakout',
+    title: 'Monkey Trying to Break Out',
+    image: 'breakout.webp'
+  },
+  {
+    id: 'curious',
+    title: 'Curious Monkey',
+    image: 'curious.webp'
+  },
+  {
+    id: 'baby',
+    title: 'Awwww... Baby Monkey!',
+    image: 'baby.webp'
+  },
+  {
+    id: 'confused',
+    title: 'Confused Monkey',
+    image: 'confused.webp'
+  }
 ];
 
-let device=localStorage.getItem('samaDevice');
-if(!device){
-  device=crypto.randomUUID();
-  localStorage.setItem('samaDevice',device);
+// ==================================================
+// NEW COLLECTION — ADD YOUR NEW PICTURES HERE!
+// ==================================================
+//
+// HOW TO ADD A PICTURE:
+//
+// 1. Upload the image to your GitHub repository.
+// 2. Add an entry to newArts below.
+// 3. Give every picture a UNIQUE id.
+// 4. Make sure the filename matches EXACTLY.
+// 5. Commit your changes.
+//
+// EXAMPLE:
+//
+// {
+//   id: 'golden-monkey',
+//   title: 'Golden Monkey',
+//   image: 'golden-monkey.png'
+// },
+//
+// If your images are inside a folder called "images",
+// use: image: 'images/golden-monkey.png'
+//
+// ==================================================
+
+const newArts = [
+
+  // ADD NEW PICTURES HERE
+
+];
+
+// DEVICE ID FOR RATINGS
+let device = localStorage.getItem('samaDevice');
+
+if (!device) {
+  device = crypto.randomUUID();
+  localStorage.setItem('samaDevice', device);
 }
 
-const ratingListeners=new Map();
+// CREATE ARTWORK CARDS
+function createCard(art, target) {
+  const frame = document.createElement('article');
+  frame.className = 'frame';
 
-function createCard(art,target){
-  const frame=document.createElement('article');
-  frame.className='frame';
+  const img = document.createElement('img');
+  img.className = 'artImage';
+  img.src = art.image;
+  img.alt = art.title;
+  img.loading = 'lazy';
 
-  const img=document.createElement('img');
-  img.className='artImage';
-  img.src=art.image;
-  img.alt=art.title;
-  img.loading='lazy';
-  frame.appendChild(img);
+  const plaque = document.createElement('div');
+  plaque.className = 'plaque';
 
-  const plaque=document.createElement('div');
-  plaque.className='plaque';
-  const heading=document.createElement('h2');
-  heading.textContent=art.title;
-  const sub=document.createElement('p');
-  sub.textContent='The Sama Collection';
-  plaque.append(heading,sub);
-  frame.appendChild(plaque);
+  const heading = document.createElement('h2');
+  heading.textContent = art.title;
 
-  const rating=document.createElement('div');
-  rating.className='rating';
-  const average=document.createElement('div');
-  average.className='ratingAverage';
-  average.textContent='0.0 / 10';
-  const count=document.createElement('div');
-  count.className='ratingCount';
-  count.textContent='⭐ 0 ratings';
+  const sub = document.createElement('p');
+  sub.textContent = 'The Sama Collection';
 
-  const select=document.createElement('select');
-  select.setAttribute('aria-label','Rating for '+art.title);
-  for(let n=10;n>=1;n--){
-    const opt=document.createElement('option');
-    opt.value=n;
-    opt.textContent=n;
-    select.appendChild(opt);
+  plaque.append(heading, sub);
+
+  const rating = document.createElement('div');
+  rating.className = 'rating';
+
+  const avg = document.createElement('div');
+  avg.className = 'ratingAverage';
+  avg.textContent = '0.0 / 10';
+
+  const count = document.createElement('div');
+  count.className = 'ratingCount';
+  count.textContent = '⭐ 0 ratings';
+
+  const select = document.createElement('select');
+  select.setAttribute('aria-label', 'Rate ' + art.title);
+
+  for (let i = 10; i >= 1; i--) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i;
+    select.appendChild(option);
   }
 
-  const btn=document.createElement('button');
-  btn.className='rateButton';
-  btn.textContent='Rate';
-  btn.onclick=async()=>{
-    btn.disabled=true;
-    try{
+  const button = document.createElement('button');
+  button.className = 'rateButton';
+  button.textContent = 'Rate';
+
+  button.onclick = async () => {
+    button.disabled = true;
+
+    try {
       await setDoc(
-        doc(db,'ratings',art.id+'_'+device),
-        {artwork:art.id,device,rating:Number(select.value)}
+        doc(db, 'ratings', art.id + '_' + device),
+        {
+          artwork: art.id,
+          device: device,
+          rating: Number(select.value)
+        }
       );
-    }catch(e){
-      console.error(e);
-      alert('Could not submit rating. Check Firestore rules.');
-    }finally{
-      btn.disabled=false;
+    } catch (error) {
+      console.error(error);
+      alert('Could not submit rating. Check Firebase Firestore rules.');
+    } finally {
+      button.disabled = false;
     }
   };
-  rating.append(average,count,select,btn);
-  frame.appendChild(rating);
+
+  rating.append(avg, count, select, button);
+  frame.append(img, plaque, rating);
   target.appendChild(frame);
 
-  if(ratingListeners.has(art.id)){
-    ratingListeners.get(art.id)();
-  }
+  // LIVE FIREBASE RATINGS
+  onSnapshot(
+    query(
+      collection(db, 'ratings'),
+      where('artwork', '==', art.id)
+    ),
+    snap => {
+      let total = 0;
 
-  ratingListeners.set(art.id,onSnapshot(
-    query(collection(db,'ratings'),where('artwork','==',art.id)),
-    snap=>{
-      let sum=0;
-      snap.forEach(d=>sum+=Number(d.data().rating)||0);
-      average.textContent=(snap.size?sum/snap.size:0).toFixed(1)+' / 10';
-      count.textContent='⭐ '+snap.size+
-        (snap.size===1?' rating':' ratings');
+      snap.forEach(d => {
+        total += Number(d.data().rating) || 0;
+      });
+
+      const average = snap.size ? total / snap.size : 0;
+
+      avg.textContent = average.toFixed(1) + ' / 10';
+
+      count.textContent =
+        '⭐ ' + snap.size +
+        (snap.size === 1 ? ' rating' : ' ratings');
     },
-    e=>{
-      console.error('Ratings read error:',e);
-      count.textContent='Ratings unavailable';
+    error => {
+      console.error(error);
+      count.textContent = 'Ratings unavailable';
     }
-  ));
+  );
 }
 
-arts.forEach(art=>createCard(art,$('gallery')));
-
-onSnapshot(collection(db,'newCollection'),snap=>{
-  const gallery=$('newGallery');
-  const records=[];
-  snap.forEach(d=>records.push({id:d.id,...d.data()}));
-  records.sort((a,b)=>(b.created||0)-(a.created||0));
-  gallery.replaceChildren();
-
-  records.forEach(art=>{
-    if(typeof art.title==='string'&&typeof art.imageUrl==='string'){
-      createCard(
-        {id:'new_'+art.id,title:art.title,image:art.imageUrl},
-        gallery
-      );
-    }
-  });
-  $('newEmpty').style.display=records.length?'none':'block';
-},e=>{
-  $('newEmpty').textContent='Unable to load pictures. Check Firestore rules.';
-  console.error(e);
+// LOAD ORIGINAL COLLECTION
+originalArts.forEach(art => {
+  createCard(art, $('gallery'));
 });
 
-onAuthStateChanged(auth,user=>{
-  $('loginForm').style.display=user?'none':'block';
-  $('uploadForm').style.display=user?'block':'none';
-  $('signedInAs').textContent=user?'Signed in as '+user.email:'';
+// LOAD NEW COLLECTION
+newArts.forEach(art => {
+  createCard(art, $('newGallery'));
 });
 
-$('loginBtn').onclick=async()=>{
-  const email=$('curatorEmail').value.trim();
-  const password=$('curatorPassword').value;
-  $('loginStatus').textContent='Signing in...';
-  try{
-    await signInWithEmailAndPassword(auth,email,password);
-    $('loginStatus').textContent='';
-    $('curatorPassword').value='';
-  }catch(e){
-    console.error(e);
-    $('loginStatus').textContent='Sign in failed. Check email/password.';
-  }
-};
+// EMPTY MESSAGE
+$('newEmpty').style.display =
+  newArts.length ? 'none' : 'block';
 
-$('logoutBtn').onclick=()=>signOut(auth);
-
-$('uploadBtn').onclick=async()=>{
-  const title=$('newTitle').value.trim();
-  const file=$('newImage').files[0];
-  const status=$('uploadStatus');
-
-  if(!auth.currentUser){
-    status.textContent='Please sign in.';
-    return;
-  }
-  if(!title||!file){
-    status.textContent='Enter a title and choose a picture.';
-    return;
-  }
-  if(
-    !['image/jpeg','image/png','image/webp','image/gif'].includes(file.type)
-    ||file.size>10*1024*1024
-  ){
-    status.textContent='Use a JPG, PNG, WEBP or GIF under 10 MB.';
-    return;
-  }
-
-  const btn=$('uploadBtn');
-  btn.disabled=true;
-
-  try{
-    status.textContent='Uploading picture...';
-    const id=crypto.randomUUID();
-    const ext={
-      'image/jpeg':'jpg',
-      'image/png':'png',
-      'image/webp':'webp',
-      'image/gif':'gif'
-    }[file.type];
-
-    const path='new-collection/'+id+'.'+ext;
-    const imageRef=ref(storage,path);
-
-    await uploadBytes(imageRef,file,{contentType:file.type});
-    const imageUrl=await getDownloadURL(imageRef);
-
-    status.textContent='Saving picture...';
-    await addDoc(collection(db,'newCollection'),{
-      title,
-      imageUrl,
-      imagePath:path,
-      created:Date.now()
-    });
-
-    $('newTitle').value='';
-    $('newImage').value='';
-    status.textContent='✅ Picture added!';
-  }catch(e){
-    console.error(e);
-    status.textContent='❌ Upload failed: '+e.message;
-  }finally{
-    btn.disabled=false;
-  }
-};
 </script>
 </body>
 </html>
