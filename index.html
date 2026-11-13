@@ -18,17 +18,12 @@ body {
   font-family: Georgia, serif;
 }
 
-button, input, select {
+button, input {
   font: inherit;
 }
 
 button {
   cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: wait;
 }
 
 /* PASSWORD ENTRANCE */
@@ -70,8 +65,7 @@ button:disabled {
   color: white;
 }
 
-.goldButton,
-.rateButton {
+.goldButton {
   border: 0;
   border-radius: 8px;
   background: #d6b36d;
@@ -95,7 +89,7 @@ button:disabled {
   display: none;
 }
 
-/* NEW ARTIST BANNER */
+/* ARTIST BANNER */
 
 .museumHeader {
   padding: 0;
@@ -222,37 +216,6 @@ button:disabled {
   color: #5a4055;
 }
 
-/* RATINGS */
-
-.rating {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.ratingAverage {
-  font-size: 18px;
-  font-weight: bold;
-  color: #d6b36d;
-}
-
-.ratingCount {
-  font-size: 14px;
-  margin: 5px 0 10px;
-}
-
-.rating select {
-  padding: 8px;
-  border-radius: 6px;
-  background: #120b16;
-  color: white;
-  border: 1px solid #d6b36d;
-}
-
-.rateButton {
-  padding: 9px 13px;
-  margin-left: 5px;
-}
-
 #season2Section {
   display: none;
 }
@@ -335,7 +298,7 @@ footer {
 
   <header class="museumHeader">
     <img
-      src="sama-banner.png"
+      src="artist.webp"
       alt="Sama Museum — The Official Senyu Huang Collection"
       class="museumBanner"
     >
@@ -412,47 +375,18 @@ footer {
 
 </div>
 
-<!-- FIREBASE + JAVASCRIPT -->
+<script>
 
-<script type="module">
+// ==========================================
+// MUSEUM PASSWORD
+// ==========================================
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  doc,
-  setDoc,
-  query,
-  where,
-  onSnapshot
-}
-from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
-
-// FIREBASE CONFIG
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAFIRu6eAE4-zseVJLFH1DeRD0RCdH_mxQ",
-  authDomain: "sama-pics-a3cf6.firebaseapp.com",
-  projectId: "sama-pics-a3cf6",
-  storageBucket: "sama-pics-a3cf6.firebasestorage.app",
-  messagingSenderId: "407213655664",
-  appId: "1:407213655664:web:200f0e35402f6b139ed6b5",
-  measurementId: "G-478W5P7WX8"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const $ = id => document.getElementById(id);
-
-// PASSWORD
-
-// This is a visual entrance screen.
-// The password is visible in the public HTML source.
+// This is only a visual entrance screen.
+// The password can be seen in the page source.
 
 const MUSEUM_PASSWORD = "bigdaddyhuangjiba123";
+
+const $ = id => document.getElementById(id);
 
 function enterMuseum() {
 
@@ -460,6 +394,7 @@ function enterMuseum() {
 
     $("gate").style.display = "none";
     $("museum").style.display = "block";
+    $("wrong").style.display = "none";
 
   } else {
 
@@ -478,7 +413,9 @@ $("pass").addEventListener("keydown", event => {
 
 });
 
+// ==========================================
 // SIDEBAR NAVIGATION
+// ==========================================
 
 function showSection(isSeason2) {
 
@@ -510,43 +447,36 @@ $("season2Tab").onclick = () => showSection(true);
 const originalArts = [
 
   {
-    id: "birthday",
     title: "Birthday Monkey",
     image: "birthday.webp"
   },
 
   {
-    id: "megamind",
     title: "Megamind",
     image: "megamind.webp"
   },
 
   {
-    id: "knee",
     title: "Knee Eater",
     image: "knee.webp"
   },
 
   {
-    id: "breakout",
     title: "Monkey Trying to Break Out",
     image: "breakout.webp"
   },
 
   {
-    id: "curious",
     title: "Curious Monkey",
     image: "curious.webp"
   },
 
   {
-    id: "baby",
     title: "Awwww... Baby Monkey!",
     image: "baby.webp"
   },
 
   {
-    id: "confused",
     title: "Confused Monkey",
     image: "confused.webp"
   }
@@ -558,13 +488,12 @@ const originalArts = [
 // ==========================================
 //
 // Upload pictures to GitHub first.
-// Add new entries here using unique IDs.
+// Add new entries here.
 // ==========================================
 
 const season2Arts = [
 
   {
-    id: "scared",
     title: "The Face of Pure Terror",
     image: "scared.webp",
     description:
@@ -572,7 +501,6 @@ const season2Arts = [
   },
 
   {
-    id: "religious",
     title: "The Divine Revelation",
     image: "religious.webp",
     description:
@@ -580,7 +508,6 @@ const season2Arts = [
   },
 
   {
-    id: "mating",
     title: "The Ritual of Eternal Love",
     image: "mating.webp",
     description:
@@ -588,7 +515,6 @@ const season2Arts = [
   },
 
   {
-    id: "tuff",
     title: "The Unbreakable Aura",
     image: "tuff.webp",
     description:
@@ -596,7 +522,6 @@ const season2Arts = [
   },
 
   {
-    id: "scriptmaster",
     title: "The Grand Scriptmaster",
     image: "scriptmaster.webp",
     description:
@@ -604,7 +529,6 @@ const season2Arts = [
   },
 
   {
-    id: "model",
     title: "The Renaissance Supermodel",
     image: "model.webp",
     description:
@@ -612,23 +536,6 @@ const season2Arts = [
   }
 
 ];
-
-// ==========================================
-// DEVICE ID FOR RATINGS
-// ==========================================
-
-let device = localStorage.getItem("samaDevice");
-
-if (!device) {
-
-  device = crypto.randomUUID();
-
-  localStorage.setItem(
-    "samaDevice",
-    device
-  );
-
-}
 
 // ==========================================
 // CREATE ARTWORK CARD
@@ -674,149 +581,8 @@ function createCard(art, target) {
 
   }
 
-  // RATINGS
-
-  const rating = document.createElement("div");
-  rating.className = "rating";
-
-  const average = document.createElement("div");
-  average.className = "ratingAverage";
-  average.textContent = "0.0 / 10";
-
-  const count = document.createElement("div");
-  count.className = "ratingCount";
-  count.textContent = "⭐ 0 ratings";
-
-  const select = document.createElement("select");
-
-  select.setAttribute(
-    "aria-label",
-    "Rate " + art.title
-  );
-
-  for (let i = 10; i >= 1; i--) {
-
-    const option = document.createElement("option");
-
-    option.value = i;
-    option.textContent = i;
-
-    select.appendChild(option);
-
-  }
-
-  const button = document.createElement("button");
-
-  button.className = "rateButton";
-  button.textContent = "Rate";
-
-  // SUBMIT RATING
-
-  button.onclick = async () => {
-
-    button.disabled = true;
-
-    try {
-
-      await setDoc(
-
-        doc(
-          db,
-          "ratings",
-          art.id + "_" + device
-        ),
-
-        {
-          artwork: art.id,
-          device: device,
-          rating: Number(select.value)
-        }
-
-      );
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(
-        "Could not submit rating. Check Firebase Firestore rules."
-      );
-
-    } finally {
-
-      button.disabled = false;
-
-    }
-
-  };
-
-  rating.append(
-    average,
-    count,
-    select,
-    button
-  );
-
-  frame.append(
-    img,
-    plaque,
-    rating
-  );
-
+  frame.append(img, plaque);
   target.appendChild(frame);
-
-  // LIVE RATING UPDATES
-
-  onSnapshot(
-
-    query(
-      collection(db, "ratings"),
-      where("artwork", "==", art.id)
-    ),
-
-    snapshot => {
-
-      let total = 0;
-
-      snapshot.forEach(docSnap => {
-
-        total += Number(
-          docSnap.data().rating
-        ) || 0;
-
-      });
-
-      const averageScore =
-        snapshot.size
-          ? total / snapshot.size
-          : 0;
-
-      average.textContent =
-        averageScore.toFixed(1) + " / 10";
-
-      count.textContent =
-        "⭐ " +
-        snapshot.size +
-        (
-          snapshot.size === 1
-            ? " rating"
-            : " ratings"
-        );
-
-    },
-
-    error => {
-
-      console.error(
-        "Rating sync error:",
-        error
-      );
-
-      count.textContent = "Ratings unavailable";
-
-    }
-
-  );
 
 }
 
