@@ -95,26 +95,22 @@ button:disabled {
   display: none;
 }
 
-header {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(
-    135deg,
-    #34194b,
-    #170d23
-  );
+/* NEW ARTIST BANNER */
+
+.museumHeader {
+  padding: 0;
+  margin: 0;
+  background: #120b16;
   border-bottom: 2px solid #d6b36d;
 }
 
-header h1 {
-  font-size: 40px;
-  color: #d6b36d;
-  margin: 0;
+.museumBanner {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-header p {
-  color: #d8cbb9;
-}
+/* SIDEBAR + LAYOUT */
 
 .layout {
   max-width: 1400px;
@@ -124,8 +120,6 @@ header p {
   gap: 28px;
   padding: 30px 20px;
 }
-
-/* SIDEBAR */
 
 .sidebar {
   background: #24152b;
@@ -259,7 +253,7 @@ header p {
   margin-left: 5px;
 }
 
-#newSection {
+#season2Section {
   display: none;
 }
 
@@ -299,12 +293,12 @@ footer {
     margin: 0;
   }
 
-  header h1 {
-    font-size: 30px;
-  }
-
   .gallery {
     grid-template-columns: 1fr;
+  }
+
+  .gateBox h1 {
+    font-size: 28px;
   }
 }
 </style>
@@ -333,13 +327,18 @@ footer {
   </div>
 </div>
 
-<!-- MUSEUM -->
+<!-- MAIN MUSEUM -->
 
 <div id="museum">
 
-  <header>
-    <h1>👑 SAMA MUSEUM</h1>
-    <p>The Official Senyu Huang Collection</p>
+  <!-- ARTIST BANNER -->
+
+  <header class="museumHeader">
+    <img
+      src="sama-banner.png"
+      alt="Sama Museum — The Official Senyu Huang Collection"
+      class="museumBanner"
+    >
   </header>
 
   <div class="layout">
@@ -357,10 +356,10 @@ footer {
       </button>
 
       <button
-        id="newTab"
+        id="season2Tab"
         class="navButton"
       >
-        ✨ New Collection
+        ✨ Sama Season 2
       </button>
     </aside>
 
@@ -382,23 +381,24 @@ footer {
 
       </section>
 
-      <!-- NEW COLLECTION -->
+      <!-- SAMA SEASON 2 -->
 
-      <section id="newSection">
+      <section id="season2Section">
 
         <h2 class="sectionTitle">
-          The Legendary Archives
+          Sama Season 2
         </h2>
 
         <p class="sectionDescription">
           Six extraordinary masterpieces.
           One unforgettable legend.
+          The saga continues.
         </p>
 
-        <div id="newGallery" class="gallery"></div>
+        <div id="season2Gallery" class="gallery"></div>
 
-        <p id="newEmpty" class="empty">
-          No new pictures yet.
+        <p id="season2Empty" class="empty">
+          No pictures yet.
         </p>
 
       </section>
@@ -449,8 +449,8 @@ const $ = id => document.getElementById(id);
 
 // PASSWORD
 
-// Note: This is a visual entrance screen.
-// Passwords inside public HTML are not secure.
+// This is a visual entrance screen.
+// The password is visible in the public HTML source.
 
 const MUSEUM_PASSWORD = "bigdaddyhuangjiba123";
 
@@ -480,28 +480,28 @@ $("pass").addEventListener("keydown", event => {
 
 // SIDEBAR NAVIGATION
 
-function showSection(isNew) {
+function showSection(isSeason2) {
 
   $("originalSection").style.display =
-    isNew ? "none" : "block";
+    isSeason2 ? "none" : "block";
 
-  $("newSection").style.display =
-    isNew ? "block" : "none";
+  $("season2Section").style.display =
+    isSeason2 ? "block" : "none";
 
   $("originalTab").classList.toggle(
     "active",
-    !isNew
+    !isSeason2
   );
 
-  $("newTab").classList.toggle(
+  $("season2Tab").classList.toggle(
     "active",
-    isNew
+    isSeason2
   );
 
 }
 
 $("originalTab").onclick = () => showSection(false);
-$("newTab").onclick = () => showSection(true);
+$("season2Tab").onclick = () => showSection(true);
 
 // ==========================================
 // ORIGINAL COLLECTION
@@ -554,16 +554,14 @@ const originalArts = [
 ];
 
 // ==========================================
-// NEW COLLECTION — THE LEGENDARY ARCHIVES
+// SAMA SEASON 2
 // ==========================================
 //
-// Upload images to GitHub first.
-// Then add their filenames here.
-//
-// Keep every ID unique so ratings work.
+// Upload pictures to GitHub first.
+// Add new entries here using unique IDs.
 // ==========================================
 
-const newArts = [
+const season2Arts = [
 
   {
     id: "scared",
@@ -676,7 +674,7 @@ function createCard(art, target) {
 
   }
 
-  // RATING SECTION
+  // RATINGS
 
   const rating = document.createElement("div");
   rating.className = "rating";
@@ -823,7 +821,7 @@ function createCard(art, target) {
 }
 
 // ==========================================
-// LOAD ALL ARTWORK
+// LOAD COLLECTIONS
 // ==========================================
 
 originalArts.forEach(art => {
@@ -835,19 +833,19 @@ originalArts.forEach(art => {
 
 });
 
-newArts.forEach(art => {
+season2Arts.forEach(art => {
 
   createCard(
     art,
-    $("newGallery")
+    $("season2Gallery")
   );
 
 });
 
 // EMPTY COLLECTION MESSAGE
 
-$("newEmpty").style.display =
-  newArts.length ? "none" : "block";
+$("season2Empty").style.display =
+  season2Arts.length ? "none" : "block";
 
 </script>
 
