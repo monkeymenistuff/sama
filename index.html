@@ -26,9 +26,7 @@ button {
   cursor: pointer;
 }
 
-/* ==========================================
-   STUDYSPACE
-   ========================================== */
+/* STUDYSPACE */
 
 #gate {
   min-height: 100vh;
@@ -157,9 +155,7 @@ button {
   margin: 0;
 }
 
-/* ==========================================
-   WORKSHEET QUIZ
-   ========================================== */
+/* WORKSHEET QUIZ */
 
 .quizSection {
   margin-top: 42px;
@@ -260,7 +256,6 @@ button {
   margin: 13px 0 0;
   font-size: 14px;
   font-weight: 600;
-  min-height: 0;
 }
 
 .questionBox.correct {
@@ -298,9 +293,7 @@ button {
   font-size: 13px;
 }
 
-/* ==========================================
-   ORIGINAL SAMA MUSEUM
-   ========================================== */
+/* ORIGINAL MUSEUM STYLING */
 
 #museum {
   display: none;
@@ -427,7 +420,8 @@ button {
   color: #5a4055;
 }
 
-#season2Section {
+#season2Section,
+#miniReleaseSection {
   display: none;
 }
 
@@ -444,9 +438,7 @@ footer {
   color: #9e8eaa;
 }
 
-/* ==========================================
-   MOBILE RESPONSIVENESS
-   ========================================== */
+/* MOBILE */
 
 @media (max-width: 720px) {
 
@@ -525,9 +517,7 @@ footer {
 
 <body>
 
-<!-- ==========================================
-     STUDYSPACE HOMEPAGE
-     ========================================== -->
+<!-- STUDYSPACE HOMEPAGE -->
 
 <div id="gate">
 
@@ -575,47 +565,35 @@ footer {
     <div class="studyGrid">
 
       <article class="studyCard">
-
         <div class="studyIcon">🧠</div>
-
         <h3>Active Recall</h3>
-
         <p>
           Test yourself instead of just rereading notes.
           This strengthens your memory.
         </p>
-
       </article>
 
       <article class="studyCard">
-
         <div class="studyIcon">⏱️</div>
-
         <h3>Pomodoro Technique</h3>
-
         <p>
           Study for 25 minutes, then take a short
           break to maintain focus.
         </p>
-
       </article>
 
       <article class="studyCard">
-
         <div class="studyIcon">📚</div>
-
         <h3>Spaced Repetition</h3>
-
         <p>
           Review information over time to improve
           long-term retention.
         </p>
-
       </article>
 
     </div>
 
-    <!-- GENERAL KNOWLEDGE WORKSHEET -->
+    <!-- GENERAL KNOWLEDGE QUIZ -->
 
     <section class="quizSection" id="quiz">
 
@@ -654,11 +632,11 @@ footer {
 
 </div>
 
-<!-- ==========================================
-     MAIN MUSEUM — ORIGINAL
-     ========================================== -->
+<!-- MAIN MUSEUM -->
 
 <div id="museum">
+
+  <!-- ARTIST BANNER -->
 
   <header class="museumHeader">
 
@@ -671,6 +649,8 @@ footer {
   </header>
 
   <div class="layout">
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
@@ -690,9 +670,18 @@ footer {
         ✨ Sama Season 2
       </button>
 
+      <button
+        id="miniReleaseTab"
+        class="navButton"
+      >
+        🎴 Sama Mini Release 1
+      </button>
+
     </aside>
 
     <main>
+
+      <!-- ORIGINAL COLLECTION -->
 
       <section id="originalSection">
 
@@ -707,6 +696,8 @@ footer {
         <div id="gallery" class="gallery"></div>
 
       </section>
+
+      <!-- SAMA SEASON 2 -->
 
       <section id="season2Section">
 
@@ -731,6 +722,27 @@ footer {
 
       </section>
 
+      <!-- SAMA MINI RELEASE 1 -->
+
+      <section id="miniReleaseSection">
+
+        <h2 class="sectionTitle">
+          Sama Mini Release 1
+        </h2>
+
+        <p class="sectionDescription">
+          Three unexpected masterpieces.
+          Zero explanations.
+          The legend expands in mysterious ways.
+        </p>
+
+        <div
+          id="miniReleaseGallery"
+          class="gallery"
+        ></div>
+
+      </section>
+
     </main>
 
   </div>
@@ -747,7 +759,7 @@ footer {
 // PASSWORD
 // ==========================================
 
-// This is a visual disguise, not secure authentication.
+// Visual disguise only.
 // Source-code viewers can discover the password.
 
 const MUSEUM_PASSWORD = "bigmommyhuangjiba6767";
@@ -786,7 +798,11 @@ const quizQuestions = [
 
   {
     question: "Which ocean is the largest?",
-    answers: ["pacific", "pacific ocean", "the pacific ocean"],
+    answers: [
+      "pacific",
+      "pacific ocean",
+      "the pacific ocean"
+    ],
     displayAnswer: "Pacific Ocean"
   },
 
@@ -798,7 +814,11 @@ const quizQuestions = [
 
   {
     question: "Who painted the Mona Lisa?",
-    answers: ["leonardo da vinci", "da vinci", "leonardo"],
+    answers: [
+      "leonardo da vinci",
+      "da vinci",
+      "leonardo"
+    ],
     displayAnswer: "Leonardo da Vinci"
   },
 
@@ -810,7 +830,11 @@ const quizQuestions = [
 
   {
     question: "Which gas do plants absorb during photosynthesis?",
-    answers: ["carbon dioxide", "co2", "co₂"],
+    answers: [
+      "carbon dioxide",
+      "co2",
+      "co₂"
+    ],
     displayAnswer: "Carbon dioxide"
   },
 
@@ -877,8 +901,7 @@ function submitQuizAnswer(index) {
     return;
   }
 
-  // SECRET ENTRANCE ON QUESTION SIX ONLY
-  // No need to complete any other questions.
+  // SECRET ENTRANCE — QUESTION SIX ONLY
 
   if (
     index === 5 &&
@@ -1004,6 +1027,7 @@ function buildQuiz() {
     input.id = "answerInput" + index;
     input.placeholder = "Type your answer...";
     input.autocomplete = "off";
+
     input.setAttribute(
       "aria-label",
       "Answer for question " + (index + 1)
@@ -1051,29 +1075,39 @@ function buildQuiz() {
 // MUSEUM SIDEBAR NAVIGATION
 // ==========================================
 
-function showSection(isSeason2) {
+function showSection(sectionName) {
 
-  $("originalSection").style.display =
-    isSeason2 ? "none" : "block";
+  const sections = {
+    original: "originalSection",
+    season2: "season2Section",
+    miniRelease: "miniReleaseSection"
+  };
 
-  $("season2Section").style.display =
-    isSeason2 ? "block" : "none";
+  const tabs = {
+    original: "originalTab",
+    season2: "season2Tab",
+    miniRelease: "miniReleaseTab"
+  };
 
-  $("originalTab").classList.toggle(
-    "active",
-    !isSeason2
-  );
+  Object.keys(sections).forEach(key => {
 
-  $("season2Tab").classList.toggle(
-    "active",
-    isSeason2
-  );
+    $(sections[key]).style.display =
+      key === sectionName ? "block" : "none";
+
+    $(tabs[key]).classList.toggle(
+      "active",
+      key === sectionName
+    );
+
+  });
 
 }
 
-$("originalTab").onclick = () => showSection(false);
+$("originalTab").onclick = () => showSection("original");
 
-$("season2Tab").onclick = () => showSection(true);
+$("season2Tab").onclick = () => showSection("season2");
+
+$("miniReleaseTab").onclick = () => showSection("miniRelease");
 
 // ==========================================
 // ORIGINAL COLLECTION
@@ -1169,6 +1203,35 @@ const season2Arts = [
 ];
 
 // ==========================================
+// SAMA MINI RELEASE 1 — NEW COLLECTION
+// ==========================================
+
+const miniReleaseArts = [
+
+  {
+    title: "The Unsolved Monkey Mystery",
+    image: "unknown.webp",
+    description:
+      "No one knows what this monkey is trying to achieve here. Not even the monkey itself. Scientists have officially given up."
+  },
+
+  {
+    title: "The Royal Flush of Delusion",
+    image: "poker.webp",
+    description:
+      "A legendary gambler with the confidence of a world champion and the poker face of someone who just lost their life savings."
+  },
+
+  {
+    title: "The Forbidden Morning Ritual",
+    image: "stretch.webp",
+    description:
+      "An extraordinary display of flexibility. Experts believe this ancient stretching technique unlocks absolutely nothing except back pain."
+  }
+
+];
+
+// ==========================================
 // CREATE ARTWORK CARD
 // ==========================================
 
@@ -1223,7 +1286,7 @@ function createCard(art, target) {
 }
 
 // ==========================================
-// LOAD MUSEUM COLLECTIONS
+// LOAD ORIGINAL COLLECTION
 // ==========================================
 
 originalArts.forEach(art => {
@@ -1235,6 +1298,10 @@ originalArts.forEach(art => {
 
 });
 
+// ==========================================
+// LOAD SAMA SEASON 2
+// ==========================================
+
 season2Arts.forEach(art => {
 
   createCard(
@@ -1243,6 +1310,21 @@ season2Arts.forEach(art => {
   );
 
 });
+
+// ==========================================
+// LOAD SAMA MINI RELEASE 1
+// ==========================================
+
+miniReleaseArts.forEach(art => {
+
+  createCard(
+    art,
+    $("miniReleaseGallery")
+  );
+
+});
+
+// EMPTY COLLECTION MESSAGE
 
 $("season2Empty").style.display =
   season2Arts.length ? "none" : "block";
