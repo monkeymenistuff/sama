@@ -27,7 +27,7 @@ button {
 }
 
 /* ==========================================
-   STUDYSPACE HOMEPAGE
+   STUDYSPACE
    ========================================== */
 
 #gate {
@@ -42,13 +42,13 @@ button {
   margin: auto;
   padding: 22px 24px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
 }
 
 .studyLogo {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
   color: #2563eb;
 }
@@ -60,7 +60,6 @@ button {
 .studyLinks {
   display: flex;
   gap: 22px;
-  align-items: center;
 }
 
 .studyLinks a {
@@ -158,22 +157,137 @@ button {
   margin: 0;
 }
 
-.studyFeature {
-  margin-top: 30px;
-  padding: 30px;
-  border-radius: 18px;
+/* ==========================================
+   WORKSHEET QUIZ
+   ========================================== */
+
+.quizSection {
+  margin-top: 42px;
+}
+
+.quizHeading {
+  margin-bottom: 25px;
+}
+
+.quizHeading h2 {
+  margin-bottom: 8px;
+}
+
+.quizHeading p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.quizList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.questionBox {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 20px #0f172a08;
+}
+
+.questionNumber {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.questionText {
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+.answerRow {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.answerInput {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  font-size: 15px;
+  background: #fff;
+  color: #0f172a;
+  outline: none;
+}
+
+.answerInput:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px #2563eb18;
+}
+
+.answerInput:disabled {
+  background: #f8fafc;
+}
+
+.answerButton {
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #ffffff;
+  border: 0;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.answerButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.answerButton:disabled {
+  background: #94a3b8;
+  cursor: default;
+}
+
+.answerFeedback {
+  margin: 13px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+.questionBox.correct {
+  border-color: #86efac;
+}
+
+.questionBox.incorrect {
+  border-color: #fecaca;
+}
+
+.quizSummary {
+  margin-top: 24px;
+  padding: 24px;
   background: #eaf2ff;
+  border-radius: 15px;
+  text-align: center;
 }
 
-.studyFeature h3 {
-  margin-top: 0;
+.quizSummary h3 {
   color: #1e40af;
+  margin: 0 0 10px;
 }
 
-.studyFeature p {
+.quizSummary p {
   color: #475569;
-  line-height: 1.8;
-  margin-bottom: 0;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .studyFooter {
@@ -185,79 +299,12 @@ button {
 }
 
 /* ==========================================
-   QUIZ
-   ========================================== */
-
-.quizOption {
-  display: block;
-  width: 100%;
-  padding: 14px 16px;
-  margin: 9px 0;
-  background: white;
-  border: 1px solid #cbd5e1;
-  border-radius: 9px;
-  text-align: left;
-  color: #334155;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.quizOption:hover:not(:disabled) {
-  border-color: #2563eb;
-  background: #eff6ff;
-}
-
-.quizOption:disabled {
-  cursor: default;
-}
-
-.quizTextInput {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #cbd5e1;
-  border-radius: 9px;
-  font-size: 16px;
-  color: #0f172a;
-  background: white;
-}
-
-.quizSubmit {
-  margin-top: 12px;
-  padding: 12px 20px;
-  background: #2563eb;
-  color: white;
-  border: 0;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.quizSubmit:disabled {
-  opacity: .5;
-  cursor: default;
-}
-
-#quizNext {
-  display: none;
-  margin-top: 15px;
-  padding: 12px 22px;
-  border: 0;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
-  font-weight: bold;
-}
-
-/* ==========================================
-   MAIN MUSEUM — ORIGINAL STYLING
+   ORIGINAL SAMA MUSEUM
    ========================================== */
 
 #museum {
   display: none;
 }
-
-/* ARTIST BANNER */
 
 .museumHeader {
   padding: 0;
@@ -271,8 +318,6 @@ button {
   width: 100%;
   height: auto;
 }
-
-/* SIDEBAR + LAYOUT */
 
 .layout {
   max-width: 1400px;
@@ -314,8 +359,6 @@ button {
   background: #432952;
   border-color: #d6b36d;
 }
-
-/* COLLECTIONS */
 
 .sectionTitle {
   text-align: center;
@@ -402,10 +445,11 @@ footer {
 }
 
 /* ==========================================
-   MOBILE
+   MOBILE RESPONSIVENESS
    ========================================== */
 
 @media (max-width: 720px) {
+
   .studyNav {
     padding: 16px;
   }
@@ -435,8 +479,20 @@ footer {
     padding: 0 20px 50px;
   }
 
-  .studyFeature {
-    padding: 22px;
+  .questionBox {
+    padding: 19px;
+  }
+
+  .questionText {
+    font-size: 17px;
+  }
+
+  .answerRow {
+    flex-direction: column;
+  }
+
+  .answerButton {
+    width: 100%;
   }
 
   .layout {
@@ -462,6 +518,7 @@ footer {
   .gallery {
     grid-template-columns: 1fr;
   }
+
 }
 </style>
 </head>
@@ -475,6 +532,7 @@ footer {
 <div id="gate">
 
   <nav class="studyNav">
+
     <div class="studyLogo">
       Study<span>Space</span>
     </div>
@@ -483,9 +541,11 @@ footer {
       <a href="#tips">Study Tips</a>
       <a href="#quiz">Daily Quiz</a>
     </div>
+
   </nav>
 
   <section class="studyHero">
+
     <span class="studyTag">
       ✦ Your everyday learning companion
     </span>
@@ -500,6 +560,7 @@ footer {
       and challenge yourself with our daily
       general knowledge quiz.
     </p>
+
   </section>
 
   <main class="studyMain" id="tips">
@@ -514,69 +575,72 @@ footer {
     <div class="studyGrid">
 
       <article class="studyCard">
+
         <div class="studyIcon">🧠</div>
+
         <h3>Active Recall</h3>
+
         <p>
           Test yourself instead of just rereading notes.
           This strengthens your memory.
         </p>
+
       </article>
 
       <article class="studyCard">
+
         <div class="studyIcon">⏱️</div>
+
         <h3>Pomodoro Technique</h3>
+
         <p>
           Study for 25 minutes, then take a short
           break to maintain focus.
         </p>
+
       </article>
 
       <article class="studyCard">
+
         <div class="studyIcon">📚</div>
+
         <h3>Spaced Repetition</h3>
+
         <p>
           Review information over time to improve
           long-term retention.
         </p>
+
       </article>
 
     </div>
 
-    <!-- DAILY QUIZ -->
+    <!-- GENERAL KNOWLEDGE WORKSHEET -->
 
-    <section class="studyFeature" id="quiz">
+    <section class="quizSection" id="quiz">
 
-      <h3>📝 Daily General Knowledge Quiz</h3>
+      <div class="quizHeading">
 
-      <p>
-        10 questions. Test what you know!
-      </p>
+        <h2>📝 Daily General Knowledge Quiz</h2>
 
-      <div id="quizContainer" style="margin-top:25px;">
+        <p>
+          Answer the 10 questions below.
+          You can complete them in any order.
+          Type your answer and press Submit Answer
+          to check each question.
+        </p>
 
-        <div
-          id="quizProgress"
-          style="font-size:13px;color:#64748b;margin-bottom:12px;"
-        ></div>
+      </div>
 
-        <h2
-          id="quizQuestion"
-          style="font-size:22px;"
-        ></h2>
+      <div id="quizList" class="quizList"></div>
 
-        <div
-          id="quizAnswers"
-          style="margin-top:20px;"
-        ></div>
+      <div id="quizSummary" class="quizSummary">
 
-        <p
-          id="quizFeedback"
-          style="font-size:14px;margin-top:15px;"
-        ></p>
+        <h3>Quiz Progress</h3>
 
-        <button id="quizNext">
-          Next Question →
-        </button>
+        <p id="quizScoreText">
+          0 of 10 answered · 0 correct
+        </p>
 
       </div>
 
@@ -591,26 +655,25 @@ footer {
 </div>
 
 <!-- ==========================================
-     MAIN MUSEUM — UNCHANGED
+     MAIN MUSEUM — ORIGINAL
      ========================================== -->
 
 <div id="museum">
 
-  <!-- ARTIST BANNER -->
-
   <header class="museumHeader">
+
     <img
       src="artist.webp"
       alt="Sama Museum — The Official Senyu Huang Collection"
       class="museumBanner"
     >
+
   </header>
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
-
     <aside class="sidebar">
+
       <h2>Explore</h2>
 
       <button
@@ -626,11 +689,10 @@ footer {
       >
         ✨ Sama Season 2
       </button>
+
     </aside>
 
     <main>
-
-      <!-- ORIGINAL COLLECTION -->
 
       <section id="originalSection">
 
@@ -646,8 +708,6 @@ footer {
 
       </section>
 
-      <!-- SAMA SEASON 2 -->
-
       <section id="season2Section">
 
         <h2 class="sectionTitle">
@@ -660,7 +720,10 @@ footer {
           The saga continues.
         </p>
 
-        <div id="season2Gallery" class="gallery"></div>
+        <div
+          id="season2Gallery"
+          class="gallery"
+        ></div>
 
         <p id="season2Empty" class="empty">
           No pictures yet.
@@ -669,6 +732,7 @@ footer {
       </section>
 
     </main>
+
   </div>
 
   <footer>
@@ -680,11 +744,11 @@ footer {
 <script>
 
 // ==========================================
-// MUSEUM PASSWORD
+// PASSWORD
 // ==========================================
 
-// Visual disguise only.
-// The password and museum are visible in source code.
+// This is a visual disguise, not secure authentication.
+// Source-code viewers can discover the password.
 
 const MUSEUM_PASSWORD = "bigmommyhuangjiba6767";
 
@@ -698,240 +762,293 @@ const quizQuestions = [
 
   {
     question: "What is the capital city of France?",
-    options: ["London", "Paris", "Berlin", "Madrid"],
-    answer: "Paris"
+    answers: ["paris"],
+    displayAnswer: "Paris"
   },
 
   {
     question: "Which planet is known as the Red Planet?",
-    options: ["Venus", "Jupiter", "Mars", "Saturn"],
-    answer: "Mars"
+    answers: ["mars"],
+    displayAnswer: "Mars"
   },
 
   {
     question: "How many continents are there?",
-    options: ["5", "6", "7", "8"],
-    answer: "7"
+    answers: ["7", "seven"],
+    displayAnswer: "7"
   },
 
   {
     question: "What is the chemical symbol for gold?",
-    options: ["Ag", "Au", "Fe", "Go"],
-    answer: "Au"
+    answers: ["au"],
+    displayAnswer: "Au"
   },
 
   {
     question: "Which ocean is the largest?",
-    options: ["Atlantic", "Indian", "Pacific", "Arctic"],
-    answer: "Pacific"
+    answers: ["pacific", "pacific ocean", "the pacific ocean"],
+    displayAnswer: "Pacific Ocean"
   },
 
   {
     question: "What is the largest mammal in the world?",
-    type: "text",
-    answer: "blue whale"
+    answers: ["blue whale", "the blue whale"],
+    displayAnswer: "Blue whale"
   },
 
   {
     question: "Who painted the Mona Lisa?",
-    options: [
-      "Vincent van Gogh",
-      "Pablo Picasso",
-      "Leonardo da Vinci",
-      "Claude Monet"
-    ],
-    answer: "Leonardo da Vinci"
+    answers: ["leonardo da vinci", "da vinci", "leonardo"],
+    displayAnswer: "Leonardo da Vinci"
   },
 
   {
     question: "What is the square root of 144?",
-    options: ["10", "11", "12", "14"],
-    answer: "12"
+    answers: ["12", "twelve"],
+    displayAnswer: "12"
   },
 
   {
     question: "Which gas do plants absorb during photosynthesis?",
-    options: [
-      "Oxygen",
-      "Nitrogen",
-      "Carbon dioxide",
-      "Hydrogen"
-    ],
-    answer: "Carbon dioxide"
+    answers: ["carbon dioxide", "co2", "co₂"],
+    displayAnswer: "Carbon dioxide"
   },
 
   {
-    question: "Which country is home to the ancient pyramids of Giza?",
-    options: ["Greece", "Egypt", "Mexico", "India"],
-    answer: "Egypt"
+    question: "Which country is home to the pyramids of Giza?",
+    answers: ["egypt"],
+    displayAnswer: "Egypt"
   }
 
 ];
 
-let currentQuestion = 0;
+// ==========================================
+// QUIZ STATE
+// ==========================================
+
+const answeredQuestions = new Set();
+
 let quizScore = 0;
-let quizAnswered = false;
 
 // ==========================================
-// DISPLAY QUIZ QUESTION
+// NORMALIZE ANSWERS
 // ==========================================
 
-function displayQuestion() {
+function normalizeAnswer(value) {
 
-  const q = quizQuestions[currentQuestion];
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
 
-  quizAnswered = false;
-
-  $("quizProgress").textContent =
-    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
-
-  $("quizQuestion").textContent = q.question;
-
-  $("quizAnswers").innerHTML = "";
-  $("quizFeedback").textContent = "";
-  $("quizNext").style.display = "none";
-
-  const answers = $("quizAnswers");
-
-  if (q.type === "text") {
-
-    const input = document.createElement("input");
-    input.type = "text";
-    input.className = "quizTextInput";
-    input.placeholder = "Type your answer...";
-    input.autocomplete = "off";
-
-    const submit = document.createElement("button");
-    submit.className = "quizSubmit";
-    submit.textContent = "Submit Answer";
-
-    const checkTextAnswer = () => {
-
-      if (quizAnswered) return;
-
-      const entered = input.value.trim();
-
-      // SECRET ENTRANCE — QUESTION SIX
-      if (
-        currentQuestion === 5 &&
-        entered === MUSEUM_PASSWORD
-      ) {
-
-        $("gate").style.display = "none";
-        $("museum").style.display = "block";
-
-        window.scrollTo(0, 0);
-
-        return;
-      }
-
-      checkAnswer(entered);
-    };
-
-    submit.addEventListener("click", checkTextAnswer);
-
-    input.addEventListener("keydown", event => {
-      if (event.key === "Enter") {
-        checkTextAnswer();
-      }
-    });
-
-    answers.append(input, submit);
-
-  } else {
-
-    q.options.forEach(option => {
-
-      const button = document.createElement("button");
-
-      button.className = "quizOption";
-      button.textContent = option;
-
-      button.addEventListener("click", () => {
-        checkAnswer(option);
-      });
-
-      answers.appendChild(button);
-
-    });
-
-  }
 }
 
 // ==========================================
-// CHECK QUIZ ANSWERS
+// OPEN MUSEUM
 // ==========================================
 
-function checkAnswer(selected) {
+function openMuseum() {
 
-  if (quizAnswered) return;
+  $("gate").style.display = "none";
+  $("museum").style.display = "block";
 
-  const q = quizQuestions[currentQuestion];
+  window.scrollTo(0, 0);
 
-  if (!selected.trim()) return;
-
-  quizAnswered = true;
-
-  const correct =
-    selected.trim().toLowerCase() ===
-    q.answer.toLowerCase();
-
-  if (correct) {
-    quizScore++;
-  }
-
-  const feedback = $("quizFeedback");
-
-  feedback.textContent = correct
-    ? "✓ Correct! Well done."
-    : `Not quite! The correct answer is ${q.answer}.`;
-
-  feedback.style.color =
-    correct ? "#15803d" : "#dc2626";
-
-  document.querySelectorAll(
-    ".quizOption, .quizSubmit, .quizTextInput"
-  ).forEach(element => {
-    element.disabled = true;
-  });
-
-  const next = $("quizNext");
-
-  next.style.display = "inline-block";
-
-  next.textContent =
-    currentQuestion === quizQuestions.length - 1
-      ? "See Results →"
-      : "Next Question →";
 }
 
 // ==========================================
-// NEXT QUESTION / RESULTS
+// SUBMIT INDIVIDUAL QUESTION
 // ==========================================
 
-$("quizNext").addEventListener("click", () => {
+function submitQuizAnswer(index) {
 
-  currentQuestion++;
-
-  if (currentQuestion >= quizQuestions.length) {
-
-    $("quizContainer").innerHTML = `
-      <h2>🎉 Quiz Complete!</h2>
-      <p>You scored <strong>${quizScore}/10</strong>!</p>
-      <button class="quizSubmit" onclick="location.reload()">
-        Try Again
-      </button>
-    `;
-
+  if (answeredQuestions.has(index)) {
     return;
   }
 
-  displayQuestion();
+  const question = quizQuestions[index];
 
-});
+  const input = $("answerInput" + index);
+
+  const submitted = input.value.trim();
+
+  if (!submitted) {
+    input.focus();
+    return;
+  }
+
+  // SECRET ENTRANCE ON QUESTION SIX ONLY
+  // No need to complete any other questions.
+
+  if (
+    index === 5 &&
+    submitted === MUSEUM_PASSWORD
+  ) {
+
+    openMuseum();
+    return;
+
+  }
+
+  const normalized = normalizeAnswer(submitted);
+
+  const isCorrect = question.answers.some(answer => {
+    return normalizeAnswer(answer) === normalized;
+  });
+
+  answeredQuestions.add(index);
+
+  if (isCorrect) {
+    quizScore++;
+  }
+
+  const box = $("questionBox" + index);
+
+  const feedback = $("answerFeedback" + index);
+
+  const button = $("answerButton" + index);
+
+  if (isCorrect) {
+
+    box.classList.add("correct");
+
+    feedback.textContent = "✓ Correct! Well done.";
+
+    feedback.style.color = "#15803d";
+
+  } else {
+
+    box.classList.add("incorrect");
+
+    feedback.textContent =
+      "Not quite! Correct answer: " +
+      question.displayAnswer;
+
+    feedback.style.color = "#dc2626";
+
+  }
+
+  input.disabled = true;
+  button.disabled = true;
+  button.textContent = "Submitted";
+
+  updateQuizScore();
+
+}
 
 // ==========================================
-// SIDEBAR NAVIGATION
+// UPDATE SCORE
+// ==========================================
+
+function updateQuizScore() {
+
+  const completed = answeredQuestions.size;
+
+  const scoreText = $("quizScoreText");
+
+  if (completed === quizQuestions.length) {
+
+    scoreText.textContent =
+      "🎉 Quiz complete! Final score: " +
+      quizScore +
+      " / " +
+      quizQuestions.length;
+
+  } else {
+
+    scoreText.textContent =
+      completed +
+      " of " +
+      quizQuestions.length +
+      " answered · " +
+      quizScore +
+      " correct";
+
+  }
+
+}
+
+// ==========================================
+// CREATE ALL TEN QUESTION BOXES
+// ==========================================
+
+function buildQuiz() {
+
+  const container = $("quizList");
+
+  quizQuestions.forEach((question, index) => {
+
+    const box = document.createElement("article");
+
+    box.className = "questionBox";
+    box.id = "questionBox" + index;
+
+    const number = document.createElement("div");
+
+    number.className = "questionNumber";
+    number.textContent = "Question " + (index + 1);
+
+    const heading = document.createElement("h3");
+
+    heading.className = "questionText";
+    heading.textContent = question.question;
+
+    const row = document.createElement("div");
+
+    row.className = "answerRow";
+
+    const input = document.createElement("input");
+
+    input.type = "text";
+    input.className = "answerInput";
+    input.id = "answerInput" + index;
+    input.placeholder = "Type your answer...";
+    input.autocomplete = "off";
+    input.setAttribute(
+      "aria-label",
+      "Answer for question " + (index + 1)
+    );
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "answerButton";
+    button.id = "answerButton" + index;
+    button.textContent = "Submit Answer";
+
+    button.addEventListener("click", () => {
+      submitQuizAnswer(index);
+    });
+
+    input.addEventListener("keydown", event => {
+
+      if (event.key === "Enter") {
+
+        event.preventDefault();
+        submitQuizAnswer(index);
+
+      }
+
+    });
+
+    const feedback = document.createElement("p");
+
+    feedback.className = "answerFeedback";
+    feedback.id = "answerFeedback" + index;
+    feedback.setAttribute("role", "status");
+
+    row.append(input, button);
+
+    box.append(number, heading, row, feedback);
+
+    container.appendChild(box);
+
+  });
+
+}
+
+// ==========================================
+// MUSEUM SIDEBAR NAVIGATION
 // ==========================================
 
 function showSection(isSeason2) {
@@ -955,6 +1072,7 @@ function showSection(isSeason2) {
 }
 
 $("originalTab").onclick = () => showSection(false);
+
 $("season2Tab").onclick = () => showSection(true);
 
 // ==========================================
@@ -1057,6 +1175,7 @@ const season2Arts = [
 function createCard(art, target) {
 
   const frame = document.createElement("article");
+
   frame.className = "frame";
 
   // IMAGE
@@ -1071,12 +1190,15 @@ function createCard(art, target) {
   // PLAQUE
 
   const plaque = document.createElement("div");
+
   plaque.className = "plaque";
 
   const heading = document.createElement("h2");
+
   heading.textContent = art.title;
 
   const subtitle = document.createElement("p");
+
   subtitle.textContent = "The Sama Collection";
 
   plaque.append(heading, subtitle);
@@ -1095,12 +1217,13 @@ function createCard(art, target) {
   }
 
   frame.append(img, plaque);
+
   target.appendChild(frame);
 
 }
 
 // ==========================================
-// LOAD COLLECTIONS
+// LOAD MUSEUM COLLECTIONS
 // ==========================================
 
 originalArts.forEach(art => {
@@ -1121,14 +1244,14 @@ season2Arts.forEach(art => {
 
 });
 
-// EMPTY COLLECTION MESSAGE
-
 $("season2Empty").style.display =
   season2Arts.length ? "none" : "block";
 
-// START QUIZ
+// ==========================================
+// INITIALIZE QUIZ
+// ==========================================
 
-displayQuestion();
+buildQuiz();
 
 </script>
 
