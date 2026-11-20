@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sama Museum</title>
+<title>StudySpace | Smarter Learning</title>
 
 <style>
 * {
@@ -26,61 +26,248 @@ button {
   cursor: pointer;
 }
 
-/* PASSWORD ENTRANCE */
+/* STUDY WEBSITE — ENTRANCE ONLY */
 
 #gate {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: radial-gradient(
-    circle,
-    #4f2b6f,
-    #120b16 70%
-  );
+  background: #f7f9fc;
+  color: #1e293b;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.gateBox {
-  width: 100%;
-  max-width: 420px;
-  background: #24152b;
-  border: 2px solid #d6b36d;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
-  box-shadow: 0 0 35px #d6b36d40;
+.studyNav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.gateBox h1 {
-  color: #d6b36d;
+.studyLogo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #2563eb;
 }
 
-.gateBox input {
-  width: 100%;
-  padding: 13px;
-  margin: 15px 0 12px;
-  border: 1px solid #d6b36d;
-  border-radius: 8px;
-  background: #120b16;
-  color: white;
+.studyLogo span {
+  color: #172554;
 }
 
-.goldButton {
-  border: 0;
-  border-radius: 8px;
-  background: #d6b36d;
-  color: #24152b;
-  font-weight: bold;
-  padding: 11px 17px;
+.studyLinks {
+  display: flex;
+  gap: 22px;
+  align-items: center;
 }
 
-.gateBox .goldButton {
-  width: 100%;
+.studyLinks a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.studyLinks a:hover {
+  color: #2563eb;
+}
+
+.secretForm {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: .42;
+}
+
+.secretForm:focus-within,
+.secretForm:hover {
+  opacity: 1;
+}
+
+#pass {
+  width: 76px;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+#pass:focus {
+  width: 120px;
+  outline: 2px solid #93c5fd;
+}
+
+#enterBtn {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #64748b;
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-size: 12px;
 }
 
 #wrong {
-  color: #ff7777;
   display: none;
+  color: #b91c1c;
+  font-size: 12px;
+  margin: 0;
+}
+
+.studyHero {
+  max-width: 1100px;
+  margin: 65px auto 50px;
+  padding: 0 24px;
+}
+
+.studyTag {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.studyHero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  max-width: 750px;
+  margin: 22px 0;
+  color: #0f172a;
+}
+
+.studyHero h1 em {
+  font-style: normal;
+  color: #2563eb;
+}
+
+.studyHero p {
+  max-width: 630px;
+  line-height: 1.8;
+  color: #64748b;
+  font-size: 17px;
+}
+
+.studyMain {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 24px 70px;
+}
+
+.studyMain h2 {
+  color: #0f172a;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.studyIntro {
+  color: #64748b;
+  margin-bottom: 26px;
+}
+
+.studyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.studyCard {
+  padding: 26px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #0f172a08;
+}
+
+.studyIcon {
+  font-size: 27px;
+}
+
+.studyCard h3 {
+  font-size: 18px;
+  margin: 15px 0 10px;
+  color: #0f172a;
+}
+
+.studyCard p {
+  color: #64748b;
+  line-height: 1.65;
+  font-size: 14px;
+  margin: 0;
+}
+
+.studyFeature {
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 18px;
+  background: #eaf2ff;
+}
+
+.studyFeature h3 {
+  margin-top: 0;
+  color: #1e40af;
+}
+
+.studyFeature p {
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.studyFooter {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .studyNav {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .studyLinks {
+    gap: 8px;
+  }
+
+  .studyLinks a {
+    display: none;
+  }
+
+  .secretForm {
+    opacity: .5;
+  }
+
+  #pass {
+    width: 62px;
+  }
+
+  #pass:focus {
+    width: 90px;
+  }
+
+  .studyHero {
+    margin: 42px auto 36px;
+    padding: 0 20px;
+  }
+
+  .studyHero h1 {
+    letter-spacing: -1px;
+  }
+
+  .studyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .studyMain {
+    padding: 0 20px 50px;
+  }
 }
 
 /* MAIN MUSEUM */
@@ -269,25 +456,42 @@ footer {
 
 <body>
 
-<!-- PASSWORD GATE -->
-
+<!-- NORMAL-LOOKING STUDY PAGE / PASSWORD ENTRANCE -->
 <div id="gate">
-  <div class="gateBox">
-    <h1>👑 SAMA MUSEUM</h1>
-    <p>The Official Senyu Huang Collection</p>
-
-    <input
-      id="pass"
-      type="password"
-      placeholder="Enter museum password"
-    >
-
-    <button id="enterBtn" class="goldButton">
-      Enter Museum
-    </button>
-
-    <p id="wrong">❌ Incorrect password</p>
-  </div>
+  <nav class="studyNav">
+    <div class="studyLogo">Study<span>Space</span></div>
+    <div class="studyLinks">
+      <a href="#tips">Study Tips</a>
+      <a href="#routine">Routine</a>
+      <div class="secretForm" title="Quick access">
+        <input id="pass" type="password" placeholder="••••" aria-label="Quick access code" autocomplete="off">
+        <button id="enterBtn" type="button" aria-label="Submit access code">→</button>
+      </div>
+    </div>
+  </nav>
+  <section class="studyHero">
+    <span class="studyTag">✦ Your everyday learning companion</span>
+    <h1>Study smarter.<br><em>Learn better.</em></h1>
+    <p>Simple, research-backed techniques to help you focus, remember more, and feel confident before your next exam.</p>
+  </section>
+  <main class="studyMain" id="tips">
+    <h2>Better habits, better results.</h2>
+    <p class="studyIntro">Small changes to your study routine can make a big difference.</p>
+    <div class="studyGrid">
+      <article class="studyCard"><div class="studyIcon">⏱️</div><h3>The Pomodoro Method</h3><p>Study for 25 minutes, then take a 5-minute break. After four sessions, take a longer break to recharge.</p></article>
+      <article class="studyCard"><div class="studyIcon">🧠</div><h3>Active Recall</h3><p>Close your notes and test yourself on what you remember. Retrieving information strengthens your memory.</p></article>
+      <article class="studyCard"><div class="studyIcon">📅</div><h3>Spaced Repetition</h3><p>Review material over several days instead of cramming everything into one long session.</p></article>
+      <article class="studyCard"><div class="studyIcon">📝</div><h3>Practice Questions</h3><p>Use past papers and practice problems to find knowledge gaps and get comfortable with exam formats.</p></article>
+      <article class="studyCard"><div class="studyIcon">📵</div><h3>Reduce Distractions</h3><p>Silence notifications, keep your desk tidy, and choose one clear goal before each study session.</p></article>
+      <article class="studyCard"><div class="studyIcon">💤</div><h3>Prioritise Sleep</h3><p>Getting enough sleep supports concentration, learning, and memory consolidation.</p></article>
+    </div>
+    <section class="studyFeature" id="routine">
+      <h3>✨ A simple daily study routine</h3>
+      <p>Start with a 5-minute plan. Work on your hardest subject while you're fresh. Take regular breaks, quiz yourself on what you've learned, and finish by writing down your next steps for tomorrow.</p>
+    </section>
+    <p id="wrong" role="status">Invalid code.</p>
+  </main>
+  <div class="studyFooter">© 2026 StudySpace · Build better learning habits, one day at a time.</div>
 </div>
 
 <!-- MAIN MUSEUM -->
