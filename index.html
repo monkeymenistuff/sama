@@ -26,7 +26,9 @@ button {
   cursor: pointer;
 }
 
-/* STUDYSPACE */
+/* ==========================================
+   STUDYSPACE
+   ========================================== */
 
 #gate {
   min-height: 100vh;
@@ -155,7 +157,9 @@ button {
   margin: 0;
 }
 
-/* WORKSHEET QUIZ */
+/* ==========================================
+   WORKSHEET QUIZ
+   ========================================== */
 
 .quizSection {
   margin-top: 42px;
@@ -293,7 +297,9 @@ button {
   font-size: 13px;
 }
 
-/* ORIGINAL MUSEUM STYLING */
+/* ==========================================
+   ORIGINAL MUSEUM STYLING
+   ========================================== */
 
 #museum {
   display: none;
@@ -352,6 +358,77 @@ button {
   background: #432952;
   border-color: #d6b36d;
 }
+
+/* POKER SAM BREAKING NEWS */
+
+.sidebarColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start;
+}
+
+.pokerNotice {
+  background: #24152b;
+  border: 1px solid #a96c6c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #0004;
+}
+
+.noticeHeader {
+  background: #7f1d1d;
+  color: #fff1f2;
+  padding: 12px 14px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.noticeBody {
+  padding: 14px;
+}
+
+.noticeBody img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid #70507a;
+}
+
+.noticeBody h3 {
+  color: #f1c66d;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 14px 0 8px;
+  text-align: center;
+}
+
+.noticeBody p {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #e0d1e5;
+  margin: 0;
+  text-align: center;
+}
+
+.noticeStatus {
+  margin-top: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #3d202b;
+  color: #ffb4b4;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* COLLECTIONS */
 
 .sectionTitle {
   text-align: center;
@@ -438,7 +515,9 @@ footer {
   color: #9e8eaa;
 }
 
-/* MOBILE */
+/* ==========================================
+   MOBILE
+   ========================================== */
 
 @media (max-width: 720px) {
 
@@ -507,6 +586,12 @@ footer {
     margin: 0;
   }
 
+  .pokerNotice {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
   .gallery {
     grid-template-columns: 1fr;
   }
@@ -517,7 +602,9 @@ footer {
 
 <body>
 
-<!-- STUDYSPACE HOMEPAGE -->
+<!-- ==========================================
+     STUDYSPACE HOMEPAGE
+     ========================================== -->
 
 <div id="gate">
 
@@ -632,7 +719,9 @@ footer {
 
 </div>
 
-<!-- MAIN MUSEUM -->
+<!-- ==========================================
+     MAIN MUSEUM
+     ========================================== -->
 
 <div id="museum">
 
@@ -650,34 +739,75 @@ footer {
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR + NEWS NOTICE -->
 
-    <aside class="sidebar">
+    <div class="sidebarColumn">
 
-      <h2>Explore</h2>
+      <aside class="sidebar">
 
-      <button
-        id="originalTab"
-        class="navButton active"
-      >
-        🖼️ The Collection
-      </button>
+        <h2>Explore</h2>
 
-      <button
-        id="season2Tab"
-        class="navButton"
-      >
-        ✨ Sama Season 2
-      </button>
+        <button
+          id="originalTab"
+          class="navButton active"
+        >
+          🖼️ The Collection
+        </button>
 
-      <button
-        id="miniReleaseTab"
-        class="navButton"
-      >
-        🎴 Sama Mini Release 1
-      </button>
+        <button
+          id="season2Tab"
+          class="navButton"
+        >
+          ✨ Sama Season 2
+        </button>
 
-    </aside>
+        <button
+          id="miniReleaseTab"
+          class="navButton"
+        >
+          🎴 Sama Mini Release
+        </button>
+
+      </aside>
+
+      <!-- POKER SAM NEWS UPDATE -->
+
+      <aside class="pokerNotice">
+
+        <div class="noticeHeader">
+          🚨 BREAKING NEWS
+        </div>
+
+        <div class="noticeBody">
+
+          <img
+            src="cards.webp"
+            alt="Poker Sam's playing cards discovered in a urinal"
+            loading="lazy"
+          >
+
+          <h3>
+            Poker Sam's Career in Shambles
+          </h3>
+
+          <p>
+            UPDATE: Poker Sam is reportedly devastated
+            after his beloved playing cards were
+            discovered abandoned in a urinal.
+            Once a feared legend of the poker table,
+            he is now questioning every decision
+            that led him to this moment.
+          </p>
+
+          <div class="noticeStatus">
+            STATUS: EMOTIONALLY BANKRUPT 💔
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
 
     <main>
 
@@ -722,12 +852,12 @@ footer {
 
       </section>
 
-      <!-- SAMA MINI RELEASE 1 -->
+      <!-- SAMA MINI RELEASE -->
 
       <section id="miniReleaseSection">
 
         <h2 class="sectionTitle">
-          Sama Mini Release 1
+          Sama Mini Release
         </h2>
 
         <p class="sectionDescription">
@@ -1203,7 +1333,7 @@ const season2Arts = [
 ];
 
 // ==========================================
-// SAMA MINI RELEASE 1 — NEW COLLECTION
+// SAMA MINI RELEASE
 // ==========================================
 
 const miniReleaseArts = [
@@ -1241,16 +1371,12 @@ function createCard(art, target) {
 
   frame.className = "frame";
 
-  // IMAGE
-
   const img = document.createElement("img");
 
   img.className = "artImage";
   img.src = art.image;
   img.alt = art.title;
   img.loading = "lazy";
-
-  // PLAQUE
 
   const plaque = document.createElement("div");
 
@@ -1265,8 +1391,6 @@ function createCard(art, target) {
   subtitle.textContent = "The Sama Collection";
 
   plaque.append(heading, subtitle);
-
-  // OPTIONAL DESCRIPTION
 
   if (art.description) {
 
@@ -1286,7 +1410,7 @@ function createCard(art, target) {
 }
 
 // ==========================================
-// LOAD ORIGINAL COLLECTION
+// LOAD ALL COLLECTIONS
 // ==========================================
 
 originalArts.forEach(art => {
@@ -1298,10 +1422,6 @@ originalArts.forEach(art => {
 
 });
 
-// ==========================================
-// LOAD SAMA SEASON 2
-// ==========================================
-
 season2Arts.forEach(art => {
 
   createCard(
@@ -1311,10 +1431,6 @@ season2Arts.forEach(art => {
 
 });
 
-// ==========================================
-// LOAD SAMA MINI RELEASE 1
-// ==========================================
-
 miniReleaseArts.forEach(art => {
 
   createCard(
@@ -1323,8 +1439,6 @@ miniReleaseArts.forEach(art => {
   );
 
 });
-
-// EMPTY COLLECTION MESSAGE
 
 $("season2Empty").style.display =
   season2Arts.length ? "none" : "block";
