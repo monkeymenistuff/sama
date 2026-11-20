@@ -1,8 +1,484 @@
 
-<!-- STUDYSPACE ENTRANCE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudySpace | Smarter Learning</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #120b16;
+  color: #f4ead7;
+  font-family: Georgia, serif;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==========================================
+   STUDYSPACE HOMEPAGE
+   ========================================== */
+
+#gate {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #1e293b;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.studyNav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.studyLogo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.studyLogo span {
+  color: #172554;
+}
+
+.studyLinks {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.studyLinks a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.studyLinks a:hover {
+  color: #2563eb;
+}
+
+.studyHero {
+  max-width: 1100px;
+  margin: 65px auto 50px;
+  padding: 0 24px;
+}
+
+.studyTag {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.studyHero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  max-width: 750px;
+  margin: 22px 0;
+  color: #0f172a;
+}
+
+.studyHero h1 em {
+  font-style: normal;
+  color: #2563eb;
+}
+
+.studyHero p {
+  max-width: 630px;
+  line-height: 1.8;
+  color: #64748b;
+  font-size: 17px;
+}
+
+.studyMain {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 24px 70px;
+}
+
+.studyMain h2 {
+  color: #0f172a;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.studyIntro {
+  color: #64748b;
+  margin-bottom: 26px;
+}
+
+.studyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.studyCard {
+  padding: 26px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #0f172a08;
+}
+
+.studyIcon {
+  font-size: 27px;
+}
+
+.studyCard h3 {
+  font-size: 18px;
+  margin: 15px 0 10px;
+  color: #0f172a;
+}
+
+.studyCard p {
+  color: #64748b;
+  line-height: 1.65;
+  font-size: 14px;
+  margin: 0;
+}
+
+.studyFeature {
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 18px;
+  background: #eaf2ff;
+}
+
+.studyFeature h3 {
+  margin-top: 0;
+  color: #1e40af;
+}
+
+.studyFeature p {
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.studyFooter {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* ==========================================
+   QUIZ
+   ========================================== */
+
+.quizOption {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin: 9px 0;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  text-align: left;
+  color: #334155;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.quizOption:hover:not(:disabled) {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.quizOption:disabled {
+  cursor: default;
+}
+
+.quizTextInput {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  font-size: 16px;
+  color: #0f172a;
+  background: white;
+}
+
+.quizSubmit {
+  margin-top: 12px;
+  padding: 12px 20px;
+  background: #2563eb;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quizSubmit:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+#quizNext {
+  display: none;
+  margin-top: 15px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+/* ==========================================
+   MAIN MUSEUM — ORIGINAL STYLING
+   ========================================== */
+
+#museum {
+  display: none;
+}
+
+/* ARTIST BANNER */
+
+.museumHeader {
+  padding: 0;
+  margin: 0;
+  background: #120b16;
+  border-bottom: 2px solid #d6b36d;
+}
+
+.museumBanner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* SIDEBAR + LAYOUT */
+
+.layout {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 28px;
+  padding: 30px 20px;
+}
+
+.sidebar {
+  background: #24152b;
+  border: 1px solid #70507a;
+  border-radius: 12px;
+  padding: 18px;
+  height: max-content;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  color: #d6b36d;
+  margin: 0 0 15px;
+}
+
+.navButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #f4ead7;
+  border: 1px solid transparent;
+  padding: 13px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.navButton:hover,
+.navButton.active {
+  background: #432952;
+  border-color: #d6b36d;
+}
+
+/* COLLECTIONS */
+
+.sectionTitle {
+  text-align: center;
+  font-size: 30px;
+  color: #d6b36d;
+  margin: 5px 0 12px;
+}
+
+.sectionDescription {
+  text-align: center;
+  color: #cbbcd0;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  );
+  gap: 26px;
+}
+
+.frame {
+  background: #24152b;
+  border: 12px solid #5a3d24;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow:
+    0 8px 25px #0008,
+    inset 0 0 0 2px #d6b36d;
+}
+
+.artImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #0d0810;
+}
+
+.plaque {
+  background: #e4d2ae;
+  color: #24152b;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.plaque h2 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.plaque p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.artDescription {
+  margin-top: 10px !important;
+  font-style: italic;
+  line-height: 1.5;
+  color: #5a4055;
+}
+
+#season2Section {
+  display: none;
+}
+
+.empty {
+  color: #b7a6c0;
+  font-style: italic;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 36px 20px;
+  border-top: 1px solid #3c2945;
+  color: #9e8eaa;
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 720px) {
+  .studyNav {
+    padding: 16px;
+  }
+
+  .studyLinks {
+    gap: 12px;
+  }
+
+  .studyLinks a {
+    font-size: 12px;
+  }
+
+  .studyHero {
+    margin: 42px auto 36px;
+    padding: 0 20px;
+  }
+
+  .studyHero h1 {
+    letter-spacing: -1px;
+  }
+
+  .studyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .studyMain {
+    padding: 0 20px 50px;
+  }
+
+  .studyFeature {
+    padding: 22px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebar h2 {
+    width: 100%;
+  }
+
+  .navButton {
+    width: auto;
+    flex: 1;
+    margin: 0;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==========================================
+     STUDYSPACE HOMEPAGE
+     ========================================== -->
+
 <div id="gate">
+
   <nav class="studyNav">
-    <div class="studyLogo">Study<span>Space</span></div>
+    <div class="studyLogo">
+      Study<span>Space</span>
+    </div>
+
     <div class="studyLinks">
       <a href="#tips">Study Tips</a>
       <a href="#quiz">Daily Quiz</a>
@@ -10,174 +486,315 @@
   </nav>
 
   <section class="studyHero">
-    <span class="studyTag">✦ Your everyday learning companion</span>
-    <h1>Study smarter.<br><em>Learn better.</em></h1>
-    <p>Build your knowledge, sharpen your memory, and challenge yourself with our daily general knowledge quiz.</p>
+    <span class="studyTag">
+      ✦ Your everyday learning companion
+    </span>
+
+    <h1>
+      Study smarter.<br>
+      <em>Learn better.</em>
+    </h1>
+
+    <p>
+      Build your knowledge, sharpen your memory,
+      and challenge yourself with our daily
+      general knowledge quiz.
+    </p>
   </section>
 
   <main class="studyMain" id="tips">
+
     <h2>Better habits, better results.</h2>
-    <p class="studyIntro">Small changes to your study routine can make a big difference.</p>
+
+    <p class="studyIntro">
+      Small changes to your study routine
+      can make a big difference.
+    </p>
 
     <div class="studyGrid">
+
       <article class="studyCard">
         <div class="studyIcon">🧠</div>
         <h3>Active Recall</h3>
-        <p>Test yourself instead of just rereading notes. This strengthens your memory.</p>
+        <p>
+          Test yourself instead of just rereading notes.
+          This strengthens your memory.
+        </p>
       </article>
 
       <article class="studyCard">
         <div class="studyIcon">⏱️</div>
         <h3>Pomodoro Technique</h3>
-        <p>Study for 25 minutes, then take a short break to maintain focus.</p>
+        <p>
+          Study for 25 minutes, then take a short
+          break to maintain focus.
+        </p>
       </article>
 
       <article class="studyCard">
         <div class="studyIcon">📚</div>
         <h3>Spaced Repetition</h3>
-        <p>Review information over time to improve long-term retention.</p>
+        <p>
+          Review information over time to improve
+          long-term retention.
+        </p>
       </article>
+
     </div>
 
+    <!-- DAILY QUIZ -->
+
     <section class="studyFeature" id="quiz">
+
       <h3>📝 Daily General Knowledge Quiz</h3>
-      <p>10 questions. Test what you know!</p>
+
+      <p>
+        10 questions. Test what you know!
+      </p>
 
       <div id="quizContainer" style="margin-top:25px;">
-        <div id="quizProgress" style="font-size:13px;color:#64748b;margin-bottom:12px;"></div>
-        <h2 id="quizQuestion" style="font-size:22px;"></h2>
-        <div id="quizAnswers" style="margin-top:20px;"></div>
-        <p id="quizFeedback" style="font-size:14px;margin-top:15px;"></p>
-        <button id="quizNext" style="display:none;margin-top:15px;padding:12px 22px;border:0;border-radius:8px;background:#2563eb;color:white;font-weight:bold;">Next Question →</button>
+
+        <div
+          id="quizProgress"
+          style="font-size:13px;color:#64748b;margin-bottom:12px;"
+        ></div>
+
+        <h2
+          id="quizQuestion"
+          style="font-size:22px;"
+        ></h2>
+
+        <div
+          id="quizAnswers"
+          style="margin-top:20px;"
+        ></div>
+
+        <p
+          id="quizFeedback"
+          style="font-size:14px;margin-top:15px;"
+        ></p>
+
+        <button id="quizNext">
+          Next Question →
+        </button>
+
       </div>
+
     </section>
+
   </main>
 
-  <div class="studyFooter">© 2026 StudySpace · Learn something new every day.</div>
+  <div class="studyFooter">
+    © 2026 StudySpace · Learn something new every day.
+  </div>
+
 </div>
 
-<style>
-  .quizOption {
-    display: block;
-    width: 100%;
-    padding: 14px 16px;
-    margin: 9px 0;
-    background: white;
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    text-align: left;
-    color: #334155;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-  }
+<!-- ==========================================
+     MAIN MUSEUM — UNCHANGED
+     ========================================== -->
 
-  .quizOption:hover:not(:disabled) {
-    border-color: #2563eb;
-    background: #eff6ff;
-  }
+<div id="museum">
 
-  .quizOption:disabled {
-    cursor: default;
-  }
+  <!-- ARTIST BANNER -->
 
-  .quizTextInput {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    font-size: 16px;
-    color: #0f172a;
-    background: white;
-  }
+  <header class="museumHeader">
+    <img
+      src="artist.webp"
+      alt="Sama Museum — The Official Senyu Huang Collection"
+      class="museumBanner"
+    >
+  </header>
 
-  .quizSubmit {
-    margin-top: 12px;
-    padding: 12px 20px;
-    background: #2563eb;
-    color: white;
-    border: 0;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-</style>
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+      <h2>Explore</h2>
+
+      <button
+        id="originalTab"
+        class="navButton active"
+      >
+        🖼️ The Collection
+      </button>
+
+      <button
+        id="season2Tab"
+        class="navButton"
+      >
+        ✨ Sama Season 2
+      </button>
+    </aside>
+
+    <main>
+
+      <!-- ORIGINAL COLLECTION -->
+
+      <section id="originalSection">
+
+        <h2 class="sectionTitle">
+          The Original Collection
+        </h2>
+
+        <p class="sectionDescription">
+          Where the legend first began.
+        </p>
+
+        <div id="gallery" class="gallery"></div>
+
+      </section>
+
+      <!-- SAMA SEASON 2 -->
+
+      <section id="season2Section">
+
+        <h2 class="sectionTitle">
+          Sama Season 2
+        </h2>
+
+        <p class="sectionDescription">
+          Six extraordinary masterpieces.
+          One unforgettable legend.
+          The saga continues.
+        </p>
+
+        <div id="season2Gallery" class="gallery"></div>
+
+        <p id="season2Empty" class="empty">
+          No pictures yet.
+        </p>
+
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    👑 Curated by Senyu Huang • The Sama Museum
+  </footer>
+
+</div>
 
 <script>
+
+// ==========================================
+// MUSEUM PASSWORD
+// ==========================================
+
+// Visual disguise only.
+// The password and museum are visible in source code.
+
+const MUSEUM_PASSWORD = "bigmommyhuangjiba6767";
+
+const $ = id => document.getElementById(id);
+
+// ==========================================
+// QUIZ QUESTIONS
+// ==========================================
+
 const quizQuestions = [
+
   {
     question: "What is the capital city of France?",
     options: ["London", "Paris", "Berlin", "Madrid"],
     answer: "Paris"
   },
+
   {
     question: "Which planet is known as the Red Planet?",
     options: ["Venus", "Jupiter", "Mars", "Saturn"],
     answer: "Mars"
   },
+
   {
     question: "How many continents are there?",
     options: ["5", "6", "7", "8"],
     answer: "7"
   },
+
   {
     question: "What is the chemical symbol for gold?",
     options: ["Ag", "Au", "Fe", "Go"],
     answer: "Au"
   },
+
   {
     question: "Which ocean is the largest?",
     options: ["Atlantic", "Indian", "Pacific", "Arctic"],
     answer: "Pacific"
   },
+
   {
     question: "What is the largest mammal in the world?",
     type: "text",
     answer: "blue whale"
   },
+
   {
     question: "Who painted the Mona Lisa?",
-    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+    options: [
+      "Vincent van Gogh",
+      "Pablo Picasso",
+      "Leonardo da Vinci",
+      "Claude Monet"
+    ],
     answer: "Leonardo da Vinci"
   },
+
   {
     question: "What is the square root of 144?",
     options: ["10", "11", "12", "14"],
     answer: "12"
   },
+
   {
     question: "Which gas do plants absorb during photosynthesis?",
-    options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    options: [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Hydrogen"
+    ],
     answer: "Carbon dioxide"
   },
+
   {
     question: "Which country is home to the ancient pyramids of Giza?",
     options: ["Greece", "Egypt", "Mexico", "India"],
     answer: "Egypt"
   }
+
 ];
 
 let currentQuestion = 0;
 let quizScore = 0;
 let quizAnswered = false;
 
+// ==========================================
+// DISPLAY QUIZ QUESTION
+// ==========================================
+
 function displayQuestion() {
+
   const q = quizQuestions[currentQuestion];
 
   quizAnswered = false;
 
-  document.getElementById("quizProgress").textContent =
+  $("quizProgress").textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
 
-  document.getElementById("quizQuestion").textContent = q.question;
+  $("quizQuestion").textContent = q.question;
 
-  document.getElementById("quizAnswers").innerHTML = "";
-  document.getElementById("quizFeedback").textContent = "";
-  document.getElementById("quizNext").style.display = "none";
+  $("quizAnswers").innerHTML = "";
+  $("quizFeedback").textContent = "";
+  $("quizNext").style.display = "none";
 
-  const answers = document.getElementById("quizAnswers");
+  const answers = $("quizAnswers");
 
   if (q.type === "text") {
+
     const input = document.createElement("input");
     input.type = "text";
     input.className = "quizTextInput";
@@ -189,15 +806,22 @@ function displayQuestion() {
     submit.textContent = "Submit Answer";
 
     const checkTextAnswer = () => {
+
       if (quizAnswered) return;
 
       const entered = input.value.trim();
 
-      // Hidden entrance on question six.
-      if (currentQuestion === 5 && entered === MUSEUM_PASSWORD) {
-        document.getElementById("gate").style.display = "none";
-        document.getElementById("museum").style.display = "block";
+      // SECRET ENTRANCE — QUESTION SIX
+      if (
+        currentQuestion === 5 &&
+        entered === MUSEUM_PASSWORD
+      ) {
+
+        $("gate").style.display = "none";
+        $("museum").style.display = "block";
+
         window.scrollTo(0, 0);
+
         return;
       }
 
@@ -215,8 +839,11 @@ function displayQuestion() {
     answers.append(input, submit);
 
   } else {
+
     q.options.forEach(option => {
+
       const button = document.createElement("button");
+
       button.className = "quizOption";
       button.textContent = option;
 
@@ -225,11 +852,18 @@ function displayQuestion() {
       });
 
       answers.appendChild(button);
+
     });
+
   }
 }
 
+// ==========================================
+// CHECK QUIZ ANSWERS
+// ==========================================
+
 function checkAnswer(selected) {
+
   if (quizAnswered) return;
 
   const q = quizQuestions[currentQuestion];
@@ -239,45 +873,264 @@ function checkAnswer(selected) {
   quizAnswered = true;
 
   const correct =
-    selected.trim().toLowerCase() === q.answer.toLowerCase();
+    selected.trim().toLowerCase() ===
+    q.answer.toLowerCase();
 
   if (correct) {
     quizScore++;
   }
 
-  const feedback = document.getElementById("quizFeedback");
+  const feedback = $("quizFeedback");
 
   feedback.textContent = correct
     ? "✓ Correct! Well done."
     : `Not quite! The correct answer is ${q.answer}.`;
 
-  feedback.style.color = correct ? "#15803d" : "#dc2626";
+  feedback.style.color =
+    correct ? "#15803d" : "#dc2626";
 
-  document.querySelectorAll(".quizOption, .quizSubmit, .quizTextInput")
-    .forEach(element => element.disabled = true);
+  document.querySelectorAll(
+    ".quizOption, .quizSubmit, .quizTextInput"
+  ).forEach(element => {
+    element.disabled = true;
+  });
 
-  const next = document.getElementById("quizNext");
+  const next = $("quizNext");
+
   next.style.display = "inline-block";
+
   next.textContent =
     currentQuestion === quizQuestions.length - 1
       ? "See Results →"
       : "Next Question →";
 }
 
-document.getElementById("quizNext").addEventListener("click", () => {
+// ==========================================
+// NEXT QUESTION / RESULTS
+// ==========================================
+
+$("quizNext").addEventListener("click", () => {
+
   currentQuestion++;
 
   if (currentQuestion >= quizQuestions.length) {
-    document.getElementById("quizContainer").innerHTML = `
+
+    $("quizContainer").innerHTML = `
       <h2>🎉 Quiz Complete!</h2>
       <p>You scored <strong>${quizScore}/10</strong>!</p>
-      <button class="quizSubmit" onclick="location.reload()">Try Again</button>
+      <button class="quizSubmit" onclick="location.reload()">
+        Try Again
+      </button>
     `;
+
     return;
   }
 
   displayQuestion();
+
 });
 
+// ==========================================
+// SIDEBAR NAVIGATION
+// ==========================================
+
+function showSection(isSeason2) {
+
+  $("originalSection").style.display =
+    isSeason2 ? "none" : "block";
+
+  $("season2Section").style.display =
+    isSeason2 ? "block" : "none";
+
+  $("originalTab").classList.toggle(
+    "active",
+    !isSeason2
+  );
+
+  $("season2Tab").classList.toggle(
+    "active",
+    isSeason2
+  );
+
+}
+
+$("originalTab").onclick = () => showSection(false);
+$("season2Tab").onclick = () => showSection(true);
+
+// ==========================================
+// ORIGINAL COLLECTION
+// ==========================================
+
+const originalArts = [
+
+  {
+    title: "Birthday Monkey",
+    image: "birthday.webp"
+  },
+
+  {
+    title: "Megamind",
+    image: "megamind.webp"
+  },
+
+  {
+    title: "Knee Eater",
+    image: "knee.webp"
+  },
+
+  {
+    title: "Monkey Trying to Break Out",
+    image: "breakout.webp"
+  },
+
+  {
+    title: "Curious Monkey",
+    image: "curious.webp"
+  },
+
+  {
+    title: "Awwww... Baby Monkey!",
+    image: "baby.webp"
+  },
+
+  {
+    title: "Confused Monkey",
+    image: "confused.webp"
+  }
+
+];
+
+// ==========================================
+// SAMA SEASON 2
+// ==========================================
+
+const season2Arts = [
+
+  {
+    title: "The Face of Pure Terror",
+    image: "scared.webp",
+    description:
+      "A rare portrait capturing the exact moment when courage officially left the room."
+  },
+
+  {
+    title: "The Divine Revelation",
+    image: "religious.webp",
+    description:
+      "An extraordinary display of spiritual enlightenment. Historians remain unsure what was revealed."
+  },
+
+  {
+    title: "The Ritual of Eternal Love",
+    image: "mating.webp",
+    description:
+      "A fascinating study of romance, instinct, and the questionable decisions of nature."
+  },
+
+  {
+    title: "The Unbreakable Aura",
+    image: "tuff.webp",
+    description:
+      "An overwhelming display of confidence. Scientists estimate the aura levels to be immeasurable."
+  },
+
+  {
+    title: "The Grand Scriptmaster",
+    image: "scriptmaster.webp",
+    description:
+      "A mysterious mastermind believed to control the very code of reality itself."
+  },
+
+  {
+    title: "The Renaissance Supermodel",
+    image: "model.webp",
+    description:
+      "A timeless icon of elegance, beauty, and absolutely unmatched photogenic excellence."
+  }
+
+];
+
+// ==========================================
+// CREATE ARTWORK CARD
+// ==========================================
+
+function createCard(art, target) {
+
+  const frame = document.createElement("article");
+  frame.className = "frame";
+
+  // IMAGE
+
+  const img = document.createElement("img");
+
+  img.className = "artImage";
+  img.src = art.image;
+  img.alt = art.title;
+  img.loading = "lazy";
+
+  // PLAQUE
+
+  const plaque = document.createElement("div");
+  plaque.className = "plaque";
+
+  const heading = document.createElement("h2");
+  heading.textContent = art.title;
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "The Sama Collection";
+
+  plaque.append(heading, subtitle);
+
+  // OPTIONAL DESCRIPTION
+
+  if (art.description) {
+
+    const description = document.createElement("p");
+
+    description.className = "artDescription";
+    description.textContent = art.description;
+
+    plaque.appendChild(description);
+
+  }
+
+  frame.append(img, plaque);
+  target.appendChild(frame);
+
+}
+
+// ==========================================
+// LOAD COLLECTIONS
+// ==========================================
+
+originalArts.forEach(art => {
+
+  createCard(
+    art,
+    $("gallery")
+  );
+
+});
+
+season2Arts.forEach(art => {
+
+  createCard(
+    art,
+    $("season2Gallery")
+  );
+
+});
+
+// EMPTY COLLECTION MESSAGE
+
+$("season2Empty").style.display =
+  season2Arts.length ? "none" : "block";
+
+// START QUIZ
+
 displayQuestion();
+
 </script>
+
+</body>
+</html>
