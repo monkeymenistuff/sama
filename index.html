@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -749,6 +756,7 @@ footer {
   <nav class="memorialNav" aria-label="Memorial navigation">
     <button id="originalTab" class="navButton active">Original Memories</button>
     <button id="season2Tab" class="navButton">Season 2</button>
+    <button id="season3Tab" class="navButton">Season 3</button>
     <button id="miniReleaseTab" class="navButton">Mini Release</button>
     <button id="newsTab" class="navButton">Breaking News</button>
   </nav>
@@ -792,6 +800,12 @@ footer {
           No pictures yet.
         </p>
 
+      </section>
+
+      <section id="season3Section" style="display:none">
+        <h2 class="sectionTitle">Sama Season 3</h2>
+        <p class="sectionDescription">Four more memories of Sam.</p>
+        <div id="season3Gallery" class="gallery"></div>
       </section>
 
       <!-- SAMA MINI RELEASE -->
@@ -1251,6 +1265,7 @@ function showSection(sectionName) {
   const sections = {
     original: "originalSection",
     season2: "season2Section",
+    season3: "season3Section",
     miniRelease: "miniReleaseSection",
     news: "newsSection"
   };
@@ -1258,6 +1273,7 @@ function showSection(sectionName) {
   const tabs = {
     original: "originalTab",
     season2: "season2Tab",
+    season3: "season3Tab",
     miniRelease: "miniReleaseTab",
     news: "newsTab"
   };
@@ -1284,6 +1300,8 @@ $("originalTab").onclick = () => {
 $("season2Tab").onclick = () => {
   showSection("season2");
 };
+
+$("season3Tab").onclick = () => showSection("season3");
 
 $("miniReleaseTab").onclick = () => {
   showSection("miniRelease");
@@ -1345,42 +1363,42 @@ const season2Arts = [
     title: "The Face of Pure Terror",
     image: "scared.webp",
     description:
-      "A rare portrait capturing the exact moment when courage officially left the room."
+      "Absolutely terrified."
   },
 
   {
     title: "The Divine Revelation",
     image: "religious.webp",
     description:
-      "An extraordinary display of spiritual enlightenment. Historians remain unsure what was revealed."
+      "Sam has seen the light."
   },
 
   {
     title: "The Ritual of Eternal Love",
     image: "mating.webp",
     description:
-      "A fascinating study of romance, instinct, and the questionable decisions of nature."
+      "A moment of romance."
   },
 
   {
     title: "The Unbreakable Aura",
     image: "tuff.webp",
     description:
-      "An overwhelming display of confidence. Scientists estimate the aura levels to be immeasurable."
+      "Unmatched aura."
   },
 
   {
     title: "The Grand Scriptmaster",
     image: "scriptmaster.webp",
     description:
-      "A mysterious mastermind believed to control the very code of reality itself."
+      "The master of scripts."
   },
 
   {
     title: "The Renaissance Supermodel",
     image: "model.webp",
     description:
-      "A timeless icon of elegance, beauty, and absolutely unmatched photogenic excellence."
+      "Born to be a model."
   }
 
 ];
@@ -1395,21 +1413,21 @@ const miniReleaseArts = [
     title: "The Unsolved Monkey Mystery",
     image: "unknown.webp",
     description:
-      "No one knows what this monkey is trying to achieve here. Not even the monkey itself. Scientists have officially given up."
+      "Nobody knows what is happening."
   },
 
   {
     title: "The Royal Flush of Delusion",
     image: "poker.webp",
     description:
-      "A legendary gambler with the confidence of a world champion and the poker face of someone who just lost their life savings."
+      "All confidence, no poker face."
   },
 
   {
     title: "The Forbidden Morning Ritual",
     image: "stretch.webp",
     description:
-      "An extraordinary display of flexibility. Experts believe this ancient stretching technique unlocks absolutely nothing except back pain."
+      "Just a morning stretch."
   }
 
 ];
@@ -1417,6 +1435,13 @@ const miniReleaseArts = [
 // ==========================================
 // CREATE MUSEUM ARTWORK CARD
 // ==========================================
+
+const season3Arts = [
+  { title: "The Loyal Sam", image: "kneel.webp", description: "Kneeling before the true Master Wei." },
+  { title: "A bit too excited?", image: "excited.webp", description: "He must've seen a girl." },
+  { title: "SuperSam", image: "super.webp", description: "A superhero coming to save the girls." },
+  { title: "Master Sam", image: "master.webp", description: "The apprentice has become the master." }
+];
 
 function createCard(art, target) {
 
@@ -1467,7 +1492,7 @@ function createCard(art, target) {
 }
 
 // ==========================================
-// LOAD ALL THREE COLLECTIONS
+// LOAD ALL FOUR COLLECTIONS
 // ==========================================
 
 originalArts.forEach(art => {
@@ -1487,6 +1512,8 @@ season2Arts.forEach(art => {
   );
 
 });
+
+season3Arts.forEach(art => createCard(art, $("season3Gallery")));
 
 miniReleaseArts.forEach(art => {
 
@@ -1510,3 +1537,7 @@ buildQuiz();
 
 </body>
 </html>
+
+
+
+
